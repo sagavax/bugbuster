@@ -1,57 +1,6 @@
 <?php include "includes/dbconnect.php";
       include "includes/functions.php";
       session_start();
-
-/* 
-      if(isset($_POST['to_apply'])){
-            $idea_id = $_POST['idea_id'];
-
-            $to_apply = "UPDATE ideas SET is_applied=1 WHERE idea_id=$idea_id";
-            $result=mysqli_query($link, $to_apply);
-
-          
-            $diary_text="Minecraft IS: Ideas s id $idea_id bola aplikovana do IS ";
-            $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
-            $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
-            
-
-            echo "<script>alert('Minecraft IS: Ideas s id $idea bola aplikovana do IS');
-              window.location.href='ideas.php';
-              </script>";
-      }
-
-
-      if(isset($_POST['see_idea_details'])){
-        $idea_id = $_POST['idea_id'];
-        $_SESSION['idea_id']=$idea_id;
-        $_SESSION['is_applied']=$is_applied;
-        header("location:idea.php");
-      }
-
-
-      if(isset($_POST['delete_idea'])){
-       
-        $idea_id = $_POST['idea_id'];
-
-        //remove idea
-        $delete_idea = "DELETE from ideas WHERE idea_id=$idea_id";
-        $result = mysqli_query($link, $delete_idea) or die("MySQLi ERROR: ".mysqli_error($link));
-
-        //remove comments
-        $delete_comments = "DELETE from ideas_comments WHERE idea_id=$idea_id";
-        $result = mysqli_query($link, $delete_comments) or die("MySQLi ERROR: ".mysqli_error($link));
-
-
-        $diary_text="Minecraft IS: Ideas s id $idea_id bola vymazana ";
-            $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
-            $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
-
-         echo "<script>alert('Minecraft IS: Ideas s id $idea_id vratend komentarov bola vymazana');
-              window.location.href='ideas.php';
-              </script>";
-
-      } */
-
 ?>
 
 
