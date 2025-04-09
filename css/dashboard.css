@@ -1,0 +1,32 @@
+.small_dashboard {
+    width: 60%;
+    padding: 10px;
+    display:flex;
+    height:auto;
+    gap:10px
+}
+
+.dash-item {
+    height:200px;
+    width:200px;
+    border:1px #001b2e solid;
+    color: #001b2e;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.dash-item:hover {
+    cursor: pointer;
+    background-color:#5e4d9b ;
+    color:white;
+}
+
+.small_dashboard_2 {
+    width: 60%;
+    display: flex
+}

@@ -1,0 +1,364 @@
+/* Definovanie premenných pre farby */
+:root {
+ /*    --color-low: black;
+    --color-medium-text: white;
+    --color-medium-bg: blue;
+    --color-high-bg: orange;
+    --color-critical-bg: red; */
+
+    
+    --color-low: white; /* tmavšia sivá */
+    --color-medium-text: #ffffff;
+    --color-medium-bg: #7286d3; /* tlmená pastelová modrá */
+    --color-high-bg: #ef7f48; /* tlmená pastelová oranžová */
+    --color-critical-bg: #ec5050;; /* tlmená pastelová červená */
+}
+
+/* Základný štýl pre všetky úrovne */
+.status {
+    color: var(--color-low); /* Predvolená farba textu */
+    font-weight: bold;
+}
+
+/* Stredná úroveň - Medium */
+.medium {
+    background-color: var(--color-medium-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Vysoká úroveň - High */
+.high {
+    background-color: var(--color-high-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Kritická úroveň - Critical */
+.critical {
+    background-color: var(--color-critical-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Nízka úroveň - Low */
+.low {
+    background-color: var(--color-white);
+    padding: 5px;
+    border-radius: 4px;
+    color:#555;
+    border:1px solid;
+    border-color: var(--color-badge-border);
+}
+
+.idea_status,.idea_priority {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    min-width: 100px;
+    cursor: pointer;
+    padding: 6px 12px;
+    height:38px;
+}
+
+.idea_status {
+    border:1px #666 solid;
+    
+}
+
+.idea_comment_new form {
+    display: flex;
+    flex-direction: column;
+}
+
+.idea_comment_new form input, .idea_comment_new form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #eee;
+}
+
+.idea {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px #5e4d9b solid;
+    padding: 10px;
+    background: #fff;
+    min-height: 50px;
+}
+
+.idea_title {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+
+.idea_title, .idea_comm_title {
+    display: flex;
+    height: 45px;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.new_bug form select, .new_idea form select {
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    background: #eff3f4;
+    border: 1px #d1d1d1 solid;
+}
+
+
+.idea_text {
+    font-size: 18px;
+}
+
+.idea_text, .idea_comm_text {
+    padding: 10px 10px 20px 10px;
+    /* min-height: 70px; */
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+.idea_footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+.idea_footer {
+    height: 40px;
+}
+
+
+.idea_status {
+    border: 1px #666 solid;
+}
+
+
+.idea_status, .idea_priority {
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    min-width: 100px;
+    cursor: pointer;
+    padding: 6px 12px;
+    height: 38px;
+}
+
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    padding: 1rem;
+    background-color: white;
+    padding:10px;
+    width: 150px;
+}
+
+dialog ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+dialog ul li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.nr_of_comments,.idea_application{
+    margin-right: 0px;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    height: 38px;
+}
+
+.nr_of_comments, .idea_application{
+    display: flex;
+    margin-left: 5px;
+    background: #0b9ed0;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 0px;
+    align-items: center;
+}
+
+.new_idea, .idea_comment_new,.idea_comment {
+    background: white;
+    border: 1px #5e4d9b solid;
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.idea_comment {
+    margin-bottom: 10px;
+}
+
+.idea_comment, .idea_comment_new {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.new_idea, .idea_comment_new {
+    margin-left: 0;
+}
+
+.idea_comment::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    z-index: 1;         
+  }
+  
+  .bug_comment::after, .idea_comment::after {
+       content: "";
+              display: table;
+              clear: both;
+  }
+
+.new_idea_action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+}
+
+
+.new_idea input, .new_idea textarea {
+    margin-top: 10px;
+}
+
+.new_idea input {
+    font-weight: bold;
+}
+
+.new_idea input::placeholder {
+    font-weight: normal;
+}
+
+.idea_status {
+    border: 1px #666 solid;
+}
+.idea_status, .idea_priority {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    min-width: 100px;
+    cursor: pointer;
+    padding: 6px 12px;
+    height: 38px;
+    box-sizing: border-box;
+}
+
+.ideas_list, .ideas_comment_list {
+    display: flex
+;
+    flex-direction: column;
+}
+.ideas_list, .ideas_comment_list {
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+}
+
+.idea_comment_action {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 50px;
+} 
+
+dialog ul {
+    padding: 0;
+    margin:0;
+}
+
+    dialog ul li:hover {
+        background-color: lightgray;
+        cursor: pointer;
+    }
+    dialog ul li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .idea_application_filter {
+        width: 100%;
+        height: 55px;
+        display: flex;
+        gap: 10px;
+        /* border: 1px #d1d1d1 solid; */
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        /* background-color: white; */
+    }
+
+    .idea_priority_filter {
+        width: 100%;
+        height: 55px;
+        display: flex;
+        gap: 10px;
+        /* border: 1px #d1d1d1 solid; */
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        /* background-color: white; */
+    }
+    
+    .idea_priority_filter button {
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        min-width:100px;
+        text-transform: lowercase;
+    }
+
+    .idea_comm_action{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        }

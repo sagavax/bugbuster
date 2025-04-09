@@ -1,0 +1,140 @@
+/* .application_new {
+    margin-top:50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px #001b2e solid;
+    box-sizing: border-box;
+    padding:10px;
+    border-radius: 5px;
+    background-color: white;
+} */
+
+.add_new_app_action {
+    height:50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add_new_app_button {
+    height:60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 10%;
+    right:10%;
+}
+
+.add_new_app_button button {
+    height:60px;
+    width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%);
+}
+
+.add_new_app button:hover {
+    background-color: #9389bd;
+}
+
+.inner_wrap {
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add_new_app_dialog {
+    width: 50%;
+    height: 200px;
+}
+
+
+.inner_wrap input, .inner_wrap textarea {
+    color: #001b2e;
+    font-weight: bold;
+    height: 45px;
+    width: 100%;
+    box-sizing: border-box;
+    padding:5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size:14px;
+    margin-top:10px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.inner_wrap textarea {
+    min-height: 80px;
+    margin-bottom: 10px;
+}
+
+
+.application_list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.application{
+    width:100%;
+    display: flex;
+    border: 1px #001b2e solid;
+    box-sizing: border-box;
+    padding:10px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;;
+    align-items: center;
+}
+
+.application:hover{
+    /* background-color: #9389bd; */
+    background-color: #ded4ec;
+    cursor: pointer;
+}
+
+.app-icon {
+    height: 50px;
+    width: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5e4d9b;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.app-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.app-info p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.app-actions {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.app-actions button {
+    border-radius: 5px;;
+}

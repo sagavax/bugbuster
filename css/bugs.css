@@ -1,0 +1,364 @@
+/* Definovanie premenných pre farby */
+:root {
+ /*    --color-low: black;
+    --color-medium-text: white;
+    --color-medium-bg: blue;
+    --color-high-bg: orange;
+    --color-critical-bg: red; */
+
+    
+    --color-low: white; /* tmavšia sivá */
+    --color-medium-text: #ffffff;
+    --color-medium-bg: #7286d3; /* tlmená pastelová modrá */
+    --color-high-bg: #ef7f48; /* tlmená pastelová oranžová */
+    --color-critical-bg: #ec5050;; /* tlmená pastelová červená */
+}
+
+/* Základný štýl pre všetky úrovne */
+.status {
+    color: var(--color-low); /* Predvolená farba textu */
+    font-weight: bold;
+}
+
+/* Stredná úroveň - Medium */
+.medium {
+    background-color: var(--color-medium-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Vysoká úroveň - High */
+.high {
+    background-color: var(--color-high-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Kritická úroveň - Critical */
+.critical {
+    background-color: var(--color-critical-bg);
+    color: var(--color-medium-text);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Nízka úroveň - Low */
+.low {
+    background-color: var(--color-low);
+    padding: 5px;
+    border-radius: 4px;
+    color:#555;
+    border:1px #d1d1d1 solid;
+}
+
+.new_bug {
+    background: white;
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    flex-direction: column;
+    margin-top:30px;
+    border:1px #d1d1d1 solid;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.new_bug form select, .new_bug form input, .new_bug form textarea{
+    width:100%;
+    height:45px;
+    margin-top:10px;
+    background: #eff3f4;
+    border: 1px #d1d1d1 solid;
+}
+
+.new_bug form input {
+    font-weight: bold;
+}
+
+.new_bug form input::placeholder {
+    font-weight: normal;
+}
+
+.new_bug_action {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bug_list, .bug_comments_list{
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+}
+
+.bug_list, .bug_comments_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.bug {
+    border: 1px #d1d1d1 solid;
+    background: white;
+    margin-top:10px;
+    box-sizing: border-box;
+    padding:5px;
+    /*box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+    transition: box-shadow 83ms;*/
+}
+
+.bug_title,.idea_title,.idea_comm_title {
+    display: flex;
+    height:45px;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.idea_comm_title {
+    padding: 10px 10px 20px 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+.bug_title, .idea_title {
+    font-weight: bold;
+    padding-left:10px;
+}
+
+.bug_status,.bug_priority {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    min-width: 100px;
+    padding:6px 12px;
+    height:38px;
+    box-sizing: border-box;
+}
+
+.bug_comment, .bug_comment_new {
+    background: white;
+    border: 1px #d1d1d1 solid;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.bug_comment_new input, .bug_comment_new textarea  {
+    margin-top:10px;
+    background-color:#b3cde4 ;
+    color: #001b2e;
+}
+
+.bug_comment_new input {
+    font-weight: bold;
+}
+
+.bug_comment_new input, .bug_comment_new textarea {
+    color: #001b2e;
+}
+
+.bug_comment_action, .idea_comment_action, .bug_new_comment_wrap, .new_idea_action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+}
+
+.bug_comment, .bug_comment_new, .idea_comment, .idea_comment_new {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.bug_comment_new {
+    margin-left: 0;
+}
+
+.bug_comment::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    z-index: 1;         
+  }
+  
+  .bug_comment::after, .idea_comment::after {
+       content: "";
+       display: table;
+       clear: both;     
+  }
+
+
+.bug_text{
+    padding: 10px 10px 20px 10px;
+/*    min-height: 70px;*/
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding:10px;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.bug_text {
+    font-size: 18px;
+    color: #2f2d3b;
+    font-weight: 600;
+}
+
+.idea_footer,
+.bug_footer
+ {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap:5px;
+    box-sizing: border-box;
+}
+
+.bug_status:hover,.bug_priority:hover  {
+    cursor: pointer;
+}
+
+.bug_status {
+    border:1px #666 solid;
+    
+}
+
+.bug_comments, .bug_application {
+    display: flex;
+    margin-left: 5px;
+    background: #0b9ed0;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 0px;
+    align-items: center;    
+ }
+ 
+
+.nr_of_comments, .bug_application{
+    margin-right: 0px;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    height:38px;
+}
+
+.nr_of_comments, .bug_application {
+    border-radius: 4px;;
+}
+
+dialog {
+    position: fixed;
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    padding: 1rem;
+    background-color: white;
+    padding:10px;
+    width: 150px;
+}
+
+dialog ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+dialog ul li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.bug_action {
+    height: 100%;
+    display: flex;
+        gap: 5px;
+        border: 1px #d1d1d1 solid;
+        padding: 10px;
+        border-radius: 5px;
+}
+
+.bug_action button:hover {
+    opacity: 0.8;
+}
+
+dialog ul li:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+dialog ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.bug_application_filter, .idea_application_filter {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    gap: 10px;
+    /* border: 1px #d1d1d1 solid; */
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    /* background-color: white; */
+}
+
+.bug_priority_filter, .idea_priority_filter {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    gap: 10px;
+    /* border: 1px #d1d1d1 solid; */
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    /* background-color: white; */
+}
+
+.bug_priority_filter button, .idea_priority_filter button {
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width:100px;
+}
+
+.bug_comm_action form{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal_add_comment {
+    top:40%;
+    left:45%;
+    height:250px;
+    width: 50%;
+}
+
+.modal_add_comment textarea {
+    height: 200px
+}
