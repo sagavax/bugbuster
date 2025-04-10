@@ -39,13 +39,20 @@
                         $note_title = $row['note_title'];
                         $note_text = $row['note_text'];
                         $note_date = $row['created_date'];
+                        $note_application = $row['note_application'];
 
                         echo "<div class='note' note-id=$note_id>";
                           echo "<div class='note_title'>$note_title</div>";
                           echo "<div class='note_text'>$note_text</div>";
                           echo "<div class='note_action'>";
-                            echo "<button class='button small_button' name='delete_note' title='Delete Note'><i class='fa fa-times'></i></button>";
+                          if($note_application != ""){
+                            echo "<div class='note_application'>$note_application</div>";
+                          } else {
+                            echo "<div class='note_application'><button type='button'><i class='fa fa-plus'></i> application</button></div>";
+                          }
+                          echo "<button class='button small_button' name='delete_note' title='Delete Note'><i class='fa fa-times'></i></button>";
                           echo "</div>"; // note_action
+                          
                         echo "</div>";// note
                     }
 

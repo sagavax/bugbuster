@@ -138,7 +138,7 @@ function deleteIdea(ideaId) {
             document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
         }
     };
-    xhttp.open("POST", "ideas_delete.php", true);
+    xhttp.open("POST", "ideas_remove.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var params = "idea_id=" + encodeURIComponent(ideaId);
     xhttp.send(params);
