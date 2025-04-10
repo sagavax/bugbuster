@@ -46,9 +46,11 @@
                           echo "<div class='note_text'>$note_text</div>";
                           echo "<div class='note_action'>";
                           if($note_application != ""){
-                            echo "<div class='note_application'>$note_application</div>";
+                            //echo "<div class='note_application'>$note_application</div>";
+                            echo "<button type='button' class='button small_button' name='note_application'>$note_application</button>";
                           } else {
-                            echo "<div class='note_application'><button type='button'><i class='fa fa-plus'></i> application</button></div>";
+                            //echo "<div class='note_application'><button type='button'><i class='fa fa-plus'></i> application</button></div>";
+                            echo "<button type='button' class='button small_button' name='note_application'><i class='fa fa-plus'></i> application</button>";
                           }
                           echo "<button class='button small_button' name='delete_note' title='Delete Note'><i class='fa fa-times'></i></button>";
                           echo "</div>"; // note_action
@@ -62,5 +64,18 @@
              </div><!-- list-->
            </div><!-- content -->
            </div><!-- main -->  
+    <dialog class="modal_change_app">
+       <?php
+            echo "<ul>";
+            $get_apps = "SELECT * FROM apps";
+            $result_apps = mysqli_query($link, $get_apps) or die(mysqli_error($link));
+            while ($row_apps = mysqli_fetch_array($result_apps)) {
+                $app_id = $row_apps['app_id'];
+                $app_name = $row_apps['app_name'];
+                echo "<li data-app-id=$app_id>$app_name</li>";
+            } 
+            echo "</ul>";          
+            ?>          
+    </dialog>
 </body>
 </html>

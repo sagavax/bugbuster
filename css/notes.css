@@ -58,10 +58,48 @@
     margin-bottom: 10px;
 }
 
-.note_application button {
+.note_application {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    height:100%
+}
+
+
+ button[name="note_application"] {
     border: 1px #8773b2 solid;
-    padding: 5px 10px;
     border-radius: 5px;
     background-color: #8773b2;
     cursor: pointer;
+    color: white;
+}
+
+button[name="note_application"]:hover {
+    opacity: 0.8;
+}
+
+.note_action button:hover {
+    opacity: 0.8;
+}
+
+.modal_change_app ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal_change_app ul li {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.modal_change_app ul li:hover {
+    /* background: #eee;
+    background-color: #bca8db */
+    background-color: #ded4ec;
 }
