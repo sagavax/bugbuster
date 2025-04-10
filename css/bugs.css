@@ -109,6 +109,10 @@
     transition: box-shadow 83ms;*/
 }
 
+.bug:hover {
+    background-color: #eee;
+}
+
 .bug_title,.idea_title,.idea_comm_title {
     display: flex;
     height:45px;

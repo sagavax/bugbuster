@@ -93,6 +93,11 @@
     min-height: 50px;
 }
 
+.idea:hover {
+    background-color: #9389bd;
+    background-color: #eee;
+}
+
 .idea_title {
     font-weight: bold;
     padding-left: 10px;
