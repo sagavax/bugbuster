@@ -43,7 +43,8 @@
                                         echo "<p>$app_desc</p>";
                                         echo "</div>";
                                         echo "<div class='app-actions'>";
-                                          echo "<button type='button' name='delete_app' class='button small_button'><i class='fa fa-times'></i></button>";
+                                         echo "<button type='button' name='app_details' class='button small_button'><i class='fa fa-eye'></i></button>"; 
+                                         echo "<button type='button' name='app_deactivate_dev' class='button small_button'><i class='fa fa-times'></i></button>";
                                           echo "<button type='button' name='edit_app' class='button small_button'><i class='fa fa-edit'></i></button>";
                                         echo "</div>";
                                 echo "</div>";

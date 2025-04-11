@@ -46,7 +46,7 @@
 
 /* Nízka úroveň - Low */
 .low {
-    background-color: var(--color-white);
+    background-color:white;
     padding: 5px;
     border-radius: 4px;
     color:#555;
@@ -213,6 +213,11 @@ dialog ul li:hover {
     align-items: center;
 }
 
+.idea_application:hover {
+    cursor: pointer;
+}
+
+
 .new_idea, .idea_comment_new,.idea_comment {
     background: white;
     border: 1px #5e4d9b solid;
@@ -367,3 +372,33 @@ dialog ul {
         justify-content: flex-end;
         align-items: center;
         }
+
+        .modal_change_app {
+            width: 20%;
+            min-height: 20%;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);    
+            transform: translate(-50%, -50%);
+        }
+        
+.modal_change_app ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal_change_app ul li {
+    text-transform: lowercase;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.modal_change_app ul li:hover {
+    /* background: #eee;
+    background-color: #bca8db */
+    background-color: #ded4ec;
+}

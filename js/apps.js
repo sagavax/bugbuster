@@ -16,10 +16,20 @@ add_new_app_action.addEventListener("click", function(event) {
 });
 
 application_list.addEventListener("click", function(event) {
-    if (event.target.tagName === 'DIV' && event.target.classList.contains("application")) {
-        const appId = event.target.getAttribute('data-app-id');
-        window.location.href = `application.php?app_id=${appId}`;        
-    }
+      
+    if (event.target.tagName === 'BUTTON'){
+        const appId = event.target.closest(".application").getAttribute('data-app-id');
+        if(event.target.name==="app_deactivate_dev"){
+            console.log("deactivate app");
+            deactivateAppDevelopment(appId);
+        } else if (event.target.name==="edit_app"){
+            console.log("edit app");
+            window.location.href = `application_edit.php?app_id=${appId}`;     
+        } else if  (event.target.name==="app_details"){
+            console.log("app details");
+            window.location.href = `application.php?app_id=${appId}`;
+        }
+     }
 });
 
 function addNewApplication(appTitle, appDescription) {
@@ -53,3 +63,16 @@ function reloadApplications() {
     xhttp.send();
 }
 
+function deactivateAppDevelopment(appId) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Check if the request is complete and was successful
+        if (this.readyState == 4 && this.status == 200) {
+            reloadApplications();
+        }
+    };
+    xhttp.open("POST", "application_dev_deactivate.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "app_id=" + encodeURIComponent(appId);
+    xhttp.send(params);
+}

@@ -331,7 +331,11 @@ dialog ul li {
     /* background-color: white; */
 }
 
-.bug_priority_filter, .idea_priority_filter {
+.bug_application:hover{
+    cursor: pointer;
+}
+
+.bug_priority_filter {
     width: 100%;
     height: 55px;
     display: flex;
@@ -344,7 +348,8 @@ dialog ul li {
     /* background-color: white; */
 }
 
-.bug_priority_filter button, .idea_priority_filter button {
+.bug_priority_filter button {
+    text-transform: lowercase;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -365,4 +370,34 @@ dialog ul li {
 
 .modal_add_comment textarea {
     height: 200px
+}
+
+.modal_change_app {
+    width: 20%;
+    min-height: 20%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);    
+    transform: translate(-50%, -50%);
+}
+
+.modal_change_app ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal_change_app ul li {
+    text-transform: lowercase;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.modal_change_app ul li:hover {
+    /* background: #eee;
+    background-color: #bca8db */
+    background-color: #ded4ec;
 }

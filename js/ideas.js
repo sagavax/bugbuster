@@ -2,7 +2,8 @@ const ideas_list = document.querySelector('.ideas_list');
 const modal_show_status = document.querySelector('.modal_show_status');
 const modal_show_priority = document.querySelector('.modal_show_priority');
 const idea_priority_filter = document.querySelector(".idea_priority_filter");
-
+const modal_change_app = document.querySelector('.modal_change_app');
+const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 
 idea_priority_filter.addEventListener("click",function(event) {
     if(event.target.tagName==="BUTTON"){
@@ -50,6 +51,11 @@ ideas_list.addEventListener('click', function(event) {
         } else if (button.name==="to_review"){
             //for the future use
         }
+    } if (event.target.classList.contains("idea_application")) {
+        const ideaId = event.target.closest(".idea").getAttribute('idea-id');
+        sessionStorage.setItem('idea_id',ideaId);
+        sessionStorage.setItem('old_app_name', event.target.innerText);
+        modal_change_app.showModal();
     }
 });
 
@@ -88,6 +94,24 @@ modal_show_priority.addEventListener('click', function(event) {
     }
 });
 
+modal_change_app.addEventListener("click", function(event) {
+    if (event.target.tagName==="LI") {
+        //console.log("clicked on listitem:"+event.target.innerText);
+        const old_app_name = sessionStorage.getItem('old_app_name');
+        if(old_app_name===event.target.innerText){
+            alert("Cannot change application to the same one.");
+            modal_change_app.close();
+            return;
+        } else {
+        
+        const appName = event.target.innerText;
+        const ideaId = sessionStorage.getItem('idea_id');
+        console.log("app name: "+appName+" idea id: "+ideaId);
+        //console.log("app id: "+app_id);
+        changeApplication(appName, ideaId);
+        }
+    }
+});
 
 function changeideastatus(ideaId, ideastatus) {
     var xhttp = new XMLHttpRequest();
@@ -192,3 +216,22 @@ function  filterIdeasByPriority(priority){
     var params = "bug_id=" + encodeURIComponent(bugId);
     xhttp.send(params);
 }
+
+
+
+function changeApplication(appName, ideaId){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        //document.getElementById("diary_content").innerHTML = this.responseText;
+        //var app_name =  sessionStorage.getItem('app_name');
+        modal_change_app.close();
+        //document.querySelector('.idea[idea-id='${ideaId}'] .idea_application').innerText = appName;
+        document.querySelector(`.idea[idea-id='${ideaId}'] .idea_application`).innerText = appName
+      }
+    };
+    xhttp.open("POST", "ideas_change_app.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "app_name="+appName+"&idea_id="+ideaId;
+    xhttp.send(params);
+ }

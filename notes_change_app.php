@@ -11,6 +11,6 @@
     $result = mysqli_query($link, $chage_app) or die("MySQLi ERROR: ".mysqli_error($link));
 
     //add to app logu
-    $diary_text="Bola zmenene aplikacia pre zaznam id: <strong>$note_id/strong>";
+    $diary_text="Bola zmenene aplikacia pre zaznam id: <strong>$note_id                                                                                                                                                                                                                                                                                                                                                                                                                     /strong>";
     $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
     $result = mysqli_query($link, $sql) or die(mysql_error());

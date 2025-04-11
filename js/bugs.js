@@ -5,6 +5,8 @@ const modal_add_comment = document.querySelector('.modal_add_comment');
 const bug_application_filter = document.querySelector('.bug_application_filter');
 const bug_priority_filter = document.querySelector('.bug_priority_filter');
 var new_bug_form= document.querySelector('.new_bug form');
+const modal_change_app = document.querySelector('.modal_change_app');
+const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 //markdown editor
 
  
@@ -104,6 +106,10 @@ bug_list.addEventListener('click', function(event) {
                 modal_add_comment.showModal();
                 break;    
         }
+    } if (event.target.classList.contains("bug_application")) {
+        const bugId = event.target.closest(".bug").getAttribute('bug-id');
+        sessionStorage.setItem('bug_id',bugId);
+        modal_change_app.showModal();
     }
 });
 
@@ -340,3 +346,38 @@ function reopenBug(bugId) {
     xhttp.send(params);
     }
 }
+
+modal_change_app.addEventListener("click", function(event) {
+    if (event.target.tagName==="LI") {
+        //console.log("clicked on listitem:"+event.target.innerText);
+        const old_app_name = sessionStorage.getItem('old_app_name');
+        if(old_app_name===event.target.innerText){
+            alert("Cannot change application to the same one.");
+            modal_change_app.close();
+            return;
+        } else {
+        
+        const appName = event.target.innerText;
+        const bugId = sessionStorage.getItem('bug_id');
+        console.log("app name: "+appName+" note id: "+bugId);
+        //console.log("app id: "+app_id);
+        changeApplication(appName, bugId);
+        }
+    }
+}); 
+
+function changeApplication(appName, bugId){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        //document.getElementById("diary_content").innerHTML = this.responseText;
+        //var app_name =  sessionStorage.getItem('app_name');
+        modal_change_app.close();
+        document.querySelector(`.bug[bug-id='${bugId}'] .bug_application`).innerText = appName;
+      }
+    };
+    xhttp.open("POST", "bugs_change_app.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "app_name="+appName+"&bug_id="+bugId;
+    xhttp.send(params);
+ }

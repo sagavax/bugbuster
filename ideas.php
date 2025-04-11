@@ -191,7 +191,21 @@
     <dialog class="modal_add_comment">
       <textarea name="comment_text" placeholder="Add a comment here"></textarea>
       <button type="submit" name="add_comment" class="button small_button">Add</button>
-    </dialog>                  
+    </dialog>        
+    
+    <dialog class="modal_change_app">
+       <?php
+            echo "<ul>";
+            $get_apps = "SELECT * FROM apps";
+            $result_apps = mysqli_query($link, $get_apps) or die(mysqli_error($link));
+            while ($row_apps = mysqli_fetch_array($result_apps)) {
+                $app_id = $row_apps['app_id'];
+                $app_name = $row_apps['app_name'];
+                echo "<li data-app-id=$app_id>$app_name</li>";
+            } 
+            echo "</ul>";          
+            ?>          
+    </dialog>
 
 
   </body>
