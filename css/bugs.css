@@ -113,6 +113,10 @@
     background-color: #eee;
 }
 
+.bug .bug_footer {
+    margin-top:20px;
+}
+
 .bug_title,.idea_title,.idea_comm_title {
     display: flex;
     height:45px;
@@ -160,7 +164,7 @@
 
 .bug_comment_new input, .bug_comment_new textarea  {
     margin-top:10px;
-    background-color:#b3cde4 ;
+    background-color:#eee ;
     color: #001b2e;
 }
 

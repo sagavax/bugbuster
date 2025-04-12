@@ -309,7 +309,7 @@ function addNewBug(bugTitle,bugDescription,bugApplication, bugPriority, bugStatu
     };
     xhttp.open("POST", "bugs_create_new.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var params = "bug_title="+bugTitle+"&bug_description="+bugDescription+"&bug_application="+bugApplication+"&bug_priority="+bugPriority+"&bug_status="+bugStatus;
+    var params = "bug_title="+encodeURIComponent(bugTitle)+"&bug_description="+encodeURIComponent(bugDescription)+"&bug_application="+encodeURIComponent(bugApplication)+"&bug_priority="+encodeURIComponent(bugPriority)+"&bug_status="+encodeURIComponent(bugStatus);
     xhttp.send(params);
 }   
 
