@@ -54,3 +54,32 @@ function GetAppName($project_id){
 
     mysqli_close($link);
 }
+
+function createGithubIssue($title, $body) {
+    $token = 'ghp_tvoj_tokensem';
+    $owner = 'tvoje-meno';
+    $repo = 'tvoje-repo';
+
+    $data = [
+        "title" => $title,
+        "body" => $body
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repos/$owner/$repo/issues");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, $owner); // povinný header
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: token $token",
+        "Content-Type: application/json",
+        "Accept: application/vnd.github.v3+json"
+    ]);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    return $httpCode === 201;
+}
