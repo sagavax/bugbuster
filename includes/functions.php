@@ -55,20 +55,23 @@ function GetAppName($project_id){
     mysqli_close($link);
 }
 
-function createGithubIssue($title, $body) {
-    $token = 'ghp_tvoj_tokensem';
-    $owner = 'tvoje-meno';
-    $repo = 'tvoje-repo';
+function createGithubIssue($title, $body, $token) {
+    $owner = 'sagavax';
+    $repo = 'bugbuster';
 
+    // Údaje pre nové issue
     $data = [
         "title" => $title,
         "body" => $body
     ];
 
+    // Inicializácia cURL
     $ch = curl_init();
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repos/$owner/$repo/issues");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, $owner); // povinný header
+    curl_setopt($ch, CURLOPT_USERAGENT, $owner); // Povinný header pre GitHub API
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         "Authorization: token $token",
         "Content-Type: application/json",
@@ -77,9 +80,24 @@ function createGithubIssue($title, $body) {
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
+    // Spustenie požiadavky a spracovanie odpovede
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    // Spracovanie chýb
+    if (curl_errno($ch)) {
+        $error = curl_error($ch);
+        curl_close($ch);
+        return ["success" => false, "error" => $error];
+    }
+
     curl_close($ch);
 
-    return $httpCode === 201;
+    // Návrat celej odpovede spolu s HTTP kódom
+    return [
+        "success" => $httpCode === 201,
+        "http_code" => $httpCode,
+        "response" => json_decode($response, true)
+    ];
 }
+

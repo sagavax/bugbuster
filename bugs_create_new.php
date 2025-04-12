@@ -32,7 +32,21 @@
     //echo $save_bug;
     mysqli_query($link, $save_bug) or die("MySQLi ERROR: ".mysqli_error($link));
   
+    //add to github
+    $token = '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';
+    $result = createGithubIssue($bug_title, $bug_text, $token);
+
     
+    if ($result['success']) {
+        echo "Issue bola úspešne vytvorená! \n";
+        //print_r($result['response']);
+    } else {
+        echo "Nastala chyba: " . $result['error'] . "\n";
+    }
+
+
+
+
     // Získanie posledného ID bezpečne
     $max_id = mysqli_insert_id($link);
 
