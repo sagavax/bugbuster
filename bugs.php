@@ -136,18 +136,24 @@
                           // Generovanie HTML výstupu
                          
                           echo "<div class='bug' bug-id='{$bug_id}'>
-                          <div class='bug_title'>{$bug_title} {$fixed_label}</div>
-                          <div class='bug_text'>{$bug_text}</div>
-                          <div class='bug_footer'>
-                              <div class='bug_application'>{$application}</div>                         
-                              <div class='bug_status {$bug_status}'>{$bug_status}</div>
-                              <div class='bug_priority {$bug_priority}'>{$bug_priority}</div>
-                              <div class='bug_comments'>{$nr_of_comments} comments</div>
-                              <div class='bug_action'>
-                                    {$action_buttons}
-                              </div>
-                          </div>
-                      </div>";
+                                <div class='bug_title'>$bug_title</div>";
+                           echo "<div class='bug_text'>{$bug_text}</div>
+                            <div class='bug_footer'>
+                                <div class='bug_application'>{$application}</div>                         
+                                <div class='bug_status {$bug_status}'>{$bug_status}</div>
+                                <div class='bug_priority {$bug_priority}'>{$bug_priority}</div>
+                                <div class='bug_comments'>{$nr_of_comments} comments</div>";
+
+                                
+                                 if ($is_fixed == 1) {
+                                      echo "<div class='bug_fixed'>fixed</div>";                                  }  
+
+                             echo" <div class='bug_action'>
+                                      {$action_buttons}
+                                </div>
+                            </div>
+                        </div>";
+
                       
                       }
                            

@@ -47,10 +47,10 @@ bug_comment_new_form.addEventListener("submit", function(event){
           xhttp.onload = function() {
             alert("bug has been fixed;");
             footer.innerHTML="";
-            footer.innerHTML="<button type='button' title='mark the bug as fixed' class='button small_button' name='reopen_bug'>Reopen</button><div class='span_modpack'>fixed</div>";
+            footer.innerHTML="<button type='button' title='mark the bug as fixed' class='button small_button' name='reopen_bug'>Reopen</button><div class='bug_fixed'>fixed</div>";
           }
           
-        xhttp.open("POST", "bug_set_fixed.php",true);
+        xhttp.open("POST", "bugs_mark_as_fixed",true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var data = "bug_id="+encodeURIComponent(bugId);                
         xhttp.send(data);

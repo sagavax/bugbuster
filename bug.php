@@ -106,7 +106,7 @@
                                           
                                     } elseif ($is_fixed==1){
 
-                                          echo "<button type='button' title='mark the bug as fixed' class='button small_button' name='reopen_bug'>Reopen</button><div class='span_modpack'>fixed</div>";
+                                          echo "<button type='button' title='mark the bug as fixed' class='button small_button' name='reopen_bug'>Reopen</button><div class='bug_fixed'>fixed</div>";
                                     }        
 
                                           
