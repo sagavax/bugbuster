@@ -38,7 +38,11 @@
 
     
     if ($result['success']) {
-        echo "Issue bola úspešne vytvorená! \n";
+        //echo "<script>alert('Issue bola úspešne vytvorená!');</script>";
+        $max_id = mysqli_insert_id($link);
+        $guthub_link = $result['response']['html_url'];
+        $upated_github_link = "UPDATE bugs SET bug_github_url = '$guthub_link' WHERE bug_id = $max_id";
+        mysqli_query($link, $upated_github_link) or die("MySQLi ERROR: ".mysqli_error($link));
         //print_r($result['response']);
     } else {
         echo "Nastala chyba: " . $result['error'] . "\n";
@@ -49,6 +53,10 @@
 
     // Získanie posledného ID bezpečne
     $max_id = mysqli_insert_id($link);
+
+    $guthub_link = $result['response']['html_url'];
+    $upated_github_link = "UPDATE bugs SET bug_github_url = '$guthub_link' WHERE bug_id = $max_id";
+    mysqli_query($link, $upated_github_link) or die("MySQLi ERROR: ".mysqli_error($link));
 
     // Logovanie do app_log
     $diary_text = "Bol zaznamenaný nový bug s ID $max_id pre aplikaciu $bug_application";
