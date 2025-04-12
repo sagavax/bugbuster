@@ -7,7 +7,7 @@
     $idea_id = $_POST['idea_id'];
     $app_name = $_POST['app_name'];
   
-    $chage_app = "UPDATE ideas SET application='$app_name' WHERE idea_id=$idea_id";
+    $chage_app = "UPDATE ideas SET idea_application='$app_name' WHERE idea_id=$idea_id";
     $result = mysqli_query($link, $chage_app) or die("MySQLi ERROR: ".mysqli_error($link));
 
     //add to app logu

@@ -72,10 +72,10 @@
 
               <div class="idea_application_filter">
                   <?php
-                       $get_application = "SELECT application from ideas GROUP BY application";
+                       $get_application = "SELECT idea_application from ideas GROUP BY idea_application";
                        $result=mysqli_query($link, $get_application) or  die(mysqli_error($link));
                        while ($row = mysqli_fetch_array($result)) {
-                              $application = $row['application'];
+                              $application = $row['idea_application'];
                               echo "<button type='button' title='show bugs for $application' class='button small_button' data-application='$application'>$application</button>";
                        }
 
@@ -84,10 +84,10 @@
               
                 <div class="idea_priority_filter">
                   <?php
-                       $get_priority = "SELECT priority from ideas GROUP BY priority";
+                       $get_priority = "SELECT idea_priority from ideas GROUP BY idea_priority";
                        $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
                        while ($row = mysqli_fetch_array($result)) {
-                              $priority = $row['priority'];
+                              $priority = $row['idea_priority'];
                               echo "<button type='button' title='show bugs with priority' class='button $priority small_button ' data-priority='$priority'>$priority</button>";
                        }
                      echo "<button type='button' title='all ideas' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky idey
@@ -112,11 +112,11 @@
                           $idea_id = htmlspecialchars($row['idea_id'] ?? '', ENT_QUOTES, 'UTF-8');
                           $idea_title = htmlspecialchars($row['idea_title'] ?? '', ENT_QUOTES, 'UTF-8');
                           $idea_text = htmlspecialchars($row['idea_text'] ?? '', ENT_QUOTES, 'UTF-8');
-                          $idea_priority = htmlspecialchars($row['priority'] ?? '', ENT_QUOTES, 'UTF-8');
-                          $idea_status = htmlspecialchars($row['status'] ?? '', ENT_QUOTES, 'UTF-8');
+                          $idea_priority = htmlspecialchars($row['idea_priority'] ?? '', ENT_QUOTES, 'UTF-8');
+                          $idea_status = htmlspecialchars($row['idea_status'] ?? '', ENT_QUOTES, 'UTF-8');
                           $is_applied = htmlspecialchars($row['is_applied'] ?? '', ENT_QUOTES, 'UTF-8');
                           $added_date = htmlspecialchars($row['added_date'] ?? '', ENT_QUOTES, 'UTF-8');
-                          $application = htmlspecialchars($row['application'] ?? '', ENT_QUOTES, 'UTF-8');
+                          $application = htmlspecialchars($row['idea_application'] ?? '', ENT_QUOTES, 'UTF-8');
 
                               echo "<div class='idea' idea-id=$idea_id>";
                                     //echo "<form action='' method='post'>";
