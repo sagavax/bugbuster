@@ -4,6 +4,7 @@ const modal_show_priority = document.querySelector('.modal_show_priority');
 const idea_priority_filter = document.querySelector(".idea_priority_filter");
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
+const idea_application_filter = document.querySelector(".idea_application_filter");
 
 idea_priority_filter.addEventListener("click",function(event) {
     if(event.target.tagName==="BUTTON"){
@@ -58,6 +59,17 @@ ideas_list.addEventListener('click', function(event) {
         modal_change_app.showModal();
     }
 });
+
+
+
+idea_application_filter.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {
+        console.log("clicked on listitem:"+event.target.innerText);
+        const application = event.target.innerText;
+        filterIdeasByApplication(application);
+    }
+  });
+  
 
 
 modal_show_status.addEventListener('click', function(event) {
@@ -235,3 +247,21 @@ function changeApplication(appName, ideaId){
     var params = "app_name="+appName+"&idea_id="+ideaId;
     xhttp.send(params);
  }
+
+ 
+function filterIdeasByApplication(application) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Check if the request is complete and was successful
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".ideas_list").innerHTML = this.responseText;
+           
+        }
+    };
+    xhttp.open("POST", "ideas_filter_by_application.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  
+    // Send the request with the videoId and modpackId
+    var params = "application=" + encodeURIComponent(application);
+    xhttp.send(params);
+  }

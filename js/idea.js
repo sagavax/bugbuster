@@ -1,6 +1,6 @@
 const idea_comment_new_form= document.querySelector(".idea_comment_new form" );
 const idea_comments_list = document.querySelector(".idea_comments_list");
-
+const idea_application_filter = document.querySelector(".idea_application_filter");
 
 
 /* let isSubmitting = false;
@@ -104,4 +104,21 @@ function clearIdeaComments() {
 
 function addIdeaComment(ideaId) {
     
+}
+
+function filterIdeasByApplication(application) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      // Check if the request is complete and was successful
+      if (this.readyState == 4 && this.status == 200) {
+          document.querySelector(".bug_list").innerHTML = this.responseText;
+         
+      }
+  };
+  xhttp.open("POST", "ideas_filter_by_application.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  // Send the request with the videoId and modpackId
+  var params = "application=" + encodeURIComponent(application);
+  xhttp.send(params);
 }
