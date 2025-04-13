@@ -104,7 +104,7 @@
 
 
                         $get_bugs = "SELECT * from bugs ORDER BY bug_id DESC LIMIT $itemsPerPage OFFSET $offset";
-                        $result=mysqli_query($link, $get_bugs);
+                        $result=mysqli_query($link, $get_bugs) or  die(mysqli_error($link));
                         while ($row = mysqli_fetch_array($result)) {
                           // Sanitizácia údajov na ochranu pred XSS
                           $bug_id = (int) ($row['bug_id'] ?? 0); // ID musí byť číslo
