@@ -4,11 +4,11 @@
            //var_dump($_POST);
            $idea_title = mysqli_real_escape_string($link, $_POST['idea_title']);
             $idea_text = mysqli_real_escape_string($link,$_POST['idea_text']);
-            $idea_application = mysqli_real_escape_string($link,$_POST['idea_application']);
+            //$idea_application = mysqli_real_escape_string($link,$_POST['idea_application']);
             
-            $application = (isset($_POST['idea_appliacation']) && $_POST['idea_appliacation'] != 0) ? mysqli_real_escape_string($link,$_POST['idea_appliacation']) : 'bugbuster';
-            $priority = (isset($_POST['idea_priority']) && $_POST['idea_priority'] != 0) ? mysqli_real_escape_string($link,$_POST['idea_priority']) : 'low';
-            $status = (isset($_POST['idea_status']) && $_POST['idea_status'] != 0) ? mysqli_real_escape_string($link,$_POST['bug_status']) : 'new';
+            $idea_application = (isset($_POST['idea_appliacation']) && $_POST['idea_appliacation'] != 0) ? mysqli_real_escape_string($link,$_POST['idea_appliacation']) : 'bugbuster';
+            $idea_priority = (isset($_POST['idea_priority']) && $_POST['idea_priority'] != 0) ? mysqli_real_escape_string($link,$_POST['idea_priority']) : 'low';
+            $idea_status = (isset($_POST['idea_status']) && $_POST['idea_status'] != 0) ? mysqli_real_escape_string($link,$_POST['bug_status']) : 'new';
     
             //get last idea id 
             $get_latest_idea = "SELECT idea_id FROM ideas ORDER BY idea_id DESC LIMIT 1";
@@ -21,8 +21,8 @@
 
            //var_dump($_POST);
 
-            $save_idea = "INSERT INTO ideas (idea_title, idea_text, idea_priority, idea_status, idea_application, is_applied, added_date) VALUES ('$idea_title','$idea_text', '$idea_priority','$idea_status', '$application',$is_applied,now())";
-            //echo $save_idea;
+            $save_idea = "INSERT INTO ideas (idea_title, idea_text, idea_priority, idea_status, idea_application, is_applied, added_date) VALUES ('$idea_title','$idea_text', '$idea_priority','$idea_status', '$idea_application',$is_applied,now())";
+            echo $save_idea;
             $result=mysqli_query($link, $save_idea) or die("MySQLi ERROR: ".mysqli_error($link));
 
             
