@@ -110,6 +110,9 @@ bug_list.addEventListener('click', function(event) {
         const bugId = event.target.closest(".bug").getAttribute('bug-id');
         sessionStorage.setItem('bug_id',bugId);
         modal_change_app.showModal();
+    } if (event.target.classList.contains("bug_github_link")) {
+        const bug_url = event.target.getAttribute('data-link');
+        window.open(bug_url, '_blank');
     }
 });
 
