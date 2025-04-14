@@ -45,7 +45,7 @@ ideas_list.addEventListener('click', function(event) {
             alert(`Idea ${ideaId} deleted.`);
             deleteIdea(ideaId);
             //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
-        } else if (buttun.name==="to_apply"){
+        } else if (button.name==="to_apply"){
             alert(`Idea ${ideaId} moved to the Apply section.`);
             moveIdeaToApply(ideaId);
             //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
@@ -181,7 +181,7 @@ function deleteIdea(ideaId) {
 }
 
 
-function moveIdeaToApply($ideaId) {
+function moveIdeaToApply(ideaId) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
@@ -191,7 +191,7 @@ function moveIdeaToApply($ideaId) {
             window.location.reload();
         }
     };
-    xhttp.open("POST", "ideas_move_to_apply.php", true);
+    xhttp.open("POST", "ideas_mark_as_implememented.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var params = "idea_id=" + encodeURIComponent($ideaId);
     xhttp.send(params);
