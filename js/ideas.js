@@ -48,7 +48,25 @@ ideas_list.addEventListener('click', function(event) {
         } else if (button.name==="to_apply"){
             //alert(`Idea ${ideaId} moved to the Apply section.`);
             markIdeaAsImplemented(ideaId);
-            //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
+            
+            document.querySelector(`.idea[idea-id='${ideaId}'] button[name='to_apply']`).remove();
+            document.querySelector(`.idea[idea-id='${ideaId}'] button[name='delete_idea']`).remove();
+
+            const footer = document.querySelector(`.idea[idea-id='${ideaId}'] .idea_footer`);
+            if (footer) {
+                const implementedDiv = document.createElement("div");
+                implementedDiv.className = "idea_implemented";
+                implementedDiv.textContent = "Implemented";
+                footer.appendChild(implementedDiv);
+            }
+
+            /* document.querySelector(`.idea[idea-id='${ideaId}']`)
+            .appendChild(Object.assign(document.createElement("div"), {
+                className: "idea_implemented",
+                innerHTML: "Implemented"
+            }));
+ */
+            
         } else if (button.name==="to_review"){
             //for the future use
         }
