@@ -115,6 +115,7 @@
                           $is_fixed = (int) ($row['is_fixed'] ?? 0);
                           $added_date = htmlspecialchars($row['added_date'] ?? '', ENT_QUOTES, 'UTF-8');
                           $application = htmlspecialchars($row['bug_application'] ?? '', ENT_QUOTES, 'UTF-8');
+                          $bug_github_url = htmlspecialchars($row['bug_github_url'] ?? '', ENT_QUOTES, 'UTF-8');
 
                       
                           // Počet komentárov
@@ -139,6 +140,7 @@
                                 <div class='bug_title'>$bug_title</div>";
                            echo "<div class='bug_text'>$bug_text</div>
                             <div class='bug_footer'>
+                                <div class='bug_github_link' data-link='$bug_github_url' title=$bug_github_url><i class='fab fa-github-alt'></i></div>
                                 <div class='bug_application'>$application</div>                         
                                 <div class='bug_status $bug_status'>$bug_status</div>
                                 <div class='bug_priority $bug_priority'>$bug_priority</div>
