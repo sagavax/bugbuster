@@ -97,6 +97,18 @@ bug_list.addEventListener('click', function(event) {
             case "to_fixed":
                 console.log("mark bug as fixed");
                 markBugAsFixed(bugId);
+                document.querySelector(`.bug[bug-id='${bugId}'] button[name='to_fixed']`).remove();
+                document.querySelector(`.bug[bug-id='${bugId}'] button[name='add_comment']`).remove();
+                document.querySelector(`.bug[bug-id='${bugId}'] button[name='bug_remove']`).remove();
+
+                const bugElement = document.querySelector(`.bug[bug-id='${bugId}'] .bug_footer .bug_comments`);
+
+                if (bugElement) {
+                    const fixedDiv = document.createElement("div");
+                    fixedDiv.className = "bug_fixed";
+                    fixedDiv.textContent = "fixed";
+                    bugElement.after(fixedDiv); // pridá za .bug_comments
+                }
                 break;
             case "to_reopen":
                 console.log("reopen bug");
