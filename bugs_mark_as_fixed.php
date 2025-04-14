@@ -5,7 +5,7 @@
       $bug_to_fix = "UPDATE bugs SET is_fixed=1 WHERE bug_id=$bug_id";
       $result=mysqli_query($link, $bug_to_fix);
 
-      $bug_change_status = "UPDATE bugs SET bugstatus='fixed' WHERE bug_id=$bug_id";
+      $bug_change_status = "UPDATE bugs SET bug_status='fixed' WHERE bug_id=$bug_id";
       $result=mysqli_query($link, $bug_change_status);   
 
           
