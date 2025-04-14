@@ -403,3 +403,15 @@ dialog ul {
     background-color: #bca8db */
     background-color: #ded4ec;
 }
+
+.idea_implemented {
+    box-sizing: border-box;
+    height:38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #008000;
+    color: white;
+    padding:5px 10px;
+    border-radius: 5px;
+}        

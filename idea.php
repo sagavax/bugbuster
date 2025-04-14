@@ -84,7 +84,7 @@
                                         echo "<button type='submit' name='to_apply' class='button small_button'><i class='fa fa-check'></i></button>";
                                         echo "</form>";
                                     } elseif ($is_applied == 1) {
-                                        echo "<div class='span_modpack'>Idea applied</div>";
+                                        echo "<div class='idea_implemented'>Implemented</div>";
                                     }
                                     echo "</div>"; // idea_footer
                                     echo "</div>"; // idea

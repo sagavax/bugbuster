@@ -46,8 +46,8 @@ ideas_list.addEventListener('click', function(event) {
             deleteIdea(ideaId);
             //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
         } else if (button.name==="to_apply"){
-            alert(`Idea ${ideaId} moved to the Apply section.`);
-            moveIdeaToApply(ideaId);
+            //alert(`Idea ${ideaId} moved to the Apply section.`);
+            markIdeaAsImplemented(ideaId);
             //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
         } else if (button.name==="to_review"){
             //for the future use
@@ -181,19 +181,19 @@ function deleteIdea(ideaId) {
 }
 
 
-function moveIdeaToApply(ideaId) {
+function markIdeaAsImplemented(ideaId) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
         if (this.readyState == 4 && this.status == 200) {
             //document.querySelector(`.idea[idea-id='${ideaId}']`).remove();
-            alert("Idea moved to the Apply section.");
-            window.location.reload();
+            alert("Idea maked as implemented.");
+            //window.location.reload();
         }
     };
-    xhttp.open("POST", "ideas_mark_as_implememented.php", true);
+    xhttp.open("POST", "ideas_mark_as_implemented.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var params = "idea_id=" + encodeURIComponent($ideaId);
+    var params = "idea_id=" + encodeURIComponent(ideaId);
     xhttp.send(params);
 }
 
