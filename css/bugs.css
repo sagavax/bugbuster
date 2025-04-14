@@ -247,6 +247,7 @@
 }
 
 .bug_status {
+    background-color: white;
     border:1px #666 solid;
     
 }
@@ -419,4 +420,22 @@ dialog ul li {
     /* background: #eee;
     background-color: #bca8db */
     background-color: #ded4ec;
+}
+
+.bug_github_link {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    height:38px;
+    width: 38px;
+    font-size: 20px;
+    border: 1px #666 solid;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.bug_github_link :hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
