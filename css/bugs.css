@@ -433,6 +433,7 @@ dialog ul li {
     border: 1px #666 solid;
     border-radius: 5px;
     background-color: #fff;
+    color:#222;
 }
 
 .bug_github_link :hover {
