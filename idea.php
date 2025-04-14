@@ -68,8 +68,8 @@
                               $idea_id = $row['idea_id'];
                               $idea_title = $row['idea_title'];
                               $idea_text = $row['idea_text'];
-                              $is_applied = $row['is_applied'];
                               $added_date = $row['added_date'];
+                              $is_implemented = $row['is_implemented'];
 
                              echo "<div class='idea'>";
                                     if(isset($idea_title)){
@@ -78,12 +78,12 @@
                                     
                                     echo "<div class='idea_text'>$idea_text</div>";
                                     echo "<div class='idea_footer'>";
-                                    if ($is_applied == 0) {
+                                    if ($is_implemented == 0) {
                                         echo "<form action='' method='post'>";
                                         echo "<input type='hidden' name='idea_id' value='$idea_id'>";
                                         echo "<button type='submit' name='to_apply' class='button small_button'><i class='fa fa-check'></i></button>";
                                         echo "</form>";
-                                    } elseif ($is_applied == 1) {
+                                    } elseif ($is_implemented == 1) {
                                         echo "<div class='idea_implemented'>Implemented</div>";
                                     }
                                     echo "</div>"; // idea_footer
@@ -134,9 +134,9 @@
                                 
                                 <div class="idea_comment_action">
                                   <?php
-                                        if($is_applied==0){
+                                        if($is_implemented==0){
                                             echo "<button name='save_idea_comment' class='button small_button'>save</button>";
-                                        } else if ($is_applied==1){
+                                        } else if ($is_implemented==1){
                                             echo "<button name='save_idea_comment' disabled class='button small_button'>save</button>";
                                         }
                                   ?>  
