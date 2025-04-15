@@ -4,6 +4,7 @@ const modal_show_priority = document.querySelector('.modal_show_priority');
 const modal_add_comment = document.querySelector('.modal_add_comment');
 const bug_application_filter = document.querySelector('.bug_application_filter');
 const bug_priority_filter = document.querySelector('.bug_priority_filter');
+const bug_status_filter = document.querySelector('.bug_status_filter');
 var new_bug_form= document.querySelector('.new_bug form');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
@@ -55,6 +56,14 @@ bug_priority_filter.addEventListener('click', function(event) {
         filterBugsByPriority(priority);
     }
 });
+
+bug_status_filter.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {
+        const status = event.target.innerText;
+        filterBugsByStatus(status);
+    }
+});
+
 
 bug_list.addEventListener('click', function(event) {
     const targetClass = event.target.classList;
@@ -174,6 +183,25 @@ modal_add_comment.addEventListener('click', function(event) {
     }
 });
 
+modal_change_app.addEventListener("click", function(event) {
+    if (event.target.tagName==="LI") {
+        //console.log("clicked on listitem:"+event.target.innerText);
+        const old_app_name = sessionStorage.getItem('old_app_name');
+        if(old_app_name===event.target.innerText){
+            alert("Cannot change application to the same one.");
+            modal_change_app.close();
+            return;
+        } else {
+        
+        const appName = event.target.innerText;
+        const bugId = sessionStorage.getItem('bug_id');
+        console.log("app name: "+appName+" note id: "+bugId);
+        //console.log("app id: "+app_id);
+        changeApplication(appName, bugId);
+        }
+    }
+}); 
+
 function changeBugStatus(bugId, bugStatus) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -257,6 +285,23 @@ function filterBugsByPriority(priority) {
 
     // Send the request with the videoId and modpackId
     var params = "priority=" + encodeURIComponent(priority);
+    xhttp.send(params);
+}
+
+function filterBugsByStatus(status) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Check if the request is complete and was successful
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".bug_list").innerHTML = this.responseText;
+           
+        }
+    };
+    xhttp.open("POST", "bugs_filter_by_status.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Send the request with the videoId and modpackId
+    var params = "status=" + encodeURIComponent(status);
     xhttp.send(params);
 }
 
@@ -362,24 +407,7 @@ function reopenBug(bugId) {
     }
 }
 
-modal_change_app.addEventListener("click", function(event) {
-    if (event.target.tagName==="LI") {
-        //console.log("clicked on listitem:"+event.target.innerText);
-        const old_app_name = sessionStorage.getItem('old_app_name');
-        if(old_app_name===event.target.innerText){
-            alert("Cannot change application to the same one.");
-            modal_change_app.close();
-            return;
-        } else {
-        
-        const appName = event.target.innerText;
-        const bugId = sessionStorage.getItem('bug_id');
-        console.log("app name: "+appName+" note id: "+bugId);
-        //console.log("app id: "+app_id);
-        changeApplication(appName, bugId);
-        }
-    }
-}); 
+
 
 function changeApplication(appName, bugId){
     var xhttp = new XMLHttpRequest();

@@ -79,8 +79,10 @@
 
                   ?>
                 </div>
-                <div class="bug_priority_filter">
-                  <?php
+                
+                <div class="bug_filters">  
+                  <div class="bug_priority_filter">
+                    <?php
                        $get_priority = "SELECT bug_priority from bugs GROUP BY bug_priority";
                        $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
                        while ($row = mysqli_fetch_array($result)) {
@@ -88,7 +90,21 @@
                               echo "<button type='button' title='show bugs with priority' class='button $priority small_button ' data-priority='$priority'>$priority</button>";
                        }
                        echo "<button type='button' title='all bugs' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky bugy
-                  ?>
+                     ?>
+                  </div>
+                  
+                  <div class="bug_status_filter">
+                  <?php
+                       $get_priority = "SELECT bug_status from bugs GROUP BY bug_status";
+                       $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
+                       while ($row = mysqli_fetch_array($result)) {
+                              $bug_status = $row['bug_status'];
+                              echo "<button type='button' title='show bugs with the status' class='button $bug_status small_button ' data-status='$bug_status'>$bug_status</button>";
+                       }
+                       echo "<button type='button' title='all bugs' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky bugy
+                     ?>
+                  </div>
+
                 </div>
               
 
