@@ -4,7 +4,7 @@ include "includes/dbconnect.php";
 include "includes/functions.php";
 
 if(isset($_POST['status'])){
-      $status  =  mysqli_real_escape_string($link,$_POST['priority']);
+      $status  =  mysqli_real_escape_string($link,$_POST['status']);
       if($status == 'all'){
 
             $get_bugs = "SELECT * from bugs ORDER BY bug_id DESC"; 
