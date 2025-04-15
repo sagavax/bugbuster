@@ -9,7 +9,7 @@ if(isset($_POST['priority'])){
 
             $get_ideas = "SELECT * from ideas ORDER BY idea_id DESC"; 
       } else {
-            $get_ideas = "SELECT * from ideas WHERE priority='$priority' ORDER BY idea_id DESC";
+            $get_ideas = "SELECT * from ideas WHERE idea_priority='$priority' ORDER BY idea_id DESC";
       }       
 }
 
