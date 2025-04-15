@@ -2,6 +2,7 @@ const ideas_list = document.querySelector('.ideas_list');
 const modal_show_status = document.querySelector('.modal_show_status');
 const modal_show_priority = document.querySelector('.modal_show_priority');
 const idea_priority_filter = document.querySelector(".idea_priority_filter");
+const idea_status_filter = document.querySelector('.idea_status_filter');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const idea_application_filter = document.querySelector(".idea_application_filter");
@@ -10,6 +11,13 @@ idea_priority_filter.addEventListener("click",function(event) {
     if(event.target.tagName==="BUTTON"){
        const priority = event.target.innerText;
        filterIdeasByPriority(priority);
+    }
+});
+
+idea_status_filter.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {
+        const status = event.target.innerText;
+        filterIdeasByStatus(status);
     }
 });
 
@@ -229,6 +237,24 @@ function  filterIdeasByPriority(priority){
     xhttp.send("priority="+encodeURIComponent(priority));
   }
   
+  function filterIdeasByStatus(status) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Check if the request is complete and was successful
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".ideas_list").innerHTML = this.responseText;
+           
+        }
+    };
+    xhttp.open("POST", "ideas_filter_by_status.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Send the request with the videoId and modpackId
+    var params = "status=" + encodeURIComponent(status);
+    xhttp.send(params);
+}
+
+
   function recalculateIdeaComments(IdeaId){
     
     var xhttp = new XMLHttpRequest();

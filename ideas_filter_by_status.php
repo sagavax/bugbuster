@@ -3,13 +3,13 @@
 include "includes/dbconnect.php";
 include "includes/functions.php";
 
-if(isset($_POST['priority'])){
-      $priority  =  mysqli_real_escape_string($link,$_POST['priority']);
-      if($priority == 'all'){
+if(isset($_POST['status'])){
+      $status  =  mysqli_real_escape_string($link,$_POST['status']);
+      if($status == 'all'){
 
             $get_ideas = "SELECT * from ideas ORDER BY idea_id DESC"; 
       } else {
-            $get_ideas = "SELECT * from ideas WHERE priority='$priority' ORDER BY idea_id DESC";
+            $get_ideas = "SELECT * from ideas WHERE idea_status='$status' ORDER BY idea_id DESC";
       }       
 }
 

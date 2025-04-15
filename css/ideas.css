@@ -347,7 +347,7 @@ dialog ul {
         /* background-color: white; */
     }
 
-    .idea_priority_filter {
+    .idea_priority_filter, .idea_status_filter {
         width: 100%;
         height: 55px;
         display: flex;
@@ -360,7 +360,8 @@ dialog ul {
         /* background-color: white; */
     }
     
-    .idea_priority_filter button {
+    .idea_priority_filter button, .idea_status_filter button {
+        border: 1px #d1d1d1 solid;
         padding: 5px;
         border-radius: 5px;
         cursor: pointer;
@@ -415,3 +416,12 @@ dialog ul {
     padding:5px 10px;
     border-radius: 5px;
 }        
+
+.idea_filters {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    height:55px;
+    width: 100%;
+    font-size: 20px;
+}
