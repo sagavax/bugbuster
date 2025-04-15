@@ -69,45 +69,46 @@
                       </div>
                </form>
               </div><!-- new idea-->
-
-              <div class="idea_application_filter">
-                  <?php
-                       $get_application = "SELECT idea_application from ideas GROUP BY idea_application";
-                       $result=mysqli_query($link, $get_application) or  die(mysqli_error($link));
-                       while ($row = mysqli_fetch_array($result)) {
-                              $application = $row['idea_application'];
-                              echo "<button type='button' title='show bugs for $application' class='button small_button' data-application='$application'>$application</button>";
-                       }
-
-                  ?>
-                </div>
-                       
-                <div class="idea_filters">
-                    <div class="idea_priority_filter">
+               
+              <div class="ideas_filters">
+                  <div class="idea_application_filter">
                       <?php
-                          $get_priority = "SELECT idea_priority from ideas GROUP BY idea_priority";
+                          $get_application = "SELECT idea_application from ideas GROUP BY idea_application";
+                          $result=mysqli_query($link, $get_application) or  die(mysqli_error($link));
+                          while ($row = mysqli_fetch_array($result)) {
+                                  $application = $row['idea_application'];
+                                  echo "<button type='button' title='show bugs for $application' class='button small_button' data-application='$application'>$application</button>";
+                          }
+
+                      ?>
+                    </div><!-- idea application filter-->
+                          
+                    <div class="idea_status_priority_filters">
+                        <div class="idea_priority_filter">
+                          <?php
+                              $get_priority = "SELECT idea_priority from ideas GROUP BY idea_priority";
+                              $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
+                              while ($row = mysqli_fetch_array($result)) {
+                                      $priority = $row['idea_priority'];
+                                      echo "<button type='button' title='show bugs with priority' class='button $priority small_button ' data-priority='$priority'>$priority</button>";
+                              }
+                            echo "<button type='button' title='all ideas' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky idey
+                          ?>
+                        </div><!-- idea priority filter-->
+
+                        <div class="idea_status_filter">
+                        <?php
+                          $get_priority = "SELECT idea_status from ideas GROUP BY idea_status";
                           $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
                           while ($row = mysqli_fetch_array($result)) {
-                                  $priority = $row['idea_priority'];
-                                  echo "<button type='button' title='show bugs with priority' class='button $priority small_button ' data-priority='$priority'>$priority</button>";
+                                  $idea_status = $row['idea_status'];
+                                  echo "<button type='button' title='show ideas with the status' class='button $idea_status small_button ' data-status='$idea_status'>$idea_status</button>";
                           }
-                        echo "<button type='button' title='all ideas' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky idey
-                      ?>
-                    </div><!-- idea priority filter-->
-
-                    <div class="idea_status_filter">
-                    <?php
-                       $get_priority = "SELECT idea_status from ideas GROUP BY idea_status";
-                       $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
-                       while ($row = mysqli_fetch_array($result)) {
-                              $idea_status = $row['idea_status'];
-                              echo "<button type='button' title='show ideas with the status' class='button $idea_status small_button ' data-status='$idea_status'>$idea_status</button>";
-                       }
-                       echo "<button type='button' title='all bugs' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky bugy
-                     ?>      
-                    </div><!-- idea status filter-->    
-                 </div><!-- idea filters-->         
-
+                          echo "<button type='button' title='all bugs' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky bugy
+                        ?>      
+                        </div><!-- idea status filter-->    
+                    </div><!-- idea status priority filters-->         
+              </div><!-- ideas filters-->           
 
               <div class="ideas_list">
                   <?php
