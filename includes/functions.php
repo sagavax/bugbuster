@@ -101,3 +101,35 @@ function createGithubIssue($title, $body, $token) {
     ];
 }
 
+
+function createCommentGithubIssue($issue_id, $body, $token) {
+    $owner = 'sagavax';
+    $repo = 'bugbuster';
+
+    // API URL pre pridanie komentára
+    $url = "https://api.github.com/repos/$owner/$repo/issues/$issue_id/comments";
+
+    // Dáta pre nové issue
+    $data = [
+        "body" => $body
+    ];
+
+    // Inicializácia cURL
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: token $token",
+        "Content-Type: application/json",
+        "User-Agent: BugBuster-Agent" // GitHub vyžaduje User-Agent hlavičku
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Spustenie požiadavky
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response; // Tu môžete spracovať odpoveď (napr. kontrolovať, či bola požiadavka úspešná)
+}
