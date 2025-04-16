@@ -33,7 +33,7 @@
     mysqli_query($link, $save_bug) or die("MySQLi ERROR: ".mysqli_error($link));
   
     //add to github
-    $token = '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';
+    $token = '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';
     $result = createGithubIssue($bug_title, $bug_text, $token);
 
     
