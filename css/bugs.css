@@ -356,7 +356,7 @@ dialog ul li {
 }
 
 .bug_priority_filter, .bug_status_filter{
-    width: 100%;
+    width: auto;
     height: 55px;
     display: flex;
     gap: 10px;
@@ -466,3 +466,4 @@ dialog ul li {
     padding: 10px;
     box-sizing: border-box;
     border-radius: 4px;
+}
