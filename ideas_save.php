@@ -21,7 +21,7 @@
 
            //var_dump($_POST);
 
-            $save_idea = "INSERT INTO ideas (idea_title, idea_text, idea_priority, idea_status, idea_application, is_applied, added_date) VALUES ('$idea_title','$idea_text', '$idea_priority','$idea_status', '$idea_application',$is_applied,now())";
+            $save_idea = "INSERT INTO ideas (idea_title, idea_text, idea_priority, idea_status, idea_application, is_implemented, added_date) VALUES ('$idea_title','$idea_text', '$idea_priority','$idea_status', '$idea_application',0,now())";
             echo $save_idea;
             $result=mysqli_query($link, $save_idea) or die("MySQLi ERROR: ".mysqli_error($link));
 
