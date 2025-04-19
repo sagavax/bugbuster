@@ -22,7 +22,7 @@
         <?php include ("includes/header.php") ?>
            <div class="content">
               <div class="list">
-                 <div class="application_detail">    
+                 
                     <?php
                         //get list of the applicationa
                         $app_id = $_GET['app_id'];
@@ -32,24 +32,38 @@
                                 $app_id = $row_apps['app_id'];
                                 $app_name = $row_apps['app_name'];
                                 $app_desc = $row_apps['app_descr'];
-                                $app_github_repo = $row_apps['app_github_repo'];
+                                $app_github_repo = $row_apps['github_repo'];
                                 $app_active_dev = $row_apps['is_active_dev'];
                                 $app_is_active = $row_apps['is_app_active'];
                                 echo "<div class='application' data-app-id=$app_id>";
                                     //echo "<div class='connector-line'></div>";
-                                    echo "<div class='app-icon'>$app_icon</div>";
-                                    echo "<div class='app-info'>";
-                                        echo "<input type='text' name='app_name' autocomplete='off'>$app_name</inp>";
+                                    //echo "<div class='app-icon'>$app_icon</div>";
+                                    //echo "<div class='app-info'>";
+                                        echo "<input type='text' name='app_name' autocomplete='off' value='$app_name'>";
                                         echo "<textarea name='app_description'>$app_desc</textarea>";
-                                        echo "</div>";
+                                        
                                         echo "<div class='app-actions'>";
-                                          echo "<button type='button' name='app_save_changes' class='button small_button'><i class='fa fa-pluss'></i></button>";
-                                          //echo "<button type='button' name='edit_app' class='button small_button'><i class='fa fa-edit'></i></button>";
+                                            echo "<button type='button' name='app_save_changes' class='button small_button'><i class='fa fa-pluss'></i></button>";
+                                            //echo "<button type='button' name='edit_app' class='button small_button'><i class='fa fa-edit'></i></button>";
                                         echo "</div>";
                                 echo "</div>";
                         }
                     ?>
-                </div><!-- application_list-->
+                
+                    <div class="application_details">
+                        <div class="application_details_header">
+                            <h3>Application details</h3>
+                            <div class="application_details_header_actions">
+                                <button type="button" name="github_link" class="button small_button">Github</button>
+                                <button type="button" name="app_diary" class="button small_button">Diary</button>
+                                <button type="button" name="app_notes" class="button small_button">Notes</button>
+                                <button type="button" name="app_bugs" class="button small_button">Bugs</button>
+                                <button type="button" name="app_ideas" class="button small_button">Ideas</button>
+                            </div><!-- application_details_header_actions -->
+                        </div><!-- application_details_header -->
+                        <div class="application_details_body">
+                        </div>    
+                    </div><!-- application_details -->    
               </div><!-- list-->
             </div><!-- content -->      
     </div><!-- main -->
