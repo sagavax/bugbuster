@@ -89,7 +89,11 @@ html {
 #diary_content {
     height: 75%;
     width: 100%;
-    float: left;
+    border:1px #d1d1d1 solid;
+    padding:10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .btn {
@@ -237,6 +241,11 @@ input[type='checkbox'] {
 .diary_record:nth-of-type(even) {
     background: #fff;
 }
+
+.diary_record:hover {
+    cursor: pointer;
+    background-color: #ded4ec;
+}   
 
 .diary_date {
     float: left;
