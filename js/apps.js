@@ -37,6 +37,17 @@ application_list.addEventListener("click", function(event) {
      }
 });
 
+modal_add_github_repo.addEventListener('click', function(event) {
+    if (event.target.tagName === 'BUTTON') {    
+        const appId = sessionStorage.getItem('app_id');
+        const githubRepo = modal_add_github_repo.querySelector('input').value;
+        console.log(`App ${appId} github repo updated to ${githubRepo}`);
+        addGithubRepo(appId, githubRepo);
+        modal_add_github_repo.close();
+    }
+});
+
+
 function addNewApplication(appTitle, appDescription) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -79,5 +90,19 @@ function deactivateAppDevelopment(appId) {
     xhttp.open("POST", "application_dev_deactivate.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var params = "app_id=" + encodeURIComponent(appId);
+    xhttp.send(params);
+}
+
+function addGithubRepo(appId, githubRepo) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Check if the request is complete and was successful
+        if (this.readyState == 4 && this.status == 200) {
+            reloadApplications();
+        }
+    };
+    xhttp.open("POST", "applications_github_update.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "app_id=" + encodeURIComponent(appId) + "&github_repo=" + encodeURIComponent(githubRepo);
     xhttp.send(params);
 }
