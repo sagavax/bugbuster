@@ -7,8 +7,13 @@ new_note.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
         var note_title = document.querySelector('.new_note input[name="note_title"]').value;
         var note_text = document.querySelector('.new_note textarea[name="note_text"]').value;
-        addNewNote(note_title, note_text);
-    }
+        if (note_text=="") {
+            alert("Please fill this field.");
+            return
+        } else{
+            addNewNote(note_title, note_text);
+        }
+     }
 });
 
 
@@ -49,27 +54,18 @@ modal_change_app.addEventListener("click", function(event) {
 
 
 function addNewNote(note_title, note_text) {
-    var note_data = {
-        note_title: note_title,
-        note_text: note_text
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.querySelector('.new_note input[name="note_title"]').value="";
+        document.querySelector('.new_note textarea[name="note_text"]').value="";
+        reloadNotes();
+      }
     };
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'notes_create.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) { // Po dokončení requestu
-            if (xhr.status === 200) {
-                console.log('Note added successfully:', xhr.responseText);
-                reloadNotes()
-            } else {
-                console.error('Error adding note:', xhr.status, xhr.responseText);
-            }
-        }
-    };
-
-    xhr.send(JSON.stringify(note_data));
+    xhttp.open("POST", "notes_create.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "note_title="+note_title+"&note_text="+note_text;
+    xhttp.send(params);
 }
 
 
