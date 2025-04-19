@@ -28,3 +28,25 @@
     height: 50px;
     align-items: center;
 }
+
+.application_details {
+    border: 1px #d1d1d1 solid;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    padding: 10px;
+    margin-top:10px;
+}
+
+.application_details_heade, .application_details_bodyr{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top:10px;
+    height: 50px;
+    align-items: center;
+    gap:10px;
+}

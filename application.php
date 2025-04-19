@@ -43,7 +43,7 @@
                                         echo "<textarea name='app_description'>$app_desc</textarea>";
                                         
                                         echo "<div class='app-actions'>";
-                                            echo "<button type='button' name='app_save_changes' class='button small_button'><i class='fa fa-pluss'></i></button>";
+                                            echo "<button type='button' name='app_save_changes' class='button small_button'><i class='fa fa-plus'></i></button>";
                                             //echo "<button type='button' name='edit_app' class='button small_button'><i class='fa fa-edit'></i></button>";
                                         echo "</div>";
                                 echo "</div>";
@@ -53,7 +53,7 @@
                     <div class="application_details">
                         <div class="application_details_header">
                             <h3>Application details</h3>
-                            <div class="application_details_header_actions">
+                            <div class="application_details_header">
                                 <button type="button" name="github_link" class="button small_button">Github</button>
                                 <button type="button" name="app_diary" class="button small_button">Diary</button>
                                 <button type="button" name="app_notes" class="button small_button">Notes</button>
