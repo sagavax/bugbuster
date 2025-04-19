@@ -1,75 +1,25 @@
 <?php 
- include("include/dbconnect.php");
- include("include/functions.php");
+ include("includes/dbconnect.php");
+ include("includes/functions.php");
+ 
+ echo "<link rel='shortcut icon' href='letter-b.png'>";
 
- if(isset($_POST['add_record'])){
-     $diary_text=trim(mysqli_real_escape_string($con, $_POST['diary_text']));
+ if(isset($_POST['save_record'])){
+     $diary_text=trim(mysqli_real_escape_string($link, $_POST['diary_text']));
      $project_id=$_POST['project'];
-     $curr_date=date('Y-m-d H:i:s');
-
-     $sql="INSERT INTO diary (created_date, diary_text,project_id) VALUES ('$curr_date','$diary_text',$project_id)";
-     $result = mysqli_query($con, $sql) or die("MySQLi ERROR: ".mysqli_error($con));
+     
+     $create_re="INSERT INTO diary (created_date, diary_text,project_id) VALUES (now(),'$diary_text',$project_id)";
+     $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
 
      //pridanie do wallu
-     if($project_id==0){
-         $project_name="";
-         $wall_text="Developersky dennik: $diary_text";
-     } else {
-     $project_name=GetAppName($project_id);
-     $project_name=mysqli_real_escape_string($con,$project_name);
-     $app_hashtag=GetAppHashTag($project_id);
-
-     $wall_text="Developersky dennik: aplikacia <strong>$project_name</strong>: $diary_text $app_hashtag";
-    }
-
-    $link1 = mysqli_connect(null, "brick_wall", "h3jSXv3gLf", "brick_wall", null, "/tmp/mariadb55.sock");
-     $sql="INSERT INTO diary (diary_text, date_added,location,isMobile,is_read) VALUES ('$wall_text','$curr_date','',0,0)";
-     $result = mysqli_query($link1, $sql) or die("MySQLi ERROR: ".mysqli_error($link1));
-	 mysqli_close($link1);
-
+     
+     //add to app logu
+     $diary_text="Bol pridany novy zaznam";
+     $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
+     $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    
      //alert
-     echo "<script>alert('Bol pridany novy zaznam');
-     window.location.href='index.php';
-     </script>";
-
+     //echo "<script>window.location.href='diary.php'</script>";
+     //header("location:diary.php");
  }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pridat novy zaznam</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css?<?php echo time(); ?>" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-
-</head>
-<body>
-    <div id="container">
-        <h3>Pridat novy zaznam</h3>
-        <form action="" method="post">
-            <textarea name="diary_text"></textarea>
-            <select name="project">
-               <option value="0">-- All -- </option>
-               <?php 
-                     $dbname     = "app_manager";
-                     $dbserver   = "mariadb101.websupport.sk";
-                     $dbuser     = "app_manager";
-                     $dbpass     = "ZljaMxcUux";
-                     $link = mysqli_connect($dbserver, $dbuser, $dbpass, $dbname,3312);
-
-                     $sql="SELECT * from app_list";
-                     $result=mysqli_query($link, $sql) ;
-                        while ($row = mysqli_fetch_array($result)) {
-                            $app_name=$row['app_name'];
-                            $app_id=$row['app_id'];
-                        echo "<option value=$app_id>$app_name</option>";
-                    }   
-                     mysqli_close($link);
-                ?>
-            </select>
-            <button name="add_record" type="submit" class="green-button">+ Add</button>
-    </div>    
-</body>
-</html>
+ ?>
