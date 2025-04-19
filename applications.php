@@ -32,7 +32,7 @@
                                 $app_id = $row_apps['app_id'];
                                 $app_name = $row_apps['app_name'];
                                 $app_desc = $row_apps['app_descr'];
-                                $app_github_repo = $row_apps['app_github_repo'];
+                                $app_github_repo = $row_apps['github_repo'];
                                 $app_active_dev = $row_apps['is_active_dev'];
                                 $app_is_active = $row_apps['is_app_active'];
                                 $app_icon = substr($app_name,0,1);
@@ -44,7 +44,8 @@
                                         echo "<p>$app_desc</p>";
                                         echo "</div>";
                                         echo "<div class='app-actions'>";
-                                         echo "<button type='button' name='app_details' class='button small_button'><i class='fa fa-eye'></i></button>"; 
+                                        echo "<button type='button' name='github_link' class='button small_button'><i class='fab fa-github'></i></button>";  
+                                        echo "<button type='button' name='app_details' class='button small_button'><i class='fa fa-eye'></i></button>"; 
                                          echo "<button type='button' name='app_deactivate_dev' class='button small_button'><i class='fa fa-times'></i></button>";
                                           echo "<button type='button' name='edit_app' class='button small_button'><i class='fa fa-edit'></i></button>";
                                         echo "</div>";
@@ -66,6 +67,12 @@
              </div><!--add_new_ap-->   
         </div><!-- inner_wrap -->
     </dialog>
-
-
+   
+    <dialog class="modal_add_github_repo">
+      <div class="inner_wrap_github">
+        <input type="text" placeholder="Github Repo" name="github_repo" autocomplete="off">
+        <button type="submit" name="add_github_repo" class="button small_button">Add</button>
+      </div>
+    </dialog>
+  
   </body>   

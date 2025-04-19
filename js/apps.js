@@ -1,6 +1,7 @@
 var add_new_app_action = document.querySelector(".add_new_app_action");
 var add_new_app_dialog = document.querySelector(".add_new_app_dialog");
 var application_list = document.querySelector(".application_list");
+var modal_add_github_repo = document.querySelector(".modal_add_github_repo");
 
 add_new_app_action.addEventListener("click", function(event) {
     if (event.target.tagName === 'BUTTON') {
@@ -28,6 +29,10 @@ application_list.addEventListener("click", function(event) {
         } else if  (event.target.name==="app_details"){
             console.log("app details");
             window.location.href = `application.php?app_id=${appId}`;
+        } else if (event.target.name==="github_link"){
+            console.log("add github repo");
+            sessionStorage.setItem('app_id', appId);
+            modal_add_github_repo.showModal();
         }
      }
 });
