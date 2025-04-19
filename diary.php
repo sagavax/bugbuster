@@ -23,6 +23,29 @@
         <?php include("includes/header.php") ?>
         <div class="content">
             <div class="list">
+            <div class="new_diary_record">
+                <form action="" method="post">
+                      <input type="text" name="diary_title" placeholder="diary title here" autocomplete="off">
+                      <textarea name="diary_text" placeholder="Put a diary record here"></textarea>
+                     
+                      <select name="diary_application">
+                          <option value=0>--- choose application --- </option>
+                          <?php
+                          $get_apps = "SELECT * from apps ORDER BY app_name ASC";
+                          $result_apps = mysqli_query($link, $get_apps) or die(mysqli_error($link));
+                          while ($row_apps = mysqli_fetch_array($result_apps)) {
+                              $app_id = $row_apps['app_id'];
+                              $app_name = $row_apps['app_name'];
+                              echo "<option value =".strtolower($app_name).">$app_name</option>";
+                          }
+                          ?>
+                      </select>
+                      <div class="new_diary_record_action">
+                        <button type="buttont" name="save_record" class="button small_button">Save</button>
+                      </div>
+               </form>
+              </div><!-- new diary record -->
+
                 <div class="diary_filter">
                     <select name="application" class="filter" onchange='list_records(this.value);'>
                         <option value="0">Select application</option>
