@@ -71,7 +71,7 @@
     <dialog class="modal_add_github_repo">
       <div class="inner_wrap_github">
         <input type="text" placeholder="Github Repo" name="github_repo" autocomplete="off">
-        <button type="submit" name="add_github_repo" class="button small_button">Add</button>
+        <button type="button" name="add_github_repo" class="button small_button">Add</button>
       </div>
     </dialog>
   
