@@ -4,7 +4,16 @@ const isVisible = "is-visible";
 var diary_content = document.getElementById("diary_content");
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelectorAll('.modal_change_app ul li'); 
+const diary_button_filter = document.querySelector(".diary_button_filter");
 
+
+
+diary_button_filter.addEventListener("click",function(event) {
+    if(event.target.tagName==="BUTTON"){
+       const recordId = event.target.getAttribute('data-app-id');
+       filterDiaryByButton(recordId);
+    }
+});
 
 diary_content.addEventListener("click", function(event) {
     if (event.target.classList.contains("app_name")) {
@@ -186,3 +195,13 @@ function reloadDiary() {
     xhttp.open("GET", "diary_records.php", true);
     xhttp.send();
 }   
+function filterDiaryByButton(record_id){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("diary_content").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "diary_filter_by_application.php?application_id="+record_id, true);
+    xhttp.send();
+}

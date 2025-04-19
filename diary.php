@@ -45,22 +45,18 @@
                       </div>
                </form>
               </div><!-- new diary record -->
-
-                <div class="diary_filter">
-                    <select name="application" class="filter" onchange='list_records(this.value);'>
-                        <option value="0">Select application</option>
-                        <?php
-                        $sql = "SELECT * from apps";
+                
+               <div class="diary_button_filter">
+                <?php
+                    $sql = "SELECT * from apps";
                         $result = mysqli_query($link, $sql);
                         while ($row = mysqli_fetch_array($result)) {
                             $app_name = $row['app_name'];
                             $app_id = $row['app_id'];
-                            echo "<option value=$app_id>$app_name</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <!-- /diary_filter -->
+                            echo "<button type='button' name='filter_app' class='button small_button' data-app-id=$app_id>$app_name</button>";
+                        }       
+                   ?>     
+               </div>            
 
                 <div id="diary_content">
                     <?php
