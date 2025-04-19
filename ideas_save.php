@@ -22,7 +22,7 @@
            //var_dump($_POST);
 
             $save_idea = "INSERT INTO ideas (idea_title, idea_text, idea_priority, idea_status, idea_application, is_implemented, added_date) VALUES ('$idea_title','$idea_text', '$idea_priority','$idea_status', '$idea_application',0,now())";
-            echo $save_idea;
+            //echo $save_idea;
             $result=mysqli_query($link, $save_idea) or die("MySQLi ERROR: ".mysqli_error($link));
 
             
@@ -30,7 +30,3 @@
         $diary_text="Bola vytvorena nova idea s id <strong> $last_idea_id </strong>"; 
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
-
-        echo "<script>alert('Minecraft IS: Idea bola vytvorena');
-        window.location.href='ideas.php';
-        </script>";
