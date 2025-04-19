@@ -37,7 +37,7 @@
                           while ($row_apps = mysqli_fetch_array($result_apps)) {
                               $app_id = $row_apps['app_id'];
                               $app_name = $row_apps['app_name'];
-                              echo "<option value =".strtolower($app_name).">$app_name</option>";
+                              echo "<option value =$app_id>$app_name</option>";
                           }
                           ?>
                       </select>

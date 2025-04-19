@@ -6,9 +6,14 @@
 
  if(isset($_POST['save_record'])){
      $diary_text=trim(mysqli_real_escape_string($link, $_POST['diary_text']));
-     $project_id=$_POST['project'];
+     if(isset($_POST['diary_application'])&& $_POST['diary_application'] != 0){
+         $project_id = $_POST['diary_application'];
+     } else {
+         $project_id = 1;
+     }
+     //$project_id=$_POST['diary_application'];
      
-     $create_re="INSERT INTO diary (created_date, diary_text,project_id) VALUES (now(),'$diary_text',$project_id)";
+     $create_record="INSERT INTO diary (created_date, diary_text,project_id) VALUES (now(),'$diary_text',$project_id)";
      $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
 
      //pridanie do wallu
