@@ -24,7 +24,9 @@
         <div class="content">
             <div class="list">
             <div class="new_diary_record">
-                <form action="" method="post">
+
+                <form action="diary_record_new.php" method="post">
+
                       <textarea name="diary_text" placeholder="Put a diary record here"></textarea>
                      
                       <select name="diary_application">
@@ -44,8 +46,7 @@
                       </div>
                </form>
               </div><!-- new diary record -->
-                
-               <div class="diary_button_filter">
+              <div class="diary_button_filter">
                 <?php
                     $sql = "SELECT * from apps";
                         $result = mysqli_query($link, $sql);
@@ -55,8 +56,8 @@
                             echo "<button type='button' name='filter_app' class='button small_button' data-app-id=$app_id>$app_name</button>";
                         }       
                    ?>     
-               </div>            
-
+               </div>    
+                <!-- /diary_filter -->
                 <div id="diary_content">
                     <?php
                     //error_reporting(E_ALL ^ E_NOTICE);
