@@ -25,7 +25,6 @@
             <div class="list">
             <div class="new_diary_record">
                 <form action="" method="post">
-                      <input type="text" name="diary_title" placeholder="diary title here" autocomplete="off">
                       <textarea name="diary_text" placeholder="Put a diary record here"></textarea>
                      
                       <select name="diary_application">
