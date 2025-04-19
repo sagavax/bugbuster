@@ -298,50 +298,18 @@ input[type='checkbox'] {
     margin-bottom: 20px
 }
 
-.diary_filter ul {
-    /*display: flex;*/
-    display: table;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    float: left;
-    text-align: center;
+.diary_button_filter{
+
+  margin-top: 20px;
+  display: flex;  
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap:10px
 }
 
-.diary_filter ul li {
-    margin-left: 5px;
-    border-right: 1px #59B6A0 solid;
-    /*display: inline-block;*/
-    /*flex: 1;*/
-    display: inline-flex;
+.diary_button_filter button{
+ border-radius: 5px;
 }
-
-.diary_filter ul li:hover {
-    background: #59B6A0;
-}
-
-.diary_filter ul li:hover a {
-    color: #2e6d4a
-}
-
-.diary_filter ul li:last-child {
-    border: 0px
-}
-
-.diary_filter ul li a {
-    text-decoration: none;
-    color: #59B6A0;
-    text-transform: uppercase;
-    font-weight: bold
-}
-
-
-.diary_filter select {
-    width:100%
-} 
 
 #diary_action {
     width: 15%;
