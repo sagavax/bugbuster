@@ -70,3 +70,8 @@
    .application_details_body{
     min-height: auto;
    }
+
+   .application_details_tabs button {
+        flex:1;
+        cursor: pointer;
+   }
