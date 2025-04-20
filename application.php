@@ -53,7 +53,7 @@
                     <div class="application_details">
                         <div class="application_details_header">
                             <h3>Application details</h3>
-                            <div class="application_details_header">
+                            <div class="application_details_tabs">
                                 <button type="button" name="github_link" class="button small_button">Github</button>
                                 <button type="button" name="app_diary" class="button small_button">Diary</button>
                                 <button type="button" name="app_notes" class="button small_button">Notes</button>
