@@ -1,14 +1,3 @@
-/* .application_new {
-    margin-top:50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px #001b2e solid;
-    box-sizing: border-box;
-    padding:10px;
-    border-radius: 5px;
-    background-color: white;
-} */
 
 .add_new_app_action {
     height:50px;
@@ -156,3 +145,4 @@
     -webkit-transform: translate(-50%, -50%);    
     transform: translate(-50%, -50%);
 }
+
