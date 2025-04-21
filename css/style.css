@@ -90,18 +90,19 @@ header {
     background-color: #001b2e;
     display: flex;
     justify-content: flex-end;
+    box-sizing: border-box;
 }
 
 header ul {
     list-style-type: none;
     display: flex;
-    /* justify-content: space-around; */
     align-items: center;
     padding: 0;
     margin:0;
-    width: 50%;
-    gap:20px;
+    gap:5px;
     height:60px;
+    margin-right: 20px;
+    box-sizing: border-box;
 }
 
 header ul li a {
@@ -110,13 +111,15 @@ header ul li a {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: bold;
-    height:60px;    
+    padding:6px 12px;    
     display: flex;
     align-items: center;
+
 }
 
 header ul li a:hover {
-    
+    background: white;
+    color:#001b2e;
 }
 
 
