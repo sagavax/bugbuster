@@ -48,7 +48,7 @@ select {
     outline: 0;
 }
 
-.main, .dashboard {
+.main {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -57,9 +57,12 @@ select {
 }
 
 .dashboard {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-   }
+    height: calc(100vh - 60px);
+}
 
 .content {
     width: 100%;
@@ -130,9 +133,7 @@ header ul li {
     
 }
 
-header ul li:hover {
-    
-}
+
 
 
 .list {
