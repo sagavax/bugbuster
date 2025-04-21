@@ -1,14 +1,18 @@
 .small_dashboard {
-    width: 60%;
+    box-sizing: border-box;
+    width: 80%;
     padding: 10px;
     display:flex;
+    align-items: center;
+    justify-content: center;
     height:auto;
+    flex-wrap: wrap;
     gap:10px
 }
 
 .dash-item {
-    height:200px;
-    width:200px;
+    height: 150px;
+    width:  150px;
     border:1px #001b2e solid;
     color: #001b2e;
     font-family: 'Open Sans', sans-serif;
