@@ -58,6 +58,8 @@ select {
 
 .dashboard {
     display: flex;
+    background-color: #ded4ec;
+    background-color: ;
     flex-direction: column;
     align-items: center;
     justify-content: center;
