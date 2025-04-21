@@ -12,48 +12,43 @@
 <body>
     <div class="main">
         <?php include ("includes/header.php") ?>
-        <div class="dashboard">
-          <div class="small_dashboard">  
-          <div class="dash-item" dash-item="applications">
-                Applications
-            </div>    
-          <div class="dash-item" dash-item="bugs">
-                Bugs
-            </div>  
-            <div class="dash-item" dash-item="ideas">
-                Ideas
-            </div>
-            <div class="dash-item" dash-item='logs'>
-                Logs
-            </div>  
-            <div class="dash-item" dash-item="about">
-                About
-            </div>
-            <div class="dash-item" dash-item="logou">
-                Logout
-            </div>
-        </div>
         
-        <div class="small_dashboard_2">  
+    <div class="dashboard">
+        <div class="small_dashboard">  
           <div class="dash-item" dash-item="applications">
                 Applications
             </div>    
-          <div class="dash-item" dash-item="bugs">
+           
+            <div class="dash-item" dash-item="bugs">
                 Bugs
             </div>  
+           
+            <div class="dash-item" dash-item="diary">
+                Diary
+            </div>    
+
             <div class="dash-item" dash-item="ideas">
                 Ideas
             </div>
+           
+            <div class="dash-item" dash-item='notes'>
+                Notes
+            </div> 
+
+
             <div class="dash-item" dash-item='logs'>
                 Logs
             </div>  
+           
             <div class="dash-item" dash-item="about">
                 About
             </div>
-            <div class="dash-item" dash-item="logou">
+           
+            <div class="dash-item" dash-item="logout">
                 Logout
             </div>
-        </div>
+       </div>
+    </div>
 
 
         </div><!--dashboard-->
