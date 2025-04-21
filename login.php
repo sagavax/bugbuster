@@ -6,7 +6,7 @@ $heslo = mysqli_real_escape_string($con,$_POST["password"]);
 $md5heslo = md5($heslo);/* funkce md5() heslo zahashujeme */
 
 global $con;
-
+echo "<link rel='shortcut icon' href='letter-b.png'>";
 $sql="select * from uzivatele where login = '$login' and heslo = '$md5heslo'";
 //echo "$sql";
 $result = mysqli_query($con,$sql);
@@ -14,6 +14,7 @@ $overeni = mysqli_num_rows($result);
 echo "Pocet riadkov:".$overeni;
 $row = mysqli_fetch_array($con,$result);
 if($overeni == 1) {
+    echo "<script>>alert('Uspesne prihlaseny')</script>";
     $_SESSION['login'] = stripslashes($login);
     $_SESSION['id'] = $row["id"];
     header("location:".$_SESSION['redirect_url']);
