@@ -12,11 +12,12 @@
     <div class="main">
         <?php include ("includes/header.php") ?>
         <div class="content">
-            <div class="app_descriitpion">
-                <h1>Welcome to Bug Buster</h1>
-                <p>BugBuster is a platform for developers to share and discuss their open-source projects, bug reports, and feature requests.</p>
-                <p>Please note that this is a demo version of BugBuster and some features may not work as expected.</p>
-            </div>
+            <div class="list">
+                <div class="app_description">
+                    <h1>Welcome to Bug Buster</h1>
+                    <p>BugBuster is a platform for developers to share and discuss their open-source projects, bug reports, and feature requests.</p>
+                    <p>Please note that this is a demo version of BugBuster and some features may not work as expected.</p>
+                </div>
             </div>
         </div><!-- /.content -->
     </div><!-- /.main -->    
