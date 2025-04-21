@@ -97,5 +97,37 @@ body {
   
 }
 
-  
-   
+.success i {
+  color: #5FB67D;
+}
+
+.error i {
+  color: #F07142;
+}
+
+
+.overlay {
+  width:100vw;
+  height:100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.8);
+  z-index: 100;
+    }
+
+.logon_information {
+position: absolute;
+top: 50%;
+left: 50%;
+font-size: 50px;
+color: white;
+transform: translate(-50%,-50%);  
+height: 200px;
+width: 300px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 150px;
+}
+ 
