@@ -133,3 +133,48 @@ function createCommentGithubIssue($issue_id, $body, $token) {
 
     return $response; // Tu môžete spracovať odpoveď (napr. kontrolovať, či bola požiadavka úspešná)
 }
+
+function CloseGithubIssue($issue_id, $token) {
+    $owner = 'sagavax';
+    $repo = 'bugbuster';
+    
+    $url = "https://api.github.com/repos/$owner/$repo/issues/$issue_id";
+    $ch = curl_init($url);
+
+    // Odporúčam zrušiť SSL overovanie iba v prípade, že je to nutné, v iných prípadoch necháme to zapnuté
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(["state" => "closed"]));
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: token $token",
+        "Content-Type: application/json",
+        "User-Agent: BugBuster-Agent" // GitHub vyžaduje User-Agent hlavičku
+    ]);
+    
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    $response = curl_exec($ch);
+    
+    // Skontrolujeme, či nastala chyba pri cURL požiadavke
+    if(curl_errno($ch)) {
+        // Vrátime chybu
+        $error_message = curl_error($ch);
+        curl_close($ch);
+        return "cURL error: $error_message";
+    }
+
+    // Skontrolujeme odpoveď
+    $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($http_status === 200) {
+        // GitHub issue bolo úspešne uzavreté
+        return "Issue #$issue_id successfully closed.";
+    } else {
+        // Odpoveď nebola úspešná, vrátime kód chyby a telo odpovede
+        return "Failed to close issue #$issue_id. HTTP Status: $http_status. Response: $response";
+    }
+}
