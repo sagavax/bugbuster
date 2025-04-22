@@ -5,6 +5,7 @@ const bug_comments_list = document.querySelector(".bug_comments_list");
 
 
 
+
 bug_comments_list.addEventListener("click",function(ev){
   if(ev.target.tagName==="BUTTON"){
     buttonName=ev.target.name;
@@ -100,4 +101,19 @@ function reloadBugComments(bugId){
         var data = "bug_id="+encodeURIComponent(bugId);                
         xhttp.open("GET", "bug_comments.php?"+data,true);
         xhttp.send();
+}
+
+
+function deleteComment(commentId){
+    const bugId =sessionStorage.getItem("bug_id");
+    const xhttp = new XMLHttpRequest();
+          xhttp.onload = function() {
+            alert("comment has been deleted;");
+            reloadBugComments(bugId);
+          }
+          
+        xhttp.open("POST", "bug_comment_remove.php",true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var data = "comm_id="+encodeURIComponent(commentId)+"&bug_id="+encodeURIComponent(bugId);                
+        xhttp.send(data);
 }
