@@ -25,6 +25,6 @@
     
      //alert
      //echo "<script>window.location.href='diary.php'</script>";
-     header("location:diary.php");
+     header("location:index.php");
  }
  ?>
