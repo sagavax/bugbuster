@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" defer src="../js/app.js?<?php echo time(); ?>"></script>
     <title>Bugbuster - application details</title>
-    <link rel='shortcut icon' href='letter-b.png'>
+    <link rel='shortcut icon' href='../letter-b.png'>
 </head>
 <body>
 <div class="main">

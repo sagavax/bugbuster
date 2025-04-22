@@ -43,7 +43,7 @@ if (isset($_POST['delete_comm'])) {
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">  
     <script type="text/javascript" src="../js/idea.js?<?php echo time(); ?>" defer></script>  <!-- this file contains functions for like, comment, apply -->
-    <link rel='shortcut icon' href='letter-b.png'>
+    <link rel='shortcut icon' href='../letter-b.png'>
 </head>
 <body>
     <div class="main">

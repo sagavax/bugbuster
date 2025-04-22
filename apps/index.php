@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" defer src="../js/apps.js?<?php echo time(); ?>"></script>
-    <link rel='shortcut icon' href='letter-b.png'>
+    <link rel='shortcut icon' href='../letter-b.png'>
 
 </head>
 

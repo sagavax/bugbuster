@@ -73,7 +73,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <script type="text/javascript" defer src="../js/bug.js?<?php echo time(); ?>"></script>
-    <link rel='shortcut icon' href='letter-b.png'>
+    <link rel='shortcut icon' href='../letter-b.png'>
 
   </head>
   <body>

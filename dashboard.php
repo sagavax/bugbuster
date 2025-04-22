@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="css/dashboard.css?<?php echo time(); ?>">
-    <link rel='shortcut icon' href='letter-b.png'>
+    <link rel='shortcut icon' href='../letter-b.png'>
 </head>
 <body>
     <div class="main">

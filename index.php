@@ -10,7 +10,7 @@ include("../includes/dbconnect.php");
         $username=mysqli_real_escape_string($link, $_POST['username']);
         $password=mysqli_real_escape_string($link, $_POST['password']);
        
-        echo "<link rel='shortcut icon' href='letter-b.png'>";
+        echo "<link rel='shortcut icon' href='../letter-b.png'>";
             
       $sql="select * from users where user_id = '$username' and password = '$password'";
       $result = mysqli_query($link,$sql) or die(mysql_error($link));
@@ -47,7 +47,7 @@ include("../includes/dbconnect.php");
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
         <link href="../css/login.css?<?php echo time(); ?>" rel="stylesheet">
         <title>BugBuster - bug / ideas tracker</title>
-        <link rel='shortcut icon' href='letter-b.png'>
+        <link rel='shortcut icon' href='../letter-b.png'>
 </head>
 <body>
 

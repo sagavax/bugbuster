@@ -2,7 +2,7 @@
  include("../includes/dbconnect.php");
  include("../includes/functions.php");
  
- echo "<link rel='shortcut icon' href='letter-b.png'>";
+ echo "<link rel='shortcut icon' href='../letter-b.png'>";
 
  if(isset($_POST['save_record'])){
      $diary_text=trim(mysqli_real_escape_string($link, $_POST['diary_text']));

@@ -6,7 +6,7 @@ $heslo = mysqli_real_escape_string($con,$_POST["password"]);
 $md5heslo = md5($heslo);/* funkce md5() heslo zahashujeme */
 
 global $con;
-echo "<link rel='shortcut icon' href='letter-b.png'>";
+echo "<link rel='shortcut icon' href='../letter-b.png'>";
 $sql="select * from uzivatele where login = '$login' and heslo = '$md5heslo'";
 //echo "$sql";
 $result = mysqli_query($con,$sql);
