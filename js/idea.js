@@ -3,23 +3,6 @@ const idea_comments_list = document.querySelector(".idea_comments_list");
 const idea_application_filter = document.querySelector(".idea_application_filter");
 const idea_comment_new = document.querySelector(".idea_comment_new");
 
-/* let isSubmitting = false;
-idea_comment_new_form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  if (isSubmitting) return;
-  isSubmitting = true;
-
-  var textarea = document.querySelector(".idea_comment_new form textarea");
-  if (textarea.value.trim() === "") {
-      alert("Please enter a comment.");
-      isSubmitting = false; // Obnoviť stav
-      return;
-  }
-
-  // Po spracovaní formulára
-  console.log("Comment submitted:", textarea.value);
-  isSubmitting = false;
-}); */
 
 idea_comment_new.addEventListener("click", function(event) {
   if (event.target.tagName === "BUTTON" && event.target.name === "save_idea_comment") {
