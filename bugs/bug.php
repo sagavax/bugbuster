@@ -55,12 +55,14 @@
                               $is_fixed = $row['is_fixed'];
                               $added_date = $row['added_date'];
                               $application = $row['bug_application'];
+                              $bug_status = $row['bug_status'];
+                              $bug_priority = $row['bug_priority'];
 
-                              echo "<div class='bug'>";
+                              echo "<div class='bug' buf-id='$bug_id'>";
                                     echo "<div class='bug_title'>$bug_title</div>";
                                     echo "<div class='bug_text'>$bug_text</div>";
                                     echo "<div class='bug_footer'>";
-                                       echo "<div class='bug_added_date'>$added_date</div><div class='bug_application'>$application</div>";   
+                                       echo "<div class='bug_status $bug_status'>$bug_status</div><div class='bug_priority $bug_priority'>$bug_priority</div><div class='bug_added_date'>$added_date</div><div class='bug_application'>$application</div>";   
                                        if($is_fixed==0){
                                                 echo "<button type='button' title='mark the bug as fixed' name='bug_set_fixed' class='button small_button'><i class='fa fa-check'></i></button>";
                                           
@@ -70,7 +72,7 @@
                                     }        
 
                                           
-                                    echo "</div>";
+                                    echo "</div>";//bug footer
                               echo "</div>"; // bug
                         }      
                   ?>
