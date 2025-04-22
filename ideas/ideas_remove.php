@@ -16,6 +16,12 @@
             $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
             $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
 
-         echo "<script>alert('Minecraft IS: Ideas s id $idea_id vratend komentarov bola vymazana');
-              window.location.href='ideas.php';
+            $diary_text="Bola vymazana idea";
+            $create_record="INSERT INTO ideas_timeline (object_id, object_type,parent_object_id ,timeline_text, created_date) VALUES ($idea_id, 'idea', 0,'$diary_text', now())";
+            $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
+    
+
+
+         echo "<script>alert('Ideas s id $idea_id vratend komentarov bola vymazana');
+              window.location.href='index.php';
               </script>";
