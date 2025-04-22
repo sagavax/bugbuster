@@ -7,12 +7,20 @@
          //var_dump($_POST);
 
 
+        
         $save_comment = "INSERT into ideas_comments (idea_id,idea_comm_header, idea_comment, comment_date) VALUES ($idea_id,'$comment_header','$comment',now())";
         //echo $save_comment;
          $result=mysqli_query($link, $save_comment);
          
-	      
-        $diary_text="Minecraft IS: Bolo pridany novy kommentar k idei id <b>$idea_id</b>";
+        
+        //comments counter
+        $total_comments = "UPDATE ideas SET comments = comments + 1 WHERE idea_id = $idea_id";
+        //echo $total_comments;
+        $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
+
+        
+         
+        $diary_text="Bolo pridany novy kommentar k idei id <b>$idea_id</b>";
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
         //echo "<script>message('Comment added','success')</script>";
