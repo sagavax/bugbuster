@@ -7,7 +7,7 @@
     $get_diary = "SELECT * from apps_diary WHERE app_id=$app_id ORDER BY id DESC";
     $result = mysqli_query($link, $get_diary) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
-        $diary_date = $row['created_date'];
+    $diary_date = $row['created_date'];
         $diary_text = $row['diary_text'];
         $app_id = $row['project_id'];
         $diary_app = GetAppName($app_id);

@@ -69,7 +69,7 @@
 
     //add to timeline
     $diary_text="Bol zaznamenaný nový bug s ID $max_id";
-    $create_record="INSERT INTO bug_timeline (object_id, object_type, timeline_text, created_date) VALUES ($max_id, 'bug','$diary_text', now())";
+    $create_record="INSERT INTO bug_timeline (object_id, object_type, parent_object_id, timeline_text, created_date) VALUES ($bug_id, 'bug', 0,'$diary_text', now())";
     $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
 
     header("Location: bugs.php");
