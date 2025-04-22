@@ -1,8 +1,14 @@
 <?php
-    define('BASE_URL', '/');
+// Určenie protokolu (http alebo https)
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 
-    // Cesty k rôznym adresárom
-    define('CSS_PATH', BASE_URL . 'css/');
-    define('JS_PATH', BASE_URL . 'js/');
-    define('IMAGES_PATH', BASE_URL . 'images/');
-    define('INCLUDES_PATH', BASE_URL . 'includes/');
+// Názov domény
+$host = $_SERVER['HTTP_HOST'];
+
+// Koreňová cesta (bez /includes napr.)
+$root = dirname(__DIR__);
+define('BASE_URL', $protocol . $host."bugbuster/");
+
+echo BASE_URL;
+
+?>

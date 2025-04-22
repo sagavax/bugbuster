@@ -1,4 +1,11 @@
-<?php $base = '/bugbuster'; ?>
+<?php
+   $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+   // Názov domény
+   $host = $_SERVER['HTTP_HOST'];
+   // Koreňová cesta (bez /includes napr.)
+    $base = $protocol . $host."/bugbuster";
+?>
+
 <ul>
     <li><a href="<?= $base ?>/dashboard.php">Dashboard</a></li>
     <li><a href="<?= $base ?>/apps/index.php">Applications</a></li>
@@ -10,3 +17,4 @@
     <li><a href="<?= $base ?>/about.php">About</a></li>
     <li><a href="<?= $base ?>/logout.php">Logout</a></li>
 </ul>
+
