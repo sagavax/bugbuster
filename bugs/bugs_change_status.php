@@ -19,5 +19,5 @@ $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_err
 
 //add to timeline
 $diary_text="Status bugu sa zmenil na $bug_status";
-$create_record="INSERT INTO bug_timeline (object_id, object_type, parent_object_id, timeline_text, created_date) VALUES ($bug_id, 'bug', 0,'$diary_text', now())";
+$create_record="INSERT INTO bug_timeline (object_id, object_type, parent_object_id, timeline_text, created_date) VALUES ($bug_id, 'bug', $bug_id,'$diary_text', now())";
 $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
