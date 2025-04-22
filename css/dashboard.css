@@ -3,12 +3,14 @@
     width: 50%;
     padding: 10px;
     display:flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height:auto;
     flex-wrap: wrap;
     gap:10px
 }
+
 
 .dash-item {
     height: 150px;
@@ -30,3 +32,11 @@
     background-color:#5e4d9b ;
     color:white;
 }
+
+
+@media (max-width: 800px) {
+    .small_dashboard {
+      flex-direction: column;
+    }
+  }
+
