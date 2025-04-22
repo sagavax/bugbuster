@@ -1,11 +1,12 @@
+<?php $base = '/bugbuster'; ?>
 <ul>
-    <li><a href="dashboard.php">Dashboard</a></li>
-    <li><a href="applications.php">Applications</a></li>
-    <li><a href="bugs.php">Bugs</a></li>
-    <li><a href="diary.php">Diary</a></li>
-    <li><a href="ideas.php">Ideas</a></li>
-    <li><a href="notes.php">Notes</a></li>
-    <li><a href="app_log.php">Logs</a></li>
-    <li><a href="about.php">About</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="<?= $base ?>/dashboard.php">Dashboard</a></li>
+    <li><a href="<?= $base ?>/apps/index.php">Applications</a></li>
+    <li><a href="<?= $base ?>/bugs/index.php">Bugs</a></li>
+    <li><a href="<?= $base ?>/diary/index.php">Diary</a></li>
+    <li><a href="<?= $base ?>/ideas/index.php">Ideas</a></li>
+    <li><a href="<?= $base ?>/notes/index.php">Notes</a></li>
+    <li><a href="<?= $base ?>/app_log.php">Logs</a></li>
+    <li><a href="<?= $base ?>/about.php">About</a></li>
+    <li><a href="<?= $base ?>/logout.php">Logout</a></li>
 </ul>

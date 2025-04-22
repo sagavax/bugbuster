@@ -1,7 +1,7 @@
 const idea_comment_new_form= document.querySelector(".idea_comment_new form" );
 const idea_comments_list = document.querySelector(".idea_comments_list");
 const idea_application_filter = document.querySelector(".idea_application_filter");
-
+const idea_comment_new = document.querySelector(".idea_comment_new");
 
 /* let isSubmitting = false;
 idea_comment_new_form.addEventListener("submit", function(event) {
@@ -21,6 +21,13 @@ idea_comment_new_form.addEventListener("submit", function(event) {
   isSubmitting = false;
 }); */
 
+idea_comment_new.addEventListener("click", function(event) {
+  if (event.target.tagName === "BUTTON" && event.target.name === "save_idea_comment") {
+    // Alert or call the saveIdeaComment function
+    // alert("Uložiť komentár");
+    saveIdeaComment();
+  }
+});
 
 
 idea_comments_list.addEventListener("click",function(event) {
@@ -83,11 +90,7 @@ function getIdeaComments(ideaId) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
-          var comments = JSON.parse(this.responseText);
-          clearIdeaComments();
-          comments.forEach(function(comment) {
-             addIdeaComment(ideaId);
-          });
+          document.querySelector(".idea_comments_list").innerHTML = this.responseText;
         }
       };
     xhttp.open("POST", "idea_comments_get.php", true);

@@ -1,6 +1,6 @@
 <?php
    echo "<header>";
-        include_once("includes/menu.php");
+        include_once("menu.php");
     echo "</header>";
 
 ?>    
