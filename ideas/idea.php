@@ -41,7 +41,7 @@ session_start();
                     $added_date = $row['added_date'];
                     $is_implemented = $row['is_implemented'];
 
-                    echo "<div class='idea'>";
+                    echo "<div class='idea_detail'>";
                     if (isset($idea_title)) {
                         echo "<div class='idea_title'>$idea_title</div>";
                     }
