@@ -30,3 +30,5 @@
         $diary_text="Bola vytvorena nova idea s id <strong> $last_idea_id </strong>"; 
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
+
+        header("Location: ideas.php");
