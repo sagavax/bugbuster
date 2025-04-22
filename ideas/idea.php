@@ -39,7 +39,7 @@ if (isset($_POST['delete_comm'])) {
     <title>Bug Buster - Ideas</title>
     <link rel="stylesheet" href="../css/style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/ideas.css?<?php echo time(); ?>">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/../css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">  
     <script type="text/javascript" src="../js/idea.js?<?php echo time(); ?>" defer></script>  <!-- this file contains functions for like, comment, apply -->
