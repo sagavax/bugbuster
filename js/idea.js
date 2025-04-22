@@ -15,10 +15,7 @@ idea_comment_new.addEventListener("click", function(event) {
 
 idea_comments_list.addEventListener("click",function(event) {
     if(event.target.tagName==="BUTTON"){
-        if(event.target.name==="save_idea_comment"){
-            //alert("Uložiť komentár");
-            saveIdeaComment();
-        } else if (event.target.name==="delete_comment"){
+        if (event.target.name==="delete_comment"){
             const commentId = event.target.closest(".idea_comment").getAttribute("data-comment-id");
             const ideaId = sessionStorage.getItem("idea_id");
             console.log(commentId, ideaId);
