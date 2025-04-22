@@ -3,26 +3,6 @@
       session_start();
 
 
-     /*  if(isset($_POST['save_comment'])){
-        var_dump($_POST);
-        $comment_header = mysqli_real_escape_string($link,$_POST['bug_comment_header']);
-        $comment = mysqli_real_escape_string($link, $_POST['bug_comment']);
-        $bug_id = $_POST['bug_id'];
-
-        $save_comment = "INSERT into bugs_comments (bug_id,bug_comm_header, bug_comment, comment_date) VALUES ($bug_id,'$comment_header','$comment',now())";
-        //echo $save_comment;
-         $result=mysqli_query($link, $save_comment) or die("MySQLi ERROR: ".mysqli_error($link));
-
-        //app log
-        $diary_text="Minecraft IS: Bolo pridane novy kommentar k bugu id <b>$bug_id</b>";
-        $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
-        $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
-
-         header("Location: " . $_SERVER['REQUEST_URI']);
-         exit();
-      }
- */
-
       if(isset($_POST['reopen_bug'])){
         $bug_id = $_SESSION['bug_id'];
         $_SESSION['is_fixed']=0;
@@ -46,11 +26,17 @@
         $result=mysqli_query($link, $delete_comment);
 
         //update nr of comments
-        $update_nr_comments = "UPDATE bugs SET nr_comments = nr_comments - 1 WHERE bug_id = $bug_id";
-        $result = mysqli_query($link, $update_nr_comments) or die("MySQLi ERROR: ".mysqli_error($link));
-        
-       
-        $diary_text="Minecraft IS: Komment s id <b>$comm_id</b> bol vymazany";
+        $total_comments = "UPDATE bugs SET comments = comments - 1 WHERE bug_id = $bug_id";
+        $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
+
+
+        //add to timeline
+        $diary_text="Komentar bol vymazany";
+        $create_record="INSERT INTO bugs_timeline (object_id, object_type, parent_object_id, timeline_text, created_date) VALUES ($comm_id, 'bug', $bug_id,'$diary_text', now())";
+        $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));    
+
+
+        $diary_text="Komment s id <b>$comm_id</b> bol vymazany";
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
         
@@ -80,7 +66,7 @@
         <?php include("../includes/header.php") ?>   
       <div class="main">
          <div class="content">
-               <div class="fab fab-icon-holder" onclick="window.location.href='bugs.php';">
+               <div class="fab fab-icon-holder" onclick="window.location.href='index.php';">
                 <i class="fa fa-arrow-left"></i>
               </div>
               <div class="list">
