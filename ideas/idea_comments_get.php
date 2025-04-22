@@ -26,10 +26,10 @@
 
         if ($is_implemented == 1) {
                   // If $is_disabled is 1, add the disabled attribute to the button
-                  echo "<button type='button' name='delete' class='button small_button' disabled><i class='fa fa-times'></i></button>";
+                  echo "<button type='button' name='delete_comment' class='button small_button' disabled><i class='fa fa-times'></i></button>";
               } else {
                   // If $is_disabled is not 1, do not add the disabled attribute
-                  echo "<button type='button' name='delete' class='button small_button'><i class='fa fa-times'></i></button>";
+                  echo "<button type='button' name='delete_comment' class='button small_button'><i class='fa fa-times'></i></button>";
               }
               echo "</div>";
     echo "</div>";
