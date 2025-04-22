@@ -238,21 +238,6 @@ function changeBugPriority(bugId, bugPriority) {
     xhttp.send(params);
 }
 
-
-function addNewComment(bugId) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        // Check if the request is complete and was successful
-        if (this.readyState == 4 && this.status == 200) {
-            document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("POST", "bugs_add_comment.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");    
-
-    // Send the request with the videoId and modpackId
-}
-
 function filterBugsByApplication(application) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -310,9 +295,9 @@ function addComment(bugId, commentText) {
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
         if (this.readyState == 4 && this.status == 200) {
-            //document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText;
+            document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText;
             //console.log("recalculating comments");
-           recalculateBugComments(bugId);
+           //recalculateBugComments(bugId);
         }
     };
     xhttp.open("POST", "bugs_comment_add.php", true);
