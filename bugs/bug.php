@@ -17,7 +17,7 @@
         
       }
 
-      if(isset($_POST['delete_comm'])){
+     /*  if(isset($_POST['delete_comm'])){
         $comm_id = $_POST['comm_id'];
         $bug_id = $_POST['bug_id'];
         //var_dump($_POST);
@@ -40,7 +40,7 @@
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
         
-      }
+      } */
 
 ?>
 
@@ -119,7 +119,7 @@
                                             echo "<div class='bug_title'>$comm_title</div>";    
                                         }
                                         echo "<div class='bug_text'>$comm_text</div>";
-                                        echo "<div class='bug_comm_action'><form action='' method='post'><input type='hidden' name='comm_id' value=$comm_id><input type='hidden' name='bug_id' value=$bug_id><button type='submit' name='delete_comm' class='button small_button'><i class='fa fa-times'></i></button></form></div>";
+                                        echo "<div class='bug_comm_action'><button type='button' name='delete_comment' class='button small_button'><i class='fa fa-times'></i></button></form></div>";
                                     echo "</div>";
                                  }   
                               ?>  
