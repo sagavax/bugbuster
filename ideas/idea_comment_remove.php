@@ -11,7 +11,6 @@
 
 
     $total_comments = "UPDATE ideas SET comments = comments - 1 WHERE idea_id = $idea_id";
-    echo $total_comments;
     $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
 
 
