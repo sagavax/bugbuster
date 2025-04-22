@@ -14,3 +14,9 @@
     $diary_text="Bola zmenena aplikacia pre idea id: <strong>$idea_id                                                                                                                                                                                                                                                                                                                                                                                                                     /strong>";
     $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
     $result = mysqli_query($link, $sql) or die(mysql_error());
+
+
+    //add to timeline
+    $diary_text="Aplikacia idea sa zmenila na $app_name";    
+    $create_record="INSERT INTO ideas_timeline (object_id, object_type, ,timeline_text, created_date) VALUES ($idea_id, 'idea','$diary_text', now())";    
+    $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));

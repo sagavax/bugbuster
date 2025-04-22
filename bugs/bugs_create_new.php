@@ -65,3 +65,11 @@
     $log_stmt = mysqli_prepare($link, $log_sql);
     mysqli_stmt_bind_param($log_stmt, "s", $diary_text);
     mysqli_stmt_execute($log_stmt);
+
+
+    //add to timeline
+    $diary_text="Bol zaznamenaný nový bug s ID $max_id";
+    $create_record="INSERT INTO bug_timeline (object_id, object_type, timeline_text, created_date) VALUES ($max_id, 'bug','$diary_text', now())";
+    $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
+
+    header("Location: bugs.php");

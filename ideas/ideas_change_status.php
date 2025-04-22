@@ -16,3 +16,8 @@ $result = mysqli_query($link, $update_status) or die(mysqli_error($link));
 $diary_text="Status idea s id $idea_id sa zmenil na $idea_status";
 $create_record="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text', now())";
 $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
+
+//add to timeline
+$diary_text="Status idea sa zmenil na $idea_status";
+$create_record="INSERT INTO ideas_timeline (object_id, object_type,timeline_text, created_date) VALUES ($idea_id, 'idea','$diary_text', now())";
+$result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));

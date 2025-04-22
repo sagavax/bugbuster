@@ -16,3 +16,7 @@ $diary_text="Minecraft IS: Bolo pridane novy kommentar k bugu id <b>$bug_id</b>"
 $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
 $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
 
+//add to timeline
+$diary_text="Bol pridany novy kommentar";
+    $create_record="INSERT INTO bug_timeline (object_id, object_type, timeline_text, created_date) VALUES ($bug_id, 'bug_comment','$diary_text', now())";
+    $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));

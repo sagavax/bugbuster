@@ -31,4 +31,9 @@
         $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
 
+        //add to timeline
+        $diary_text="Bola vytvorena nova idea";
+        $create_record="INSERT INTO ideas_timeline (object_id, object_type, ,timeline_text, created_date) VALUES ($last_idea_id, 'idea','$diary_text', now())";
+        $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
+
         header("Location: ideas.php");

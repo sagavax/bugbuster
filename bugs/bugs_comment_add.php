@@ -21,3 +21,9 @@
     mysqli_stmt_bind_param($log_stmt, "s", $diary_text);
     mysqli_stmt_execute($log_stmt);
     mysqli_stmt_close($log_stmt);
+
+
+    //add to timeline
+    $diary_text="Bol pridany novy kommentar";
+    $create_record="INSERT INTO bug_timeline (object_id, object_type, timeline_text, created_date) VALUES ($bug_id, 'bug_comment','$diary_text', now())";
+    $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));

@@ -16,3 +16,8 @@ $result = mysqli_query($link, $update_status) or die(mysqli_error($link));
 $diary_text="Bug s id $bug_id status sa zmenil na $bug_status";
 $create_record="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text', now())";
 $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
+
+//add to timeline
+$diary_text="Status bugu sa zmenil na $bug_status";
+$create_record="INSERT INTO bug_timeline (object_id, object_type,timeline_text, created_date) VALUES ($bug_id, 'bug','$diary_text', now())";
+$result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
