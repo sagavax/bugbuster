@@ -254,6 +254,7 @@ dialog ul li:hover {
 .idea_comment_new {
     position: relative;
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 .new_idea,

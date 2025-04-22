@@ -113,7 +113,7 @@
                                         echo "<div class='idea_comm_text'>$comm_text</div>";
                                         echo "<div class='idea_comm_action'>";
 
-                                        if ($is_applied == 1) {
+                                        if ($is_implemented == 1) {
                                                   // If $is_disabled is 1, add the disabled attribute to the button
                                                   echo "<button type='button' name='delete_comment' class='button small_button' disabled><i class='fa fa-times'></i></button>";
                                               } else {
