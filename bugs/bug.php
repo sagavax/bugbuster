@@ -123,10 +123,10 @@
                                     echo "</div>";
                                  }   
                               ?>  
-
-                              <h4>Add a comment</h4>
-                             <div class="bug_comment_new">
-                                <form action="" method="post">
+                         </div><!-- bug comment list-->    
+                         <div class="bug_comment_new">
+                            <form action="" method="post">
+                                <h4>Add a comment</h4>  
                                   <input type="hidden" name="bug_id" value="<?php echo $bug_id?>">
                                   <input type="text" name="bug_comment_header" autocomplete="off" placeholder="type title here">
                                   <textarea name="bug_comment" placeholder="type comment here..."></textarea>
@@ -142,9 +142,7 @@
                                     
                                    </div>
                                 </form>   
-                        </div><!--bug comment -->
-                    </div><!-- bug comment list-->    
-                     
+                        </div><!--bug comment -->       
                  
               </div><!-- list-->
 
