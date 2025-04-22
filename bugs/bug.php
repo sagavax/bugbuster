@@ -16,32 +16,6 @@
         $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
         
       }
-
-     /*  if(isset($_POST['delete_comm'])){
-        $comm_id = $_POST['comm_id'];
-        $bug_id = $_POST['bug_id'];
-        //var_dump($_POST);
-        $delete_comment = "DELETE from bugs_comments WHERE comm_id = $comm_id";
-        //echo $delete_comment;
-        $result=mysqli_query($link, $delete_comment);
-
-        //update nr of comments
-        $total_comments = "UPDATE bugs SET comments = comments - 1 WHERE bug_id = $bug_id";
-        $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
-
-
-        //add to timeline
-        $diary_text="Komentar bol vymazany";
-        $create_record="INSERT INTO bugs_timeline (object_id, object_type, parent_object_id, timeline_text, created_date) VALUES ($comm_id, 'bug', $bug_id,'$diary_text', now())";
-        $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));    
-
-
-        $diary_text="Komment s id <b>$comm_id</b> bol vymazany";
-        $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
-        $result = mysqli_query($link, $sql) or die("MySQLi ERROR: ".mysqli_error($link));
-        
-      } */
-
 ?>
 
 
