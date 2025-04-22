@@ -91,7 +91,7 @@
     background-color: #eee;
 }
 
-.idea {
+.idea, .idea_detail {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -101,6 +101,10 @@
     background: #fff;
     min-height: 50px;
 }
+
+.idea_detail {
+    margin-top:70px
+}    
 
 .idea:hover {
     background-color: #9389bd;
