@@ -14,7 +14,7 @@
         $comm_date = $row['comment_date'];
         $is_implemented = $row['is_implemented'];
 
-        echo "<div class='idea' data-comment-id=$comment_id>";
+        echo "<div class='idea_comment' data-comment-id=$comment_id>";
         echo "<div class='connector-line'></div>";
         echo "<div class='idea_top_banner'></div>";
         
