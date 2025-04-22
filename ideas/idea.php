@@ -2,32 +2,7 @@
 include "../includes/dbconnect.php";
 include "../includes/functions.php";
 session_start();
-/* 
-if (isset($_POST['save_idea_comment'])) {
-    $comment_header = $_POST['idea_comment_header'];
-    $comment = $_POST['idea_comment'];
-    $idea_id = $_SESSION['idea_id'];
 
-    $save_comment = "INSERT INTO ideas_comments 
-                     (idea_id, idea_comm_header, idea_comment, comment_date) 
-                     VALUES ($idea_id, '$comment_header', '$comment', NOW())";
-    // echo $save_comment;
-    $result = mysqli_query($link, $save_comment);
-
-    header("Location: " . $_SERVER['REQUEST_URI']);
-    exit();
-}
-
-if (isset($_POST['delete_comm'])) {
-    $comm_id = $_POST['comm_id'];
-    // var_dump($_POST);
-    $delete_comment = "DELETE FROM ideas_comments WHERE comm_id = $comm_id";
-    // echo $delete_comment;
-    $result = mysqli_query($link, $delete_comment);
-
-    echo "<script>message('Comment deleted', 'success')</script>";
-}
-*/
 ?>
 
 <!DOCTYPE html>
