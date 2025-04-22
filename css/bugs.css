@@ -162,6 +162,11 @@
     margin-left: 20px;
 }
 
+.bug_comment_new {
+    margin-top: 15px;
+}
+
+
 .bug_comment_new input, .bug_comment_new textarea  {
     margin-top:10px;
     background-color:#eee ;
