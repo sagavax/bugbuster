@@ -4,6 +4,7 @@
 
 
     $comm_id = $_POST['comm_id'];
+    $idea_id = $_POST['idea_id'];
 
     $remove_idea_comment = "DELETE from ideas_comments WHERE comm_id =$comm_id";
     $result = mysqli_query($link, $remove_idea_comment) or die(mysql_error());

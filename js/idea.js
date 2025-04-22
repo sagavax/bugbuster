@@ -20,8 +20,9 @@ idea_comments_list.addEventListener("click",function(event) {
             saveIdeaComment();
         } else if (event.target.name==="delete_comment"){
             const commentId = event.target.closest(".idea_comment").getAttribute("data-comment-id");
-            console.log(commentId);
-            deleteIdeaComment(commentId);
+            const ideaId = sessionStorage.getItem("idea_id");
+            console.log(commentId, ideaId);
+            deleteIdeaComment(commentId, ideaId);
         }
         
     }
@@ -31,7 +32,7 @@ idea_comments_list.addEventListener("click",function(event) {
 function getIdeaComment(commentId) {
 }
 
-function deleteIdeaComment(commentId) {
+function deleteIdeaComment(commentId,ideaId) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
@@ -39,7 +40,7 @@ function deleteIdeaComment(commentId) {
           alert("Komment bol vymazany!");
         }
       };
-    var data = "comm_id="+commentId;
+    var data = "comm_id="+commentId+"&idea_id="+ideaId;
     xhttp.open("POST", "idea_comment_remove.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(data);
