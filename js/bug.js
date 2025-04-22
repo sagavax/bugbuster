@@ -82,7 +82,7 @@ function saveBugComment(bugId){
           xhttp.onload = function() {
             alert("comment has been saved;");
             textarea.value=""; //clear textarea
-            //showBugComments(bugId);
+            reloadBugComments(bugId);
           }
           
         xhttp.open("POST", "bug_comment_save.php",true);        
@@ -91,7 +91,7 @@ function saveBugComment(bugId){
         xhttp.send(data);
 }
 
-function showBugComments(bugId){
+function reloadBugComments(bugId){
     const xhttp = new XMLHttpRequest();
           xhttp.onload = function() {
             document.querySelector(".bug_comments_list").innerHTML = this.responseText;
