@@ -126,7 +126,7 @@
                      $offset = ($current_page - 1) * $itemsPerPage;
 
 
-                        $get_bugs = "SELECT * from bugs WHERE is_fixed=0 ORDER BY bug_id DESC LIMIT $itemsPerPage OFFSET $offset";
+                        $get_bugs = "SELECT * FROM bugs WHERE bug_status != 'deleted' AND bug_status != 'fixed' ORDER BY bug_id DESC LIMIT $itemsPerPage OFFSET $offset";
                         $result=mysqli_query($link, $get_bugs) or  die(mysqli_error($link));
                         while ($row = mysqli_fetch_array($result)) {
                           // Sanitizácia údajov na ochranu pred XSS
