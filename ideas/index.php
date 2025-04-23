@@ -69,6 +69,10 @@
                       </div>
                </form>
               </div><!-- new idea-->
+
+              <div class="ideas_search">
+                <input type="text" id="search" placeholder="Search for ideas..." autocomplete="off">
+             </div> 
                
               <div class="ideas_filters">
                   <div class="idea_application_filter">
