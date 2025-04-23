@@ -2,7 +2,7 @@
   date_default_timezone_set('Europe/Bratislava');
 
 
- //$link = mysqli_connect("mariadb105.r6.websupport.sk", "bugbuster", "p&GY^kuK^v!zHdU", "bugbuster", 3315);
+
  $link = mysqli_connect("localhost", "root", "", "bugbuster", 3306);
 
   if (!$link) {
