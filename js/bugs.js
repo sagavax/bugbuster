@@ -9,24 +9,6 @@ var new_bug_form= document.querySelector('.new_bug form');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const bugs_search_input = document.querySelector('.bugs_search input');
-//markdown editor
-
- 
-/* modal_show_status.style.visibility = "hidden";
-modal_show_priority.style.visibility = "hidden";
-modal_show_priority.style.display = "block";
-modal_show_status.style.display = "block";
-
-const width = modal_show_priority.offsetWidth;
-const height = modal_show_priority.offsetHeight;
-
-const width_modal_status = modal_show_status.offsetWidth;
-const height_modal_status = modal_show_status.offsetHeight; */
-/* 
-modal_show_priority.style.display = 'none';
-modal_show_status.style.display = 'none';
-modal_show_priority.style.visibility = 'visible';
-modal_show_status.style.visibility = 'visible'; */
 
 
 bugs_search_input.addEventListener('input', function() {
