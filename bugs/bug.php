@@ -58,7 +58,7 @@
                               $bug_status = $row['bug_status'];
                               $bug_priority = $row['bug_priority'];
 
-                              echo "<div class='bug' buf-id='$bug_id'>";
+                              echo "<div class='bug' bug-id='$bug_id'>";
                                     echo "<div class='bug_title'>$bug_title</div>";
                                     echo "<div class='bug_text'>$bug_text</div>";
                                     echo "<div class='bug_footer'>";
