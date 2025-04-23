@@ -9,7 +9,17 @@ var new_bug_form= document.querySelector('.new_bug form');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const bugs_search_input = document.querySelector('.bugs_search input');
+const modal_add_label = document.querySelector('#modal-add-label');
 
+
+
+modal_add_label.addEventListener('click', function(event) {
+    if (event.target.classList.contains('label-btn')) {
+        const label = event.target.getAttribute('data-label');
+        const bugId = sessionStorage.getItem('bug_id');
+        addLabelToBug(bugId, label);
+    }
+});
 
 bugs_search_input.addEventListener('input', function() {
     const searchQuery = this.value.toLowerCase();
@@ -93,8 +103,11 @@ bug_list.addEventListener('click', function(event) {
                 if(document.querySelector(`.bug[bug-id='${bugId}'] .bug_status`).textContent === "fixed") {
                     alert("Cannot remove a fixed bug.");
                     return;
-                } 
-                removeBug(bugId);
+                } else {
+                    modal_add_label.showModal();
+                }
+                //removeBug(bugId);
+                
                 break;
             case "to_fixed":
                 console.log("mark bug as fixed");
@@ -428,3 +441,18 @@ function changeApplication(appName, bugId){
     xhttp.send(params);
     
     }    
+
+
+    function addLabelToBug(bugId, label) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                removeBug(bugId);
+                document.querySelector('#modal-add-label').close();
+            }
+        };
+        xhttp.open("POST", "bugs_label_add.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "bug_id="+bugId+"&label="+encodeURIComponent(label);
+        xhttp.send(params);
+    }

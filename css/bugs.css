@@ -442,6 +442,36 @@ dialog ul li {
     background-color: #ded4ec;
 }
 
+#modal-add-label {
+    top:40%;
+    left:45%;
+    height:60px;
+    width: 30%;
+}
+
+.label-buttons {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+#modal-add-label button {  
+    background-color: #03a9f4;
+    border: 1px #03a9f4 solid;
+    color:white;
+    padding: 10px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}     
+
+#modal-add-label button:hover {
+    opacity: 0.8;
+}
+
+
 .bug_github_link {
     display: flex;
     box-sizing: border-box;
@@ -483,3 +513,9 @@ dialog ul li {
     box-sizing: border-box;
     border-radius: 4px;
 }
+
+.label-buttons {
+    display: flex;
+    gap: 10px;
+}
+
