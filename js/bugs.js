@@ -90,10 +90,20 @@ bug_list.addEventListener('click', function(event) {
                 window.location.href = `bug.php?bug_id=${bugId}`;
                 break;
             case "bug_remove":
+                if(document.querySelector(`.bug[bug-id='${bugId}'] .bug_status`).textContent === "fixed") {
+                    alert("Cannot remove a fixed bug.");
+                    return;
+                } 
                 removeBug(bugId);
                 break;
             case "to_fixed":
                 console.log("mark bug as fixed");
+                if(document.querySelector(`.bug[bug-id='${bugId}'] .bug_status`).textContent === "new"){
+                    alert("Cannot set fixed a new bug.");
+                    return; 
+                } else if(document.querySelector(`.bug[bug-id='${bugId}'] .bug_status`).textContent === "fixed") {
+                    alert("this bug is already fixed.");
+                } else {
                 markBugAsFixed(bugId);
                 document.querySelector(`.bug[bug-id='${bugId}'] button[name='to_fixed']`).remove();
                 document.querySelector(`.bug[bug-id='${bugId}'] button[name='add_comment']`).remove();
@@ -106,11 +116,15 @@ bug_list.addEventListener('click', function(event) {
                     fixedDiv.className = "bug_fixed";
                     fixedDiv.textContent = "fixed";
                     bugElement.after(fixedDiv); // pridá za .bug_comments
+                    }
                 }
                 break;
             case "to_reopen":
-                console.log("reopen bug");
-                reopenBug(bugId);
+                
+                if(document.querySelector(`.bug[bug-id='${bugId}'] .bug_status`).textContent === "fixed"){
+                    console.log("reopening the  bug");
+                    reopenBug(bugId); 
+                }
                 break;
             case "add_comment":
                 modal_add_comment.showModal();
