@@ -120,7 +120,7 @@
 
                   <?php
 
-                          $itemsPerPage = 10;
+                      $itemsPerPage = 10;
 
                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                      $offset = ($current_page - 1) * $itemsPerPage;
@@ -245,6 +245,16 @@
             echo "</ul>";          
             ?>          
     </dialog>         
+
+    <dialog id="modal-add-label">
+      <div class="label-buttons">
+        <button class="label-btn" data-label="duplicate">duplicate</button>
+        <button class="label-btn" data-label="invalid">invalid</button>
+        <button class="label-btn" data-label="irrelevant">Irrelevant</button>
+        <button class="label-btn" data-label="fixed elsewhere">fixed elsewhere</button>
+        <button class="label-btn" data-label="lack information">lack information</button>
+      </div>
+    </dialog>        
 
   </body>
   </html> 
