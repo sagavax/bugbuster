@@ -91,6 +91,11 @@
     background-color: #eee;
 }
 
+
+.idea_commentt {
+    
+}
+
 .idea, .idea_detail {
     display: flex;
     flex-direction: column;
@@ -458,7 +463,7 @@ dialog ul li {
     gap:10px;
 }
 
-.ideas_filters {
+.ideas_filters, .ideas_search {
     margin-top: 25px;
     margin-bottom: 10px;
     border: 1px #5e4d9b solid;

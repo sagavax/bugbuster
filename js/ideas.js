@@ -6,6 +6,14 @@ const idea_status_filter = document.querySelector('.idea_status_filter');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const idea_application_filter = document.querySelector(".idea_application_filter");
+const ideas_search_input = document.querySelector('.ideas_search input');
+
+
+ideas_search_input.addEventListener('input', function() {
+    const searchQuery = this.value.toLowerCase();
+    SearchIdeas(searchQuery);
+});
+
 
 idea_priority_filter.addEventListener("click",function(event) {
     if(event.target.tagName==="BUTTON"){
@@ -309,3 +317,18 @@ function filterIdeasByApplication(application) {
     var params = "application=" + encodeURIComponent(application);
     xhttp.send(params);
   }
+
+  function SearchIdeas(searchQuery) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".ideas_list").innerHTML = this.responseText;
+        }
+    };    
+    
+    xhttp.open("POST", "ideas_search.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "search="+searchQuery;
+    xhttp.send(params);
+    
+    }  
