@@ -68,6 +68,12 @@
                </form>
               </div><!-- new bug-->
               
+             <div class="bugs_search">
+                <input type="text" id="search" placeholder="Search for bugs..." autocomplete="off">
+             </div>             
+
+
+
               <div class="bugs_filters">             
                   <div class="bug_application_filter">
                       <?php

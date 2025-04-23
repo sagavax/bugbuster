@@ -8,6 +8,7 @@ const bug_status_filter = document.querySelector('.bug_status_filter');
 var new_bug_form= document.querySelector('.new_bug form');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
+const bugs_search_input = document.querySelector('.bugs_search input');
 //markdown editor
 
  
@@ -26,6 +27,12 @@ modal_show_priority.style.display = 'none';
 modal_show_status.style.display = 'none';
 modal_show_priority.style.visibility = 'visible';
 modal_show_status.style.visibility = 'visible'; */
+
+
+bugs_search_input.addEventListener('input', function() {
+    const searchQuery = this.value.toLowerCase();
+    SearchBugs(searchQuery);
+});
 
 
 new_bug_form.addEventListener('submit', function(event) {
@@ -409,3 +416,19 @@ function changeApplication(appName, bugId){
     var params = "app_name="+appName+"&bug_id="+bugId;
     xhttp.send(params);
  }
+
+
+ function SearchBugs(searchQuery) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".bug_list").innerHTML = this.responseText;
+        }
+    };    
+    
+    xhttp.open("POST", "bugs_search.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "search="+searchQuery;
+    xhttp.send(params);
+    
+    }    

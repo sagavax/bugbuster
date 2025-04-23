@@ -474,7 +474,7 @@ dialog ul li {
 
 
 
-.bugs_filters {
+.bugs_filters, .bugs_search {
     margin-top: 25px;
     margin-bottom: 10px;
     border: 1px #d1d1d1 solid;
