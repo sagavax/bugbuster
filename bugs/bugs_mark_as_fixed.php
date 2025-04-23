@@ -3,6 +3,12 @@
       $bug_id = $_POST['bug_id'];   
 
       //set bug as fixed
+      //check the bug status
+      $bug_status = "SELECT bug_status FROM bugs WHERE bug_id=$bug_id";
+      $result=mysqli_query($link, $bug_status);
+      $row = mysqli_fetch_array($result);
+      $bug_status=$row['bug_status'];
+
       $bug_to_fix = "UPDATE bugs SET is_fixed=1 WHERE bug_id=$bug_id";
       $result=mysqli_query($link, $bug_to_fix);
 
