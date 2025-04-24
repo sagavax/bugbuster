@@ -1,13 +1,12 @@
 <?php session_start();
 
-include("../includes/dbconnect.php"); 
- 
-      include "../includes/dbconnect.php";
-      include "../includes/functions.php";
+      include "includes/dbconnect.php";
+      include "includes/functions.php";
       header("Cache-Control: max-age=0");
-
+		
       if(isset($_POST['login'])){
-        $username=mysqli_real_escape_string($link, $_POST['username']);
+		  
+		    $username=mysqli_real_escape_string($link, $_POST['username']);
         $password=mysqli_real_escape_string($link, $_POST['password']);
        
         echo "<link rel='shortcut icon' href='../letter-b.png'>";
@@ -45,7 +44,7 @@ include("../includes/dbconnect.php");
          <meta name="viewport" content="width=device-width,initial-scale=1">
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <link href="../css/login.css?<?php echo time(); ?>" rel="stylesheet">
+        <link href="css/login.css?<?php echo time(); ?>" rel="stylesheet">
         <title>BugBuster - bug / ideas tracker</title>
         <link rel='shortcut icon' href='../letter-b.png'>
 </head>
