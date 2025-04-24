@@ -141,7 +141,10 @@ bug_list.addEventListener('click', function(event) {
                 break;
             case "add_comment":
                 modal_add_comment.showModal();
-                break;    
+                break;   
+            case "move_to_ideas":
+                moveBugToIdeas(bugId);
+                break;     
         }
     } if (event.target.classList.contains("bug_application")) {
         const bugId = event.target.closest(".bug").getAttribute('bug-id');
@@ -455,4 +458,19 @@ function changeApplication(appName, bugId){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var params = "bug_id="+bugId+"&label="+encodeURIComponent(label);
         xhttp.send(params);
+    }
+
+
+    function moveBugToIdeas(bugId){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.bug[bug-id='${bugId}'] `).remove();
+            }
+        };    
+        
+        xhttp.open("POST", "bugs_to_ideas.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "bug_id="+bugId;
+        xhttp.send(params); 
     }
