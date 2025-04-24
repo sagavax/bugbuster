@@ -143,7 +143,8 @@ bug_list.addEventListener('click', function(event) {
                 modal_add_comment.showModal();
                 break;   
             case "move_to_ideas":
-                moveBugToIdeas(bugId);
+                alert("Cannot move a bug to ideas yet.");
+                //moveBugToIdeas(bugId);
                 break;     
         }
     } if (event.target.classList.contains("bug_application")) {
