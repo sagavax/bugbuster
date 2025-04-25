@@ -12,7 +12,7 @@
     //$bug_application = (isset($_POST['bug_appliacation']) && $_POST['bug_appliacation'] != 0) ? mysqli_real_escape_string($link,$_POST['bug_appliacation']) : 'bugbuster';
     if(isset($_POST['bug_application']) && $_POST['bug_application'] != 0){
         $bug_application = mysqli_real_escape_string($link,$_POST['bug_application']);
-        echo "bug_application : $bug_application";
+        //echo "bug_application : $bug_application";
     } else {
         $bug_application = 'bugbuster';
     }
