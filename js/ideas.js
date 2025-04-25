@@ -91,6 +91,24 @@ ideas_list.addEventListener('click', function(event) {
         sessionStorage.setItem('idea_id',ideaId);
         sessionStorage.setItem('old_app_name', event.target.innerText);
         modal_change_app.showModal();
+    } else if (event.target.classList.contains("idea_title")) {
+
+        const ideaId = event.target.closest(".idea").getAttribute('idea-id');
+        document.querySelector(`.idea[idea-id='${ideaId}'] .idea_title`).setAttribute('contenteditable', 'true');
+
+        document.querySelector(`.idea[idea-id='${ideaId}'] .idea_title`).onblur = function() {
+            document.querySelector(`.idea[idea-id='${ideaId}'] .idea_title`).removeAttribute('contenteditable');
+            changeIdeaTitle(ideaId);
+        }
+
+    } else if (event.target.classList.contains("idea_text")) {
+        const ideaId = event.target.closest(".idea").getAttribute('idea-id');
+        document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).setAttribute('contenteditable', 'true');
+        
+        document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).onblur = function() {
+            document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).removeAttribute('contenteditable');
+            changeIdeaText(ideaId);
+        }
     }
 });
 
@@ -269,15 +287,15 @@ function  filterIdeasByPriority(priority){
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
         if (this.readyState == 4 && this.status == 200) {
-            //document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText;
+            //document.querySelector(`.bug[bug-id='${ideaId}'] .bug_comments`).innerHTML = this.responseText;
             console.log("recalculating comments: " + this.responseText+" comments");
-            document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText+" comments";
+            document.querySelector(`.idea[idea-id='${ideaId}'] .idea_comments`).innerHTML = this.responseText+" comments";
         }
     };
     xhttp.open("POST", "ideas_recalculate_comments.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Send the request with the videoId and modpackId            
-    var params = "bug_id=" + encodeURIComponent(bugId);
+    var params = "idea_id=" + encodeURIComponent(ideaId);
     xhttp.send(params);
 }
 
@@ -332,3 +350,36 @@ function filterIdeasByApplication(application) {
     xhttp.send(params);
     
     }  
+
+    
+    function changeIdeaText(ideaId){
+        var ideaText = document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).innerText;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).removeAttribute('contenteditable');
+            }
+        };    
+        
+        xhttp.open("POST", "ideas_text_change.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "idea_id="+ideaId+"&idea_text="+encodeURIComponent(ideaText);
+        xhttp.send(params);
+    }
+
+
+    function changeIdeaTitle(ideaId){
+        var ideaTitle = document.querySelector(`.idea[idea-id='${ideaId}'] .idea_title`).innerText;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.idea[idea-id='${ideaId}'] .idea_title`).removeAttribute('contenteditable');
+            }
+        };    
+        
+        xhttp.open("POST", "ideas_title_change.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "idea_id="+ideaId+"&idea_title="+encodeURIComponent(ideaTitle);
+        console.log(params);
+        xhttp.send(params);
+    }
