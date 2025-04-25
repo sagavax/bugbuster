@@ -151,9 +151,15 @@ bug_list.addEventListener('click', function(event) {
         const bugId = event.target.closest(".bug").getAttribute('bug-id');
         sessionStorage.setItem('bug_id',bugId);
         modal_change_app.showModal();
-    } if (event.target.classList.contains("bug_github_link")) {
+    } else if (event.target.classList.contains("bug_github_link")) {
         const bug_url = event.target.getAttribute('data-link');
         window.open(bug_url, '_blank');
+    } else if (event.target.classList.contains("bug_title")) {
+        const bugId = event.target.closest(".bug").getAttribute('bug-id');
+        document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).setAttribute('contenteditable', 'true');
+    } else if (event.target.classList.contains("bug_text")) {
+        const bugId = event.target.closest(".bug").getAttribute('bug-id');
+        document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).setAttribute('contenteditable', 'true');
     }
 });
 
