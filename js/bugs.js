@@ -155,11 +155,23 @@ bug_list.addEventListener('click', function(event) {
         const bug_url = event.target.getAttribute('data-link');
         window.open(bug_url, '_blank');
     } else if (event.target.classList.contains("bug_title")) {
+
         const bugId = event.target.closest(".bug").getAttribute('bug-id');
         document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).setAttribute('contenteditable', 'true');
+
+        document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).onblur = function() {
+            document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).removeAttribute('contenteditable');
+            changeBugTitle(bugId);
+        }
+
     } else if (event.target.classList.contains("bug_text")) {
         const bugId = event.target.closest(".bug").getAttribute('bug-id');
         document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).setAttribute('contenteditable', 'true');
+        
+        document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).onblur = function() {
+            document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).removeAttribute('contenteditable');
+            changeBugText(bugId);
+        }
     }
 });
 
@@ -480,4 +492,36 @@ function changeApplication(appName, bugId){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var params = "bug_id="+bugId;
         xhttp.send(params); 
+    }
+
+    function changeBugText(bugId){
+        var bugText = document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).innerText;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).removeAttribute('contenteditable');
+            }
+        };    
+        
+        xhttp.open("POST", "bugs_text_change.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "bug_id="+bugId+"&bug_text="+encodeURIComponent(bugText);
+        xhttp.send(params);
+    }
+
+
+    function changeBugTitle(bugId){
+        var bugTitle = document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).innerText;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.bug[bug-id='${bugId}'] .bug_title`).removeAttribute('contenteditable');
+            }
+        };    
+        
+        xhttp.open("POST", "bugs_title_change.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "bug_id="+bugId+"&bug_title="+encodeURIComponent(bugTitle);
+        console.log(params);
+        xhttp.send(params);
     }
