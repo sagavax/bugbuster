@@ -5,7 +5,7 @@ include "../includes/functions.php";
 
 $bug_id = $_GET['bug_id'];
 
-$get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id ORDER BY comm_id ASC";
+$get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id ORDER BY comm_id DESC";
 $result_comment=mysqli_query($link, $get_comments);
  while ($row_comment = mysqli_fetch_array($result_comment)) {
     $comm_id = $row_comment['comm_id'];

@@ -63,7 +63,7 @@ session_start();
 
                 <div class="idea_comments_list">
                     <?php
-                    $get_comments = "SELECT * FROM ideas_comments WHERE idea_id = $idea_id";
+                    $get_comments = "SELECT * FROM ideas_comments WHERE idea_id = $idea_id ORDER BY comment_date ASC";
                     // echo $get_comments;
                     $result_comment = mysqli_query($link, $get_comments);
                     while ($row_comment = mysqli_fetch_array($result_comment)) {

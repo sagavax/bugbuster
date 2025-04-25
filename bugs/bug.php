@@ -47,7 +47,7 @@
                   <?php
                         $bug_id = $_GET['bug_id'];
                         $get_bug = "SELECT * from bugs WHERE bug_id =$bug_id";
-                        $result=mysqli_query($link, $get_bug) or  die();
+                        $result=mysqli_query($link, $get_bug) or die("MySQLi ERROR: ".mysqli_error($link));
                         while ($row = mysqli_fetch_array($result)) {
                               $bug_id = $row['bug_id'];
                               $bug_title = $row['bug_title'];
@@ -80,7 +80,7 @@
                     <div class="bug_comments_list">
                               <?php
 
-                                $get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id";
+                                $get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id ORDER BY comment_date ASC";
                                 $result_comment=mysqli_query($link, $get_comments);
                                  while ($row_comment = mysqli_fetch_array($result_comment)) {
                                     $comm_id = $row_comment['comm_id'];
