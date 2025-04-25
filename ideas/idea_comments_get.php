@@ -3,7 +3,7 @@
 
     $idea_id  =  $_POST['idea_id'];
 
-    $get = "SELECT a.comm_id, a.idea_id, a.idea_comm_header, a.idea_comment, a.comment_date, b.is_implemented from ideas_comments a, ideas b WHERE a.idea_id=$idea_id and b.idea_id=a.idea_id";
+    $get = "SELECT a.comm_id, a.idea_id, a.idea_comm_header, a.idea_comment, a.comment_date, b.is_implemented from ideas_comments a, ideas b WHERE a.idea_id=$idea_id and b.idea_id=a.idea_id ORDER BY a.idea_id ASC";
     $result = mysqli_query($link, $get) or die(mysqli_error($link));
 
     while ($row = mysqli_fetch_array($result)){
