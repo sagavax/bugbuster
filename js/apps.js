@@ -6,7 +6,6 @@ var modal_add_github_repo = document.querySelector(".modal_add_github_repo");
 add_new_app_action.addEventListener("click", function(event) {
     if (event.target.tagName === 'BUTTON') {
         const appTitle = document.querySelector(".add_new_app_dialog input").value;
-        createShortTitle(appTitle);
         const appShortTitle = document.querySelector(".add_new_app_dialog input[name='app_short_name']").value;
         const appDescription = document.querySelector(".add_new_app_dialog textarea").value;
         if(appTitle===""){
@@ -17,6 +16,9 @@ add_new_app_action.addEventListener("click", function(event) {
         }
       }
 });
+var appTitle = document.querySelector(".add_new_app_dialog input").addEventListener("input", createShortTitle);
+
+
 
 application_list.addEventListener("click", function(event) {
       
