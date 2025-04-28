@@ -49,14 +49,17 @@
 
 .add_new_app_dialog {
     width: 50%;
-    height: 220px;
+    height: 250px;
 }
 
+.add_new_app_dialog input {
+    height:45px;
+} 
 
 .inner_wrap input, .inner_wrap textarea {
     color: #001b2e;
     font-weight: bold;
-    height: 45px;
+    height: 40px;
     width: 100%;
     box-sizing: border-box;
     padding:5px;
