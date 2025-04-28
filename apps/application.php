@@ -31,6 +31,7 @@
                             while ($row_apps = mysqli_fetch_array($result_apps)) {
                                 $app_id = $row_apps['app_id'];
                                 $app_name = $row_apps['app_name'];
+                                $app_hort_name = $row_apps['app_short_name'];
                                 $app_desc = $row_apps['app_descr'];
                                 $app_github_repo = $row_apps['github_repo'];
                                 $app_active_dev = $row_apps['is_active_dev'];

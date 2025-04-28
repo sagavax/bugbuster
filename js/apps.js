@@ -6,12 +6,14 @@ var modal_add_github_repo = document.querySelector(".modal_add_github_repo");
 add_new_app_action.addEventListener("click", function(event) {
     if (event.target.tagName === 'BUTTON') {
         const appTitle = document.querySelector(".add_new_app_dialog input").value;
+        createShortTitle(appTitle);
+        const appShortTitle = document.querySelector(".add_new_app_dialog input[name='app_short_name']").value;
         const appDescription = document.querySelector(".add_new_app_dialog textarea").value;
         if(appTitle===""){
             alert("Please fill in all fields.");
             return;
         } else {
-            addNewApplication(appTitle, appDescription);    
+            addNewApplication(appTitle, appShortTitleappDescription);    
         }
       }
 });
@@ -48,7 +50,7 @@ modal_add_github_repo.addEventListener('click', function(event) {
 });
 
 
-function addNewApplication(appTitle, appDescription) {
+function addNewApplication(appTitle, appShortTitle,appDescription) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
@@ -62,7 +64,7 @@ function addNewApplication(appTitle, appDescription) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // Send the request with the videoId and modpackId
-    var params = "app_name=" + encodeURIComponent(appTitle) + "&app_descr=" + encodeURIComponent(appDescription);
+    var params = "app_name=" + encodeURIComponent(appTitle) + "app_shortname=" + encodeURIComponent(appShortTitle) + "&app_descr=" + encodeURIComponent(appDescription);
     xhttp.send(params);
 }
 
@@ -105,4 +107,10 @@ function addGithubRepo(appId, githubRepo) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var params = "app_id=" + encodeURIComponent(appId) + "&github_repo=" + encodeURIComponent(githubRepo);
     xhttp.send(params);
+}
+
+function createShortTitle(appTitle) {
+    title = document.querySelector(".add_new_app_dialog input").value;
+    ShortTitle = title.replace(/\s+/g, '-').toLowerCase();
+    document.querySelector(".add_new_app_dialog input[name='app_short_name']").value = ShortTitle;
 }

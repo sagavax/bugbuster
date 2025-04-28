@@ -65,6 +65,7 @@
     <dialog class="add_new_app_dialog">
         <div class="inner_wrap">
             <input type="text" placeholder="App Name" name="app_name" autocomplete="off">
+            <input type="text" placeholder="App short name" name="app_short_name" autocomplete="off">
             <textarea placeholder="App Description" name="app_desc"></textarea>
             <div class="add_new_app_action">
                 <button type="submit" class="button small_button" name="add_app">Add App</button>
