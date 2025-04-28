@@ -396,7 +396,9 @@ dialog ul li {
     flex:1;
 }
 
-.bug_comm_action form{
+
+
+.bug_comm_action{
     display: flex;
     justify-content: flex-end;
 }

@@ -95,7 +95,7 @@
                                             echo "<div class='bug_title'>$comm_title</div>";    
                                         }
                                         echo "<div class='bug_text'>$comm_text</div>";
-                                        echo "<div class='bug_comm_action'><button type='button' name='delete_comment' class='button small_button'><i class='fa fa-times'></i></button></form></div>";
+                                        echo "<div class='bug_comm_action'><button type='button' name='delete_comment' class='button'><i class='fa fa-times'></i></button></form></div>";
                                     echo "</div>";
                                  }   
                               ?>  
