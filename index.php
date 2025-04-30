@@ -9,7 +9,7 @@
 		    $username=mysqli_real_escape_string($link, $_POST['username']);
         $password=mysqli_real_escape_string($link, $_POST['password']);
        
-        echo "<link rel='shortcut icon' href='../letter-b.png'>";
+        echo "<link rel='shortcut icon' href='letter-b.png'>>";
             
       $sql="select * from users where user_id = '$username' and password = '$password'";
       $result = mysqli_query($link,$sql) or die(mysql_error($link));
@@ -18,14 +18,15 @@
       
       if($overeni == 1) {
           $row = mysqli_fetch_array($result);
-          echo "<div class='overlay'><div class='logon_information success'><i class='fa fa-check-circle'></i></div></div>"; 
-          echo "<script>setTimeout(function(){
+          echo "<div class='overlay'><div class='logon_information'><div class='circle success'><i class='fa fa-check-circle'></i></div><div class='logon_information_text'>successully logged!!</div></div></div>"; 
+          //echo "<div class='overlay'><div class='logon_information success'><i class='fa fa-check-circle'></i></div></div>"; 
+         echo "<script>setTimeout(function(){
             window.location = 'dashboard.php';
           }, 3000)</script>";
 
           //header("location:dashboard.php");
           } elseif ($overeni==0) {
-            echo "<div class='overlay'><div class='logon_information error'><i class='fas fa-times-circle'></i></div></div>";
+            echo "<div class='overlay'><div class='logon_information '><div class ='circle error'><i class='fas fa-times-circle'></i></div></div></div>";
             echo "<script>setTimeout(function(){
               window.location = 'index.php';
             }, 3000)</script>";
