@@ -98,7 +98,8 @@ body {
 }
 
 .success i {
-  color: #5FB67D;
+  /* color: #5FB67D; */
+  color:#8bc34a
 }
 
 .error i {
@@ -117,17 +118,44 @@ body {
     }
 
 .logon_information {
-position: absolute;
+position: relative;
 top: 50%;
 left: 50%;
 font-size: 50px;
 color: white;
 transform: translate(-50%,-50%);  
 height: 200px;
-width: 300px;
+width: 400px;
 display: flex;
 align-items: center;
 justify-content: center;
 font-size: 150px;
+box-shadow: 0px 5px 10px;
 }
  
+
+.logon_information_text {
+  font-family: 'Noto Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  color:#444;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.circle {
+  position: absolute;
+  transform: translateY(-50%);
+  top:-15px;
+ }
+
+ .circle i {
+  background-color: white;
+  border-radius: 50%;
+ }
