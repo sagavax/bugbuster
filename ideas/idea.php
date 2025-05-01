@@ -24,7 +24,7 @@ session_start();
     <div class="main">
         <?php include("../includes/header.php"); ?>
         <div class="content">
-            <div class="fab fab-icon-holder" onclick="window.location.href='ideas.php';">
+            <div class="fab fab-icon-holder" onclick="window.location.href='index.php';">
                 <i class="fa fa-arrow-left"></i>
             </div>
             <div class="list">
