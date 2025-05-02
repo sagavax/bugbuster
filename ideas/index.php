@@ -23,6 +23,17 @@
 
   </head>
   <body>
+  
+  <div class="information_panel">
+    <div class="info">Number of ideas: <span id="idea_count"><?php echo GetCountIdeas(); ?></span></div>
+    <div class="info">Number of implemented ideas: <span id="idea_impemented_count"><?php echo GetCountImplementedIdeas(); ?></span></div>
+    <div class="info">Not implemented ideas: <span id="idea_not_impemented_count"><?php echo GetCountNotImplementedIdeas(); ?></span></div>
+    <div class="info">Number of low ideas: <span id="idea_low_count"><?php echo GetCountLowPriorityIdeas(); ?></span></div>
+    <div class="info">Number of medium ideas: <span id="idea_medium_count"><?php echo GetCountMediumPriorityIdeas(); ?></span></div>
+    <div class="info">Number of high ideas: <span id="idea_high_count"><?php echo GetCountHighPriorityIdeas(); ?></span></div>
+    <div class="info">Number of critical ideas: <span id="idea_critical_count"><?php echo GetCountCriticalPriorityIdeas(); ?></span></div>
+  </div>  
+
   <div class="main">
            <?php include ("../includes/header.php") ?>
            <div class="content">

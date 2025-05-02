@@ -22,6 +22,15 @@
 
   </head>
   <body>
+  <div class="information_panel">
+    <div class="info">Number of bugs: <span id="bug_count"><?php echo GetCountBugs(); ?></span></div>
+    <div class="info">Number of fixed bugs: <span id="bug_fixed_count"><?php echo GetcountFixedBugs() ?></span></div>
+    <div class="info">Number of not fixed bugs: <span id="bug_notfixed_count"><?php echo GetcountNotFixedBugs() ?></span></div>
+    <div class="info">Number of low bugs: <span id="ibug_low_count"><?php echo GetcountLowPriorityBugs() ?></span></div>
+    <div class="info">Number of medium bugs: <span id="ibug_medium_count"><?php echo GetcountMediumPriorityBugs() ?></span></div>
+    <div class="info">Number of high bugs: <span id="ibug_high_count"><?php echo GetcountHighPriorityBugs() ?></span></div>
+    <div class="info">Number of critical bugs: <span id="ibug_critical_count"><?php echo GetcountCriticalPriorityBugs() ?></span></div>
+  </div>
            <div class="main">
            <?php include ("../includes/header.php") ?>
            <div class="content">

@@ -240,3 +240,26 @@ header ul li {
     height: 100%;
 }
 
+.information_panel {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top:10%;
+    right:10px;
+    height:200px;
+    width:300px;
+    background: wheat;
+    border: 1px #d1d1d1 solid;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%);
+}
+
+
+.info {
+    width: 100%;
+}
