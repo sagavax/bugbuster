@@ -1,6 +1,5 @@
 <?php include "../includes/dbconnect.php";
       include "../includes/functions.php";
-
 ?>
 
 
@@ -154,7 +153,7 @@
                           $nr_of_comments = GetCountBugComments($bug_id);
                       
                           // Ak je bug FIXED, zobrazí štítok + mení akčné tlačidlá
-                          $add_comment = "<button type='button' title='add_comment' name='add comment' class='button small_button' onclick='addNewComment();')><i class='fa fa-comment'></i></button>";
+                          $add_comment = "<button type='button' title='add comment' name='add_comment' class='button small_button' onclick='addNewComment();')><i class='fa fa-comment'></i></button>";
                           $fixed_label = $is_fixed ? "<div class='span_fixed'>fixed</div>" : "";
                           $action_buttons = $is_fixed ? 
                               "<button type='button' name='see_bug_details' title='bug details' class='button small_button'><i class='fa fa-eye'></i></button>" : // Pridanie komentára aj pre fixed stav
