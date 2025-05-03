@@ -6,7 +6,7 @@
     $idea_id = $_POST['idea_id'];
 
 
-    $mark_as_implemented = "UPDATE ideas SET is_implemented=1 WHERE idea_id=$idea_id";
+    $mark_as_implemented = "UPDATE ideas SET is_implemented=1, idea_status='implemented' WHERE idea_id=$idea_id";
     $result = mysqli_query($link, $mark_as_implemented) or die("MySQLi ERROR: ".mysqli_error($link));
 
     //add to app logu
