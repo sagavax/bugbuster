@@ -382,19 +382,64 @@ function removeBug(bugId) {
     xhttp.send(params);
 }
 
-function addNewBug(bugTitle,bugDescription,bugApplication, bugPriority, bugStatus) {
+function addNewBug(bugTitle, bugDescription, bugApplication, bugPriority, bugStatus) {
+    // Skontroluj, či sú všetky potrebné hodnoty vybrané
+    if (bugApplication === 0 || bugStatus === 0 || bugPriority === 0 || !bugApplication || !bugStatus || !bugPriority) {
+        alert("Please make sure to select an application, status, and priority.");
+        return; // Ak nie sú vybrané hodnoty, funkcia sa ukončí
+    }
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        // Check if the request is complete and was successful
         if (this.readyState == 4 && this.status == 200) {
-            document.querySelector(".bug_list").innerHTML = this.responseText;
+            alert("New bug has been created!");
+
+            GetLatestBugId()
+                .then(function(bugId) {
+                    console.log("Latest Bug ID is: " + bugId);
+
+                    var nrofComments = "0 comments";
+                    var bug_github_url = ""; // Možná URL na GitHub
+
+                    var newBug = `
+                        <div class='bug' bug-id='${bugId}'>
+                            <div class='bug_title'>${bugTitle}</div>
+                            <div class='bug_text'>${bugDescription}</div>
+                            <div class='bug_footer'>
+                                <div class='bug_github_link' data-link='${bug_github_url}'>
+                                    <i class='fab fa-github-alt'></i>
+                                </div>
+                                <div class='bug_application'>${bugApplication}</div>
+                                <div class='bug_status ${bugStatus}'>${bugStatus}</div>
+                                <div class='bug_priority ${bugPriority}'>${bugPriority}</div>
+                                <div class='bug_comments'>${nrofComments}</div>
+                                <div class='bug_action'>
+                                    <button type='button' class='button small_button' name='see_bug_details' title='bug details'><i class='fa fa-eye'></i></button>
+                                    <button type='button' class='button small_button' name='to_fixed' title = 'mark as fixed'><i class='fa fa-check'></i></button>
+                                    <button type='button' class='button small_button' name='move_to_ideas' title='move to ideas'><i class='fas fa-chevron-right'></i></button>
+                                    <button type='button' class='button small_button' name='bug_remove' title='remove bug'><i class='fa fa-times'></i></button>
+                                    <button type='button' class='button small_button' name='add_comment' title='add comment'><i class='fa fa-comment'></i></button>
+                                </div>
+                            </div>
+                        </div>`;
+                    document.querySelector(".bug_list").insertAdjacentHTML("afterbegin", newBug);
+                })
+                .catch(function(error) {
+                    console.error("Failed to get Bug ID: " + error);
+                });
         }
     };
+
     xhttp.open("POST", "bugs_create_new.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var params = "bug_title="+encodeURIComponent(bugTitle)+"&bug_description="+encodeURIComponent(bugDescription)+"&bug_application="+encodeURIComponent(bugApplication)+"&bug_priority="+encodeURIComponent(bugPriority)+"&bug_status="+encodeURIComponent(bugStatus);
+    var params = "bug_title=" + encodeURIComponent(bugTitle) +
+                 "&bug_description=" + encodeURIComponent(bugDescription) +
+                 "&bug_application=" + encodeURIComponent(bugApplication) +
+                 "&bug_priority=" + encodeURIComponent(bugPriority) +
+                 "&bug_status=" + encodeURIComponent(bugStatus);
     xhttp.send(params);
-}   
+}
+
 
 
 function markBugAsFixed(bugId) {
@@ -524,4 +569,24 @@ function changeApplication(appName, bugId){
         var params = "bug_id="+bugId+"&bug_title="+encodeURIComponent(bugTitle);
         console.log(params);
         xhttp.send(params);
+    }
+
+
+    function GetLatestBugId() {
+        return new Promise((resolve, reject) => {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        resolve(this.responseText); // Úspešne vráti ID
+                    } else {
+                        reject('Error fetching the latest bug ID');
+                    }
+                }
+            };
+            xhttp.open("POST", "bugs_get_latest_id.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "";
+            xhttp.send(params);
+        });
     }
