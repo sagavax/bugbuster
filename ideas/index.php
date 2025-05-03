@@ -134,7 +134,7 @@
                      $offset = ($current_page - 1) * $itemsPerPage;
 
 
-                        $get_ideas = "SELECT * from ideas WHERE is_implemented=0 ORDER BY idea_id DESC LIMIT $itemsPerPage OFFSET $offset";
+                        $get_ideas = "SELECT * from ideas WHERE idea_status != 'implemented' ORDER BY idea_id DESC LIMIT $itemsPerPage OFFSET $offset";
                         $result=mysqli_query($link, $get_ideas);
                        
                         while ($row = mysqli_fetch_array($result)) {
