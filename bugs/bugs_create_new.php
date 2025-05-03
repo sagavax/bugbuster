@@ -73,4 +73,4 @@
     echo $create_record;
     $result = mysqli_query($link, $create_record) or die("MySQLi ERROR: ".mysqli_error($link));
 
-    header("Location: index.php");
+    //header("Location: index.php");
