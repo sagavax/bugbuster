@@ -30,7 +30,7 @@
                 <div class="application_list">
                     <?php
                         //get list of the applicationa
-                        $get_apps = "SELECT * FROM apps ";
+                        $get_apps = "SELECT * FROM apps WHERE is_active_dev=1";
                         $result_apps = mysqli_query($link, $get_apps) or die(mysqli_error($link));
                             while ($row_apps = mysqli_fetch_array($result_apps)) {
                                 $app_id = $row_apps['app_id'];
