@@ -5,11 +5,11 @@ include "../includes/functions.php";
 
 
 $app_name = mysqli_real_escape_string($link,$_POST['app_name']);
-$app_shart_name = mysqli_real_escape_string($link,$_POST['app_short_name']);
+$app_short_name = mysqli_real_escape_string($link,$_POST['app_short_name']);
 $app_descr = mysqli_real_escape_string($link,$_POST['app_descr']);
 
 
-$create_the_app = "INSERT INTO apps (app_name, app_short_nameapp_descr, added_date) VALUES ('$app_name','$app_short_name', '$app_descr',now())";
+$create_the_app = "INSERT INTO apps (app_name, app_short_name, app_descr, added_date) VALUES ('$app_name','$app_short_name', '$app_descr',now())";
 $result = mysqli_query($link, $create_the_app) or die(mysqli_error($link));
 
 //add to app logu
