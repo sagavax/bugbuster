@@ -12,7 +12,7 @@ add_new_app_action.addEventListener("click", function(event) {
             alert("Please fill in all fields.");
             return;
         } else {
-            addNewApplication(appTitle, appShortTitleappDescription);    
+            addNewApplication(appTitle, appShortTitle,appDescription);    
         }
       }
 });
@@ -66,7 +66,7 @@ function addNewApplication(appTitle, appShortTitle,appDescription) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     // Send the request with the videoId and modpackId
-    var params = "app_name=" + encodeURIComponent(appTitle) + "app_shortname=" + encodeURIComponent(appShortTitle) + "&app_descr=" + encodeURIComponent(appDescription);
+    var params = "app_name=" + encodeURIComponent(appTitle) + "&app_short_name=" + encodeURIComponent(appShortTitle) + "&app_descr=" + encodeURIComponent(appDescription);
     xhttp.send(params);
 }
 
