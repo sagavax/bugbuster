@@ -22,6 +22,7 @@
            <?php include ("../includes/header.php") ?>
            <div class="content">
               <div class="list">
+              <h3>Notes</h3>
                <div class="new_note">
                    <input type="text" placeholder="Title" name="note_title" autocomplete="off">
                    <textarea placeholder="Type some text here..." name="note_text"></textarea>

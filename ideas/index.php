@@ -38,8 +38,7 @@
            <?php include ("../includes/header.php") ?>
            <div class="content">
               <div class="list">
-              
-              <h3>Ideas for the informating system</h3>
+              <h3>Ideas / enhacements / feets for the applications</h3>
               <div class="new_idea">
                 <form action="ideas_save.php" method="post">
                       <input type="text" name="idea_title" placeholder="idea title here" id="idea_title" autocomplete="off">

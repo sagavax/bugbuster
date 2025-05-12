@@ -23,7 +23,8 @@
         <?php include("../includes/header.php") ?>
         <div class="content">
             <div class="list">
-            <div class="new_diary_record">
+            <h3>Developer's Diary</h3>
+                <div class="new_diary_record">
 
                 <form action="diary_record_new.php" method="post">
 
