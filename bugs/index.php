@@ -34,7 +34,7 @@
            <?php include ("../includes/header.php") ?>
            <div class="content">
               <div class="list">
-              
+              <h3>Bugs discovered / registered</h3>
               <div class="new_bug">
                 <form action="" method="post">
                       <input type="text" name="bug_title" placeholder="bug title here" id="bug_title" autocomplete="off">
@@ -140,7 +140,8 @@
                           // Sanitizácia údajov na ochranu pred XSS
                           $bug_id = (int) ($row['bug_id'] ?? 0); // ID musí byť číslo
                           $bug_title = htmlspecialchars($row['bug_title'] ?? '', ENT_QUOTES, 'UTF-8');
-                          $bug_text = htmlspecialchars($row['bug_text'] ?? '', ENT_QUOTES, 'UTF-8');
+                          //$bug_text = htmlspecialchars($row['bug_text'] ?? '', ENT_QUOTES, 'UTF-8');
+                          $bug_text = $row['bug_text'];
                           $bug_priority = htmlspecialchars($row['bug_priority'] ?? '', ENT_QUOTES, 'UTF-8');
                           $bug_status = htmlspecialchars($row['bug_status'] ?? '', ENT_QUOTES, 'UTF-8');
                           $is_fixed = (int) ($row['is_fixed'] ?? 0);
