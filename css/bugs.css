@@ -59,7 +59,6 @@
     box-sizing: border-box;
     margin-bottom: 10px;
     flex-direction: column;
-    margin-top:30px;
     border:1px #d1d1d1 solid;
     padding: 10px;
     box-sizing: border-box;
@@ -238,6 +237,15 @@
     font-size: 18px;
     color: #2f2d3b;
     font-weight: 500;
+}
+
+.bug_text pre {
+       white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: block;
+    box-sizing: border-box;
+    padding:10px
 }
 
 .idea_footer,
