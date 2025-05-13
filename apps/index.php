@@ -40,7 +40,7 @@
                                 $app_active_dev = $row_apps['is_active_dev'];
                                 $app_is_active = $row_apps['is_app_active'];
                                 $app_icon = substr($app_name,0,1);
-                                echo "<div class='application' data-app-id=$app_id>";
+                                echo "<div class='application' data-app-id=$app_id data-app-name=".strtolower($app_name).">";
                                     //echo "<div class='connector-line'></div>";
                                     echo "<div class='app-icon'>$app_icon</div>";
                                     echo "<div class='app-info'>";
