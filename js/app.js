@@ -4,6 +4,7 @@ const application_details_header_title = document.querySelector(".application_de
 const application_details_header_description = document.querySelector(".application_details_header_description");
 const application_details_header_image = document.querySelector(".application_details_header_image");
 const application_details_header_image_text = document.querySelector(".application_details_header_image_text");
+const application_details_body = document.querySelector(".application_details_body");
 
 const application_details_github = document.querySelector(".application_details_github");
 const application_details_diary = document.querySelector(".application_details_diary");
@@ -21,27 +22,42 @@ application_details_ideas.style.display = "none";
 
 application_details_header.addEventListener("click", function(event) {
     if (event.target.tagName === 'BUTTON') {
-       eventName = event.target.name;
+        eventName = event.target.innerText.toLowerCase();
+        console.log(eventName);
+       sessionStorage.setItem('module_name', eventName.toLowerCase())
        if(eventName==="github_link"){
         console.log("shows github repo information");
-            showAppGithubDetails();
-       } else if (eventName==="app_diary"){
+         //showAppGithubDetails();
+       } else if (eventName==="diary"){
+        
         console.log("shows app diary");
-           showAppDiary();
-       } else if  (eventName==="app_notes"){
+         showAppDiary();
+       } else if  (eventName==="notes"){
         console.log("shows app notes");
          showAppNotes();
-       } else if (eventName==="app_bugs"){
+       } else if (eventName==="bugs"){
         console.log("show app bugs");
          showAppBugs();
-       } else if (eventName==="app_ideas"){
+       } else if (eventName==="ideas"){
         console.log("show app ideas");
          showAppIdeas();
-       }
+       } 
     }
     });
 
-        function showAppGithubDetails(){
+
+ application_details_body.addEventListener("click", function(event) {
+     if(event.target.tagName==="BUTTON" && event.target.name==="page"){
+        pageNumber=event.target.innerText;
+        getModulesPage(pageNumber, sessionStorage.getItem('module_name'));
+        //console.log("page number: "+pageNumber);
+     }
+ })
+
+
+
+
+                function showAppGithubDetails(){
             application_details_github.style.display = "flex";
             application_details_diary.style.display = "none";
             application_details_notes.style.display = "none";
@@ -81,58 +97,19 @@ application_details_header.addEventListener("click", function(event) {
             application_details_ideas.style.display = "flex";
         }
 
-/*     function showAppGithubDetails(appId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("application_details_body").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "application_github_details.php?app_id="+appId, true);
-        xhttp.send();
-    }
+  function getModulesPage(pageNumber, moduleName) {
+    console.log("page number: " + pageNumber + " module name: " + moduleName);
+    const appName = sessionStorage.getItem('app_name');
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector("." + moduleName+"_container").innerHTML = this.responseText;
+        }
+    };
 
-    function showAppDiary(appId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("application_details_body").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "application_diary.php?app_id="+appId, true);
-        xhttp.send();
-    }   
+    xhttp.open("POST", "application_" + moduleName + "_filter_by_page.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-
-    function showAppNotes(appId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("application_details_body").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "application_notes.php?app_id="+appId, true);
-        xhttp.send();
-    }
-
-    function showAppBugs(appId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("application_details_body").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "application_bugs.php?app_id="+appId, true);
-        xhttp.send();
-    }
-
-    function showAppIdeas(appId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("application_details_body").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "application_ideas.php?app_id="+appId, true);
-        xhttp.send();
-    }    */
+    var params = "page=" + encodeURIComponent(pageNumber) + "&app_name=" + encodeURIComponent(appName);
+    xhttp.send(params);
+}
