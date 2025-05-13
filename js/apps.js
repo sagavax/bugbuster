@@ -32,6 +32,9 @@ application_list.addEventListener("click", function(event) {
             window.location.href = `application_edit.php?app_id=${appId}`;     
         } else if  (event.target.name==="app_details"){
             console.log("app details");
+            const appName = event.target.closest(".application").getAttribute('data-app-name');
+            console.log("app name: "+appName);
+            sessionStorage.setItem('app_name', appName);
             window.location.href = `application.php?app_id=${appId}`;
         } else if (event.target.name==="github_link"){
             console.log("add github repo");
