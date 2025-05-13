@@ -240,12 +240,14 @@
 }
 
 .bug_text pre {
-       white-space: pre-wrap;
+    white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
     display: block;
     box-sizing: border-box;
-    padding:10px
+    padding:10px;
+    font-family: 'Open Sans';
+    font-size: 16px;
 }
 
 .idea_footer,
