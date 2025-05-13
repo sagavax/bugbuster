@@ -10,7 +10,13 @@ const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const bugs_search_input = document.querySelector('.bugs_search input');
 const modal_add_label = document.querySelector('#modal-add-label');
+const bugs_form_textarea = document.querySelector('.new_bug textarea[name="bug_text"]');
 
+
+bugs_form_textarea.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+});
 
 
 modal_add_label.addEventListener('click', function(event) {
