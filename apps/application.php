@@ -154,7 +154,7 @@
                                             // Zobrazenie stránkovania
                                             echo '<div class="diary_pagination">';
                                             for ($i = 1; $i <= $totalPages; $i++) {
-                                               echo "<button type='button' class='button small_button' name='page'>" . $i . "</button>"; // Opravené úvodzovky
+                                               echo "<button type='button' class='button small_button' name='page'>" . $i . "</button>"; // Opravené úvodzo
                                             }
                                             echo '</div>';
                     
@@ -163,7 +163,7 @@
                             <div class="application_details_notes">
                                 <?php    
 
-                                 /*    $itemsPerPage = 10;
+                                   /*  $itemsPerPage = 10;
                                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                                      $offset = ($current_page - 1) * $itemsPerPage;  
                                             
@@ -204,32 +204,33 @@
                                 ?>
                             </div>
                             <div class="application_details_bugs">
-                                <?php
+                                <div class="bugs_container">
+                                    <?php
+                                        $itemsPerPage = 10;
+                                        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                        $offset = ($current_page - 1) * $itemsPerPage;   
 
-                                   $itemsPerPage = 10;
-                                    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $offset = ($current_page - 1) * $itemsPerPage;   
-
-                                    $app_name = getAppName($app_id);
-                                    $get_bugs = "SELECT * FROM bugs WHERE bug_application='$app_name' ORDER BY bug_id DESC LIMIT $offset, $itemsPerPage";
-                                    $result_bugs = mysqli_query($link, $get_bugs) or die(mysqli_error($link));
-                                        while ($row_bugs = mysqli_fetch_array($result_bugs)) {
-                                            $bug_id = $row_bugs['bug_id'];
-                                            $bug_title = $row_bugs['bug_title'];
-                                            $bug_text = $row_bugs['bug_text'];
-                                            $bug_status = $row_bugs['bug_status'];
-                                            $bug_priority = $row_bugs['bug_priority'];
-                                            $bug_comments = $row_bugs['comments'];
-                                            $bug_date = $row_bugs['added_date'];
-                                            echo "<div class='bug' data-bug-id=$bug_id>";
-                                            if($bug_title !=""){
-                                                echo "<div class='bug_title'>$bug_title</div>";
+                                        $app_name = getAppName($app_id);
+                                        $get_bugs = "SELECT * FROM bugs WHERE bug_application='$app_name' ORDER BY bug_id DESC LIMIT $offset, $itemsPerPage";
+                                        $result_bugs = mysqli_query($link, $get_bugs) or die(mysqli_error($link));
+                                            while ($row_bugs = mysqli_fetch_array($result_bugs)) {
+                                                $bug_id = $row_bugs['bug_id'];
+                                                $bug_title = $row_bugs['bug_title'];
+                                                $bug_text = $row_bugs['bug_text'];
+                                                $bug_status = $row_bugs['bug_status'];
+                                                $bug_priority = $row_bugs['bug_priority'];
+                                                $bug_comments = $row_bugs['comments'];
+                                                $bug_date = $row_bugs['added_date'];
+                                                echo "<div class='bug' data-bug-id=$bug_id>";
+                                                if($bug_title !=""){
+                                                    echo "<div class='bug_title'>$bug_title</div>";
+                                                }
+                                                    echo "<div class='bug_text'>$bug_text</div>";
+                                                    echo "<div class='bug_date'>$bug_date</div>";
+                                                echo "</div>";
                                             }
-                                                echo "<div class='bug_text'>$bug_text</div>";
-                                                echo "<div class='bug_date'>$bug_date</div>";
-                                            echo "</div>";
-                                        }
-
+                                        echo "</div>"; //bugs container 
+                                        
                                           // Calculate the total number of pages
                                             $sql = "SELECT COUNT(*) as total FROM bugs WHERE bug_application='$app_name'";
                                             $result = mysqli_query($link, $sql);
