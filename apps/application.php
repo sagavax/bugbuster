@@ -281,7 +281,9 @@
                                                 $idea_comments = $row_ideas['comments'];
                                                 $idea_date = $row_ideas['added_date'];
                                                 echo "<div class='idea' data-idea-id=$idea_id>";
+                                                if($idea_title !=""){
                                                     echo "<div class='idea_title'>$idea_title</div>";
+                                                }                                    
                                                     echo "<div class='idea_text'>$idea_text</div>";
                                                     echo "<div class='idea_date'>$idea_date</div>";
                                                 echo "</div>";
