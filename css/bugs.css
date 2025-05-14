@@ -458,10 +458,10 @@ dialog ul li {
 }
 
 #modal-add-label {
-    top:40%;
+    top:20%;
     left:45%;
     height:60px;
-    width: 30%;
+    width: 800px;
 }
 
 .label-buttons {
@@ -480,6 +480,7 @@ dialog ul li {
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
+    width:150px;
 }     
 
 #modal-add-label button:hover {
