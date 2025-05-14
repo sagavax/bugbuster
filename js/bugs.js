@@ -35,18 +35,35 @@ bugs_search_input.addEventListener('input', function() {
 
 new_bug_form.addEventListener('submit', function(event) {
     event.preventDefault();
+
     const bugTitle = document.querySelector('.new_bug input[name="bug_title"]').value;
     const bugDescription = document.querySelector('.new_bug textarea[name="bug_text"]').value;
-    const bugPriority = document.querySelector('.new_bug select[name="bug_priority"]').value;
-    const bugStatus = document.querySelector('.new_bug select[name="bug_status"]').value;
-    const bugApplication = document.querySelector('.new_bug select[name="bug_application"]').value; // Fixed typo
+    let bugPriority = document.querySelector('.new_bug select[name="bug_priority"]').value;
+    let bugStatus = document.querySelector('.new_bug select[name="bug_status"]').value;
+    let bugApplication = document.querySelector('.new_bug select[name="bug_application"]').value;
 
-    if (bugDescription === "") {   
-        alert("Please fill in all fields.");
-    } else {
-        addNewBug(bugTitle, bugDescription, bugApplication, bugPriority, bugStatus);
+    if (bugDescription === "") {
+        alert("Please fill bug description.");
+        return;
     }
+
+    // Default values if empty or 0
+    if (bugApplication === "0" || bugApplication === "") {
+        bugApplication = "bugbuster";
+    }
+
+    if (bugStatus === "0" || bugStatus === "") {
+        bugStatus = "new";
+    }
+
+    if (bugPriority === "0" || bugPriority === "") {
+        bugPriority = "low";
+    }
+
+    // Call your bug-adding function
+    addNewBug(bugTitle, bugDescription, bugApplication, bugPriority, bugStatus);
 });
+
 
 bug_application_filter.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
@@ -390,9 +407,19 @@ function removeBug(bugId) {
 
 function addNewBug(bugTitle, bugDescription, bugApplication, bugPriority, bugStatus) {
     // Skontroluj, či sú všetky potrebné hodnoty vybrané
-    if (bugApplication === 0 || bugStatus === 0 || bugPriority === 0 || !bugApplication || !bugStatus || !bugPriority) {
-        alert("Please make sure to select an application, status, and priority.");
-        return; // Ak nie sú vybrané hodnoty, funkcia sa ukončí
+    
+    
+    
+    if (bugApplication===0){
+        bugApplication='bugbuster';
+    } 
+
+    if(bugStatus===0){
+        bugStatus='new';
+    }   
+    
+    if(bugPriority===0){
+        bugPriority='low';
     }
 
     var xhttp = new XMLHttpRequest();
