@@ -119,7 +119,8 @@
 
                             </div>
                             <div class="application_details_diary">
-                                <?php
+                                <div class="diary_container">
+                                    <?php
                                  
                                      $itemsPerPage = 10;
                                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -136,7 +137,7 @@
                                                 echo "<div class='diary_date'>$diary_date</div>";
                                             echo "</div>";
                                         }
-
+                                      echo "</div>";// diary_container       
                     
                                             // Calculate the total number of pages
                                             $sql = "SELECT COUNT(*) as total FROM diary WHERE project_id=$app_id";
@@ -161,13 +162,16 @@
                                     ?>
                             </div>
                             <div class="application_details_notes">
-                                <?php    
+                                <div class="notes_container">
+                                    <?php    
 
-                                   /*  $itemsPerPage = 10;
+                                    $itemsPerPage = 10;
                                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                                      $offset = ($current_page - 1) * $itemsPerPage;  
                                             
-                                    $app_name = getAppName($app_id);
+                                    $app_name = strtolower(getAppName($app_id));
+
+                                    //echo "$app_name";
                                     $get_notes = "SELECT * FROM notes WHERE note_application='$app_name' ORDER BY note_id DESC LIMIT $offset, $itemsPerPage";
                                     $result_notes = mysqli_query($link, $get_notes) or die(mysqli_error($link));
                                         while ($row_notes = mysqli_fetch_array($result_notes)) {
@@ -182,8 +186,10 @@
                                             echo "</div>";
                                         }
 
-                                         // Calculate the total number of pages
-                                            $sql = "SELECT COUNT(*) as total FROM diary WHERE note_application='$app_name'";
+                                        echo "</div>";// notes_container
+
+                                         //Calculate the total number of pages
+                                            $sql = "SELECT COUNT(*) as total FROM notes WHERE note_application='$app_name'";
                                             $result = mysqli_query($link, $sql);
                                             
                                             $totalItems = 0; // Predvolene nulová hodnota
@@ -198,10 +204,12 @@
                                             // Zobrazenie stránkovania
                                             echo '<div class="notes_pagination">';
                                             for ($i = 1; $i <= $totalPages; $i++) {
-                                                echo '<a href="?page=' . $i . '">' . $i . '</a>'; // Opravené úvodzovky
+                                                echo '<button class="button small_button" name="page">' . $i . '</button>'; // Opravené úvodzovky
                                             }
-                                            echo '</div>'; */
+                                            echo '</div>';
+                                   
                                 ?>
+                                
                             </div>
                             <div class="application_details_bugs">
                                 <div class="bugs_container">
@@ -254,30 +262,33 @@
                                 ?>
                             </div>
                             <div class="application_details_ideas">
-                                <?php
+                               <div class="ideas_container">
+                                    <?php
 
-                                    $itemsPerPage = 10;
-                                    $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $offset = ($current_page - 1) * $itemsPerPage;        
+                                        $itemsPerPage = 10;
+                                        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                        $offset = ($current_page - 1) * $itemsPerPage;        
 
-                                    $app_name = getAppName($app_id);
-                                    $get_ideas = "SELECT * FROM ideas WHERE idea_application='$app_name' ORDER BY idea_id DESC LIMIT $offset, $itemsPerPage";
-                                    $result_ideas = mysqli_query($link, $get_ideas) or die(mysqli_error($link));
-                                        while ($row_ideas = mysqli_fetch_array($result_ideas)) {
-                                            $idea_id = $row_ideas['idea_id'];
-                                            $idea_title = $row_ideas['idea_title'];
-                                            $idea_text = $row_ideas['idea_text'];
-                                            $idea_status = $row_ideas['idea_status'];
-                                            $idea_priority = $row_ideas['idea_priority'];
-                                            $idea_comments = $row_ideas['comments'];
-                                            $idea_date = $row_ideas['added_date'];
-                                            echo "<div class='idea' data-idea-id=$idea_id>";
-                                                echo "<div class='idea_title'>$idea_title</div>";
-                                                echo "<div class='idea_text'>$idea_text</div>";
-                                                echo "<div class='idea_date'>$idea_date</div>";
-                                            echo "</div>";
-                                        }
-
+                                        $app_name = getAppName($app_id);
+                                        $get_ideas = "SELECT * FROM ideas WHERE idea_application='$app_name' ORDER BY idea_id DESC LIMIT $offset, $itemsPerPage";
+                                        $result_ideas = mysqli_query($link, $get_ideas) or die(mysqli_error($link));
+                                            while ($row_ideas = mysqli_fetch_array($result_ideas)) {
+                                                $idea_id = $row_ideas['idea_id'];
+                                                $idea_title = $row_ideas['idea_title'];
+                                                $idea_text = $row_ideas['idea_text'];
+                                                $idea_status = $row_ideas['idea_status'];
+                                                $idea_priority = $row_ideas['idea_priority'];
+                                                $idea_comments = $row_ideas['comments'];
+                                                $idea_date = $row_ideas['added_date'];
+                                                echo "<div class='idea' data-idea-id=$idea_id>";
+                                                    echo "<div class='idea_title'>$idea_title</div>";
+                                                    echo "<div class='idea_text'>$idea_text</div>";
+                                                    echo "<div class='idea_date'>$idea_date</div>";
+                                                echo "</div>";
+                                            }
+                                          ?>     
+                                 </div> <!--ideas container-->
+                                         <?php   
                                           // Calculate the total number of pages
                                             $sql = "SELECT COUNT(*) as total FROM ideas WHERE idea_application='$app_name'";
                                             $result = mysqli_query($link, $sql);
