@@ -119,6 +119,69 @@
     border-radius: 5px;
 }
 
-.application_details_diary .diary_date {
+.application_details_diary .diary_text {
+    display: flex;
+    width: 100%;
+}
+
+.application_details_notes .note {
+    display: flex;
+    box-sizing: border-box;
+    padding:10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    margin-top:30px;
+    border:1px #d1d1d1 solid;
+    background-color: white;
+}
+
+.application_details_notes .note_date,.application_details_diary .diary_date,.application_details_bugs .bug_date,.application_details_ideas .idea_date {
     height:35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: bolder;
+    color: #2e6d4a;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    }
+
+.application_details_bugs .bug {
+    display: flex;
+    flex-direction: column;
+    border: 1px #d1d1d1 solid;
+    background: white;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+} 
+
+
+.application_details_ideas .idea {
+    display: flex;
+    flex-direction: column;
+    border: 1px #d1d1d1 solid;
+    background: white;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.application_details_ideas .idea_title {
+    height:35px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.application_details_ideas .idea_text {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+   
 }
