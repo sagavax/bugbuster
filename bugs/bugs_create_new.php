@@ -5,7 +5,7 @@
 
     //var_dump($_POST);
 
-
+    
     $bug_title = mysqli_real_escape_string($link,$_POST['bug_title']) ?? '';
     $bug_text = mysqli_real_escape_string($link,$_POST['bug_description']) ?? '';
    
@@ -20,10 +20,6 @@
     $bug_priority = (isset($_POST['bug_priority']) && $_POST['bug_priority'] != 0) ? mysqli_real_escape_string($link,$_POST['bug_priority']) : 'low';
     $bug_status = (isset($_POST['bug_status']) && $_POST['bug_status'] != 0) ? mysqli_real_escape_string($link,$_POST['bug_status']) : 'new';
     
-    //echo "bug_status : $bug_status";
-    //echo "bug_priority : $bug_priority";
-     
-
     $is_fixed = 0;
 
     // Použitie pripraveného SQL dotazu na bezpečné vloženie
