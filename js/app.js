@@ -57,45 +57,45 @@ application_details_header.addEventListener("click", function(event) {
 
 
 
-                function showAppGithubDetails(){
-            application_details_github.style.display = "flex";
-            application_details_diary.style.display = "none";
-            application_details_notes.style.display = "none";
-            application_details_bugs.style.display = "none";
-            application_details_ideas.style.display = "none";
-        }
+    function showAppGithubDetails(){
+        application_details_github.style.display = "flex";
+        application_details_diary.style.display = "none";
+        application_details_notes.style.display = "none";
+        application_details_bugs.style.display = "none";
+        application_details_ideas.style.display = "none";
+    }
 
-        function showAppDiary(){
-            application_details_github.style.display = "none";
-            application_details_diary.style.display = "flex";
-            application_details_notes.style.display = "none";
-            application_details_bugs.style.display = "none";
-            application_details_ideas.style.display = "none";
-        }
+    function showAppDiary(){
+        application_details_github.style.display = "none";
+        application_details_diary.style.display = "flex";
+        application_details_notes.style.display = "none";
+        application_details_bugs.style.display = "none";
+        application_details_ideas.style.display = "none";
+    }
 
-        function showAppNotes(){
-            application_details_github.style.display = "none";
-            application_details_diary.style.display = "none";
-            application_details_notes.style.display = "flex";
-            application_details_bugs.style.display = "none";
-            application_details_ideas.style.display = "none";
-        }
+    function showAppNotes(){
+        application_details_github.style.display = "none";
+        application_details_diary.style.display = "none";
+        application_details_notes.style.display = "flex";
+        application_details_bugs.style.display = "none";
+        application_details_ideas.style.display = "none";
+    }
 
-        function showAppBugs(){
-            application_details_github.style.display = "none";
-            application_details_diary.style.display = "none";
-            application_details_notes.style.display = "none";
-            application_details_bugs.style.display = "flex";
-            application_details_ideas.style.display = "none";
-        }
-         
-        function showAppIdeas(){
-            application_details_github.style.display = "none";
-            application_details_diary.style.display = "none";
-            application_details_notes.style.display = "none";
-            application_details_bugs.style.display = "none";
-            application_details_ideas.style.display = "flex";
-        }
+    function showAppBugs(){
+        application_details_github.style.display = "none";
+        application_details_diary.style.display = "none";
+        application_details_notes.style.display = "none";
+        application_details_bugs.style.display = "flex";
+        application_details_ideas.style.display = "none";
+    }
+        
+    function showAppIdeas(){
+        application_details_github.style.display = "none";
+        application_details_diary.style.display = "none";
+        application_details_notes.style.display = "none";
+        application_details_bugs.style.display = "none";
+        application_details_ideas.style.display = "flex";
+    }
 
   function getModulesPage(pageNumber, moduleName) {
     console.log("page number: " + pageNumber + " module name: " + moduleName);
