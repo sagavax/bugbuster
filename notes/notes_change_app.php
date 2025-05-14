@@ -5,7 +5,7 @@
 
 
     $note_id = $_POST['note_id'];
-    $app_name = $_POST['app_name'];
+    $app_name = strtolower($_POST['app_name']);
   
     $chage_app = "UPDATE notes SET note_application='$app_name' WHERE note_id=$note_id";
     $result = mysqli_query($link, $chage_app) or die("MySQLi ERROR: ".mysqli_error($link));
