@@ -157,6 +157,15 @@
     padding: 5px;
 } 
 
+.application_details_bugs .bug_text{
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
 
 .application_details_ideas .idea {
     display: flex;
