@@ -47,7 +47,7 @@ application_details_header.addEventListener("click", function(event) {
     });
 
 
- //   
+ //change paging styles buttons after click
  application_details_body.addEventListener("click", function(event) {
      if(event.target.tagName==="BUTTON" && event.target.name==="page"){
          const buttons = document.querySelectorAll('.application_details_body button[name="page"]');
