@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/app.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/bugs.css?<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="../css/bugs.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/diary.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/notes.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/ideas.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/ideas.css?<?php echo time(); ?>"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" defer src="../js/app.js?<?php echo time(); ?>"></script>
@@ -70,10 +70,12 @@
                         <div class="application_details_body">
                             <div class="application_details_github">
                                 <?php
-
-                                   /*  $owner = 'tvoje-username';
-                                    $repo = 'tvoj-repo';
-                                    $token = 'ghp_tvoj_token';
+                                    $owner = 'sagavax';
+                                    //$repo = 'bugbuster';
+                                    $repo = $app_name = strtolower(getAppName($app_id));
+                                    //echo $repo;
+                                    //var_dump($repo);
+                                    $token = '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';
                                     $perPage = 100;
                                     $page = 1;
                                     $hasMore = true;
@@ -83,13 +85,20 @@
 
                                         $ch = curl_init($url);
                                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // iba na vývoj
+                                        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
                                         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                                            "User-Agent: tvoje-app",
+                                            "User-Agent:".$repo,
                                             "Authorization: token $token",
                                             "Accept: application/vnd.github.v3+json"
                                         ]);
 
                                         $response = curl_exec($ch);
+
+                                        if ($response === false) {
+                                            echo 'cURL error: ' . curl_error($ch);
+                                        }
+
                                         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                                         curl_close($ch);
 
@@ -97,7 +106,7 @@
                                             $commits = json_decode($response, true);
 
                                             if (empty($commits)) {
-                                                $hasMore = false; // už nie sú ďalšie commity
+                                                $hasMore = false;
                                             } else {
                                                 foreach ($commits as $commit) {
                                                     $sha = substr($commit['sha'], 0, 7);
@@ -107,13 +116,14 @@
 
                                                     echo "<p><strong>$sha</strong>: $message<br><em>$author – $date</em></p>";
                                                 }
-                                                $page++; // ďalšia strana
+                                                $page++;
                                             }
                                         } else {
                                             echo "Chyba: $httpcode";
                                             break;
                                         }
-                                    } */
+                                    }
+
 
                                     ?>
 
