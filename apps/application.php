@@ -46,7 +46,7 @@
                                     //echo "<div class='app-info'>";
                                         echo "<input type='text' name='app_name' autocomplete='off' value='$app_name'>";
                                         echo "<input type='text' name='app_short_name' autocomplete='off' value='$app_short_name'>";
-                                        echo "<textarea name='app_description'>$app_desc</textarea>";
+                                        echo "<textarea name='app_description' placeholder='App Description'>$app_desc</textarea>";
                                         
                                         echo "<div class='app-actions'>";
                                             echo "<button type='button' name='app_save_changes' class='button small_button'><i class='fa fa-plus'></i></button>";
