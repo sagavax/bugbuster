@@ -303,6 +303,12 @@
     border-radius: 5px;
 }
 
+.fixed {
+    background-color: #008000;
+    color: #fff;
+    border:1px #008000 solid;
+}
+
 .bug_added_date {
     background-color: #008000;
     color: #fff;
