@@ -114,7 +114,7 @@
                             $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
                             while ($row = mysqli_fetch_array($result)) {
                                     $bug_status = $row['bug_status'];
-                                    echo "<button type='button' title='show bugs with the status' class='button $bug_status small_button ' data-status='$bug_status'>$bug_status</button>";
+                                    echo "<button type='button' title='show bugs with the status' class='button small_button' data-status='$bug_status'>$bug_status</button>";
                             }
                             echo "<button type='button' title='all bugs' class='button  small_button ' data-priority='all'>All</button>"; // Pridanie tlacidla pre vsetky bugy
                           ?>
