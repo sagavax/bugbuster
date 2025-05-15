@@ -1,0 +1,36 @@
+.log {
+    width: 100%;
+    height: 90px;
+    border: 1px #d1d1d1 solid;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 10px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.log_text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    height:55px;
+    justify-content: flex-start;
+    align-items: center
+}
+
+.log_date {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    width: 100%;
+    height:35px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
