@@ -123,7 +123,7 @@ idea_application_filter.addEventListener('click', function(event) {
   });
   
 
-
+// modal status
 modal_show_status.addEventListener('click', function(event) {
 if (event.target.tagName === 'LI') {    
     const ideaId = sessionStorage.getItem('idea_id');
@@ -141,6 +141,7 @@ if (event.target.tagName === 'LI') {
 }
 });
 
+// modal priority
 modal_show_priority.addEventListener('click', function(event) {
     if (event.target.tagName === 'LI') {    
         const ideaId = sessionStorage.getItem('idea_id');
@@ -158,6 +159,7 @@ modal_show_priority.addEventListener('click', function(event) {
     }
 });
 
+//modal change app
 modal_change_app.addEventListener("click", function(event) {
     if (event.target.tagName==="LI") {
         //console.log("clicked on listitem:"+event.target.innerText);
