@@ -25,6 +25,18 @@
                     <form action="task_create.php" method="post">
                         <input type="text" placeholder="task title" name="title" autocomplete="off">
                         <textarea placeholder="task description...." name="description"></textarea> 
+                         <select name="task_appliacation">
+                            <option value="0">--- choose application --- </option>
+                            <?php
+                            $get_apps = "SELECT * from apps ORDER BY app_name ASC";
+                            $result_apps = mysqli_query($link, $get_apps) or die(mysqli_error($link));
+                            while ($row_apps = mysqli_fetch_array($result_apps)) {
+                                $app_id = $row_apps['app_id'];
+                                $app_name = $row_apps['app_name'];
+                                echo "<option value =".strtolower($app_name).">$app_name</option>";
+                            }
+                            ?>
+                        </select>
                         <select name="priority">
                             <option value="low">low</option>
                             <option value="medium">medium</option>
