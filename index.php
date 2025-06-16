@@ -9,10 +9,10 @@
 		    $username=mysqli_real_escape_string($link, $_POST['username']);
         $password=mysqli_real_escape_string($link, $_POST['password']);
        
-        echo "<link rel='shortcut icon' href='letter-b.png'>>";
+        echo "<link rel='shortcut icon' href='letter-b.png'>";
             
       $sql="select * from users where user_id = '$username' and password = '$password'";
-      $result = mysqli_query($link,$sql) or die(mysql_error($link));
+      $result = mysqli_query($link,$sql) or die(mysqli_error($link));
       $overeni = mysqli_num_rows($result);
       //echo "Pocet riadkov:".$overeni;
       
