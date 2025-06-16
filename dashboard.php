@@ -35,6 +35,10 @@
                 Notes
             </div> 
 
+             <div class="dash-item" dash-item='tasks'>
+                Tasks
+            </div>
+
 
             <div class="dash-item" dash-item='logs'>
                 Logs

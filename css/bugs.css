@@ -412,7 +412,7 @@ dialog ul li {
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
-    flex:1;
+    flex-grow:1;
 }
 
 
