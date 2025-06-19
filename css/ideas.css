@@ -91,11 +91,6 @@
     background-color: #eee;
 }
 
-
-.idea_commentt {
-    
-}
-
 .idea, .idea_detail {
     display: flex;
     flex-direction: column;
