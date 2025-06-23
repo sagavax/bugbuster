@@ -23,9 +23,9 @@
                 <h2>New Task</h2>
                <div class="new_task">                    
                     <form action="task_create.php" method="post">
-                        <input type="text" placeholder="task title" name="title" autocomplete="off">
-                        <textarea placeholder="task description...." name="description"></textarea> 
-                         <select name="task_appliacation">
+                        <input type="text" placeholder="task title" name="task_title" autocomplete="off">
+                        <textarea placeholder="task description...." name="task_description"></textarea> 
+                         <select name="task_application">
                             <option value="0">--- choose application --- </option>
                             <?php
                             $get_apps = "SELECT * from apps ORDER BY app_name ASC";
@@ -37,14 +37,14 @@
                             }
                             ?>
                         </select>
-                        <select name="priority">
+                        <select name="task_priority">
                             <option value="low">low</option>
                             <option value="medium">medium</option>
                             <option value="high">high</option>
                             <option value="critical">critical</option>
                         </select>
 
-                        <select name="status">
+                        <select name="task_status">
                             <option value="new">new</option>
                             <option value="in_progress">in progress</option>
                             <option value="pending">pending</option>
@@ -116,7 +116,20 @@
                             $task_description = $row_tasks['task_description'];
                             $task_priority = $row_tasks['task_priority'];
                             $task_status = $row_tasks['task_status'];
-                            echo "<div class='task'><h3>$task_title</h3><p>$task_description</p><p>Priority: $task_priority</p><p>Status: $task_status</p></div>";
+                            $task_application = $row_tasks['task_application'];
+                            echo "<div class='task'>";
+                                echo "<h4>$task_title</h4>";
+                                echo "<div class-'task_description'>$task_description</div>";
+                                echo "<div class='task_footer'>";
+                                    echo "<div class='task_application'>$task_application</div>";
+                                    echo "<div class='task_priority'>$task_priority</div>"; 
+                                    echo "<div class='task_status'>$task_status</div>";
+                                    echo "<button class='button small_button' type='button' name='remove_task' data-task-id=$task_id><i class='fa fa-times'></i></button>";
+                                    //echo "<button class='button small_button' type='button' name='edit_task' data-task-id=$task_id><i class='fa fa-edit'></i></button>";
+                                    //echo "<button class='button small_button' type='button' name='show_comments' data-task-id=$task_id><i class='fa fa-comment'></i></button>";
+                                    echo "<button class='button small_button' type='button' name='mark_complete' data-task-id=$task_id><i class='fa fa-check'></i></button>";                                     
+                                echo "</div>";// task footer
+                            echo "</div>";// task
                         }
                         ?>
                     </div>

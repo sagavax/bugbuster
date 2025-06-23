@@ -165,3 +165,45 @@ input, textarea {
     box-sizing: border-box;
     /* background-color: white; */
 }
+
+.task {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px #5e4d9b solid;
+    padding: 10px;
+    background: #fff;
+    min-height: 50px;
+}
+
+.task_footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    box-sizing: border-box;
+} 
+
+.task_application {
+    margin-right: 0px;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    height: 38px;
+}
+
+
+.task_application {
+    display: flex;
+    margin-left: 5px;
+    background: #0b9ed0;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 0px;
+    align-items: center;
+}
+
+.task_application:hover {
+    cursor: pointer;
+}
