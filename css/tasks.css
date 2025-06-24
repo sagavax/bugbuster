@@ -63,13 +63,16 @@ root {
     cursor: pointer;
     padding: 6px 12px;
     height: 38px;
+    box-sizing: border-box;
 }
 
-.task_status {
+.task_status, .task_priority {
     background-color: white;
     border: 1px #666 solid;
 
 }
+
+
 
 .new_task form select {
     width: 100%;

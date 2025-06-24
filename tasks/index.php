@@ -117,7 +117,7 @@
                             $task_priority = $row_tasks['task_priority'];
                             $task_status = $row_tasks['task_status'];
                             $task_application = $row_tasks['task_application'];
-                            echo "<div class='task'>";
+                            echo "<div class='task' data-task-id=$task_id>";
                                 echo "<h4>$task_title</h4>";
                                 echo "<div class-'task_description'>$task_description</div>";
                                 echo "<div class='task_footer'>";
