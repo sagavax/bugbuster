@@ -68,11 +68,16 @@
 
 
  button[name="note_application"] {
-    border: 1px #8773b2 solid;
+    /* border: 1px #8773b2 solid;
     border-radius: 5px;
     background-color: #8773b2;
     cursor: pointer;
-    color: white;
+    color: white; */
+    border: 1px #8773b2 solid;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    color: #8773b2;
 }
 
 button[name="note_application"]:hover {
