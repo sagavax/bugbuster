@@ -44,12 +44,12 @@ function GetAppName($project_id){
 	if($project_id==0){
 		$app_name="";
 	} else {
-    $sql="SELECT app_name from apps where app_id=$project_id";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
-    while ($row = mysqli_fetch_array($result)) {
-        $app_name=$row['app_name'];
-    } 
-	}
+    $get_app_name ="SELECT app_name from apps where app_id=$project_id";
+    //echo $get_app_name;
+    $result = mysqli_query($link, $get_app_name) or die(mysqli_error($link));
+    $row = mysqli_fetch_array($result);
+      $app_name=$row['app_name'];
+    }
 	 return $app_name;  
 
     mysqli_close($link);
@@ -183,7 +183,7 @@ function CloseGithubIssue($issue_id, $token) {
 function GetcountFixedBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_status='fixed'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -193,7 +193,7 @@ function GetcountFixedBugs() {
 function GetcountNotFixedBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_status !='fixed'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -203,7 +203,7 @@ function GetcountNotFixedBugs() {
 function GetcountLowPriorityBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_priority='low'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -213,7 +213,7 @@ function GetcountLowPriorityBugs() {
 function GetcountMediumPriorityBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_priority='medium'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -223,7 +223,7 @@ function GetcountMediumPriorityBugs() {
 function GetcountHighPriorityBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_priority='high'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -233,7 +233,7 @@ function GetcountHighPriorityBugs() {
 function GetcountCriticalPriorityBugs() {
     global $link;
     $sql="SELECT COUNT(*) as count from bugs where bug_priority='critical'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -244,7 +244,7 @@ function GetcountCriticalPriorityBugs() {
 function GetCountImplementedIdeas() {
     global $link;
     $sql="SELECT COUNT(*) as count from ideas where idea_status='implemented'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -254,7 +254,7 @@ function GetCountImplementedIdeas() {
 function GetCountNotImplementedIdeas() {
     global $link;
     $sql="SELECT COUNT(*) as count from ideas where idea_status !='implemented'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -264,7 +264,7 @@ function GetCountNotImplementedIdeas() {
 function GetCountLowPriorityIdeas() {
     global $link;
     $sql="SELECT  COUNT(*) as count from ideas where idea_priority='low'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -274,7 +274,7 @@ function GetCountLowPriorityIdeas() {
 function GetCountMediumPriorityIdeas() {
     global $link;
     $sql="SELECT COUNT(*) as count from ideas where idea_priority='medium'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -284,7 +284,7 @@ function GetCountMediumPriorityIdeas() {
 function GetCountHighPriorityIdeas() {
     global $link;
     $sql="SELECT COUNT(*) as count from ideas where idea_priority='high'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
@@ -294,7 +294,7 @@ function GetCountHighPriorityIdeas() {
 function GetCountCriticalPriorityideas() {
     global $link;
     $sql="SELECT COUNT(*) as count from ideas where idea_priority='critical'";
-    $result = mysqli_query($link, $sql) or die(mysql_error($link));
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $count=$row['count'];
     } 
