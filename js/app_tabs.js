@@ -127,3 +127,16 @@ function loadAppGithub(appId){
    var params = "app_id=" + encodeURIComponent(appId);
     xhttp.send(params);
 }
+
+loadAppOverview(appId){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".app_content").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "load_app_overview.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "app_id=" + encodeURIComponent(appId);
+    xhttp.send(params);
+}

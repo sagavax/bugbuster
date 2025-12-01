@@ -9,10 +9,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BugBuster</title>
+    <title>BugBuster - applications</title>
     <link rel="stylesheet" href="../css/style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/apps.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/bugs.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/diary.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/ideas.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/notes.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" defer src="../js/app_tabs.js?<?php echo time(); ?>"></script>
@@ -66,11 +69,12 @@
                 <div class="application_details">
                     <div class="app_tabs">
                         <button type="button" name="app_overview" class="button small_button">Overview</button>
-                        <button type="button" name="app_notes" class="button small_button">Notes</button>
                         <button type="button" name="app_bugs" class="button small_button">Bugs</button>
                         <button type="button" name="app_ideas" class="button small_button">Ideas</button>
                         <button type="button" name="app_diary" class="button small_button">Diary</button>
-                        <button type="button" name="app_github" class="button small_button">github</button>
+                        <button type="button" name="app_github" class="button small_button">Github</button>
+                        <button type="button" name="app_notes" class="button small_button">Notes</button>
+                        <button type="button" name="app_tasks" class="button small_button">Tasks</button>
                     </div><!-- app_tabs-->
                     <div class="app_content">
 

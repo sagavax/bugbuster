@@ -263,11 +263,3 @@ header ul li {
     width: 100%;
 }
 
-.app_description {
-    margin: 70px auto;
-    border: 1px #d1d1d1 solid;
-    box-sizing: border-box;
-    background-color: white;
-    padding:10px;
-    border-radius: 5px;
-}
