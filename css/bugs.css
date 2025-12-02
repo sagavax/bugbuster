@@ -289,7 +289,7 @@
     height:38px;
 }
 
-.nr_of_comments, .bug_application {
+.idea_comments, .bug_application {
     border-radius: 4px;;
 }
 
@@ -541,3 +541,13 @@ dialog ul li {
     gap: 10px;
 }
 
+.modal_bug_comments {
+    top:10%;
+    left:45%;
+    min-height:250px;
+    width: 50%;
+}
+
+.bug_comments:hover {
+    cursor: pointer;
+}

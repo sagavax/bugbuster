@@ -214,7 +214,7 @@ dialog ul li:hover {
     cursor: pointer;
 }
 
-.nr_of_comments,
+.idea_comments,
 .idea_application {
     margin-right: 0px;
     height: 100%;
@@ -223,7 +223,7 @@ dialog ul li:hover {
     height: 38px;
 }
 
-.nr_of_comments,
+.idea_comments,
 .idea_application {
     display: flex;
     margin-left: 5px;
@@ -468,4 +468,15 @@ dialog ul li {
     background-color: white;
     padding: 10px;
     box-sizing: border-box;
+}
+
+.modal_idea_comments {
+    top:10%;
+    left:45%;
+    min-height:250px;
+    width: 50%;
+}
+
+.idea_comments:hover {
+    cursor: pointer;
 }

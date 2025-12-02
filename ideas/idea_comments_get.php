@@ -1,7 +1,12 @@
 <?php
     include("../includes/dbconnect.php");
 
-    $idea_id  =  $_POST['idea_id'];
+
+
+    $idea_id = isset($_GET['idea_id']) ? (int) $_GET['idea_id'] : 0;
+if ($idea_id <= 0) {
+    exit; // ziadne platne ID, nic nevypisuj
+}
 
     $get = "SELECT a.comm_id, a.idea_id, a.idea_comm_header, a.idea_comment, a.comment_date, b.is_implemented from ideas_comments a, ideas b WHERE a.idea_id=$idea_id and b.idea_id=a.idea_id ORDER BY a.idea_id ASC";
     $result = mysqli_query($link, $get) or die(mysqli_error($link));
@@ -22,7 +27,9 @@
             echo "<div class='idea_comm_title'>$comm_title</div>";    
         }
         echo "<div class='idea_comm_text'>$comm_text</div>";
-        echo "<div class='idea_comm_action'>";
+
+        IF(!isset($_GET['context'])){
+            echo "<div class='idea_comm_action'>";
 
         if ($is_implemented == 1) {
                   // If $is_disabled is 1, add the disabled attribute to the button
@@ -31,6 +38,8 @@
                   // If $is_disabled is not 1, do not add the disabled attribute
                   echo "<button type='button' name='delete_comment' class='button small_button'><i class='fa fa-times'></i></button>";
               }
-              echo "</div>";
+              echo "</div>";    
+        }
+        
     echo "</div>";
     }

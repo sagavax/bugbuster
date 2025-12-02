@@ -7,7 +7,7 @@ const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const idea_application_filter = document.querySelector(".idea_application_filter");
 const ideas_search_input = document.querySelector('.ideas_search input');
-
+const modal_idea_comments = document.querySelector('.modal_idea_comments');
 
 ideas_search_input.addEventListener('input', function() {
     const searchQuery = this.value.toLowerCase();
@@ -108,6 +108,13 @@ ideas_list.addEventListener('click', function(event) {
         document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).onblur = function() {
             document.querySelector(`.idea[idea-id='${ideaId}'] .idea_text`).removeAttribute('contenteditable');
             changeIdeaText(ideaId);
+        }
+    } else if (event.target.classList.contains("idea_comments")) {
+        const ideaId = event.target.closest(".idea").getAttribute('idea-id');
+        modal_idea_comments.showModal();
+        if(modal_idea_comments.open) {
+            console.log("modal all bug comments is open");
+            loadIdeaComments(ideaId);
         }
     }
 });
@@ -384,4 +391,22 @@ function filterIdeasByApplication(application) {
         var params = "idea_id="+ideaId+"&idea_title="+encodeURIComponent(ideaTitle);
         console.log(params);
         xhttp.send(params);
+    }
+
+     function loadIdeaComments(ideaId,context){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.modal_idea_comments`).innerHTML = this.responseText;
+            }
+        };    
+        
+        xhttp.open("GET", "idea_comments_get.php?idea_id="+ideaId+"&context="+context, true);//"bugs_recalculate_comments.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send();
+    }
+
+
+    function removeCommentsFromModal(){
+        document.querySelector(`.modal_idea_comments`).replaceChildren();
     }

@@ -156,7 +156,7 @@
                                       echo "<input type='hidden' name='is_applied' value=$is_implemented>";
                                       echo "<div class='idea_application'>{$application}</div>";
                                       $nr_of_comments = GetCountIdeaComments($idea_id);
-                                      echo "<div class='nr_of_comments'>$nr_of_comments comment(s)</div>";
+                                      echo "<div class='idea_comments'>$nr_of_comments comment(s)</div>";
                                       echo "<div class='idea_status'>$idea_status</div><div class='idea_priority $idea_priority'>$idea_priority</div>";
                                       echo "<button type='button' name='see_idea_details' class='button small_button'><i class='fa fa-eye'></i></button>";
                                       
@@ -234,7 +234,8 @@
             echo "</ul>";          
             ?>          
     </dialog>
-
+    
+    <dialog class="modal_idea_comments"></dialog>
 
   </body>
   </html> 

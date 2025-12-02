@@ -264,7 +264,9 @@
         <button class="label-btn" data-label="fixed elsewhere">fixed elsewhere</button>
         <button class="label-btn" data-label="lack information">lack information</button>
       </div>
-    </dialog>        
+    </dialog> 
+    <dialog class="modal_bug_comments">
+    </dialog>         
 
   </body>
   </html> 

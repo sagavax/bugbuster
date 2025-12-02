@@ -5,12 +5,14 @@ const modal_add_comment = document.querySelector('.modal_add_comment');
 const bug_application_filter = document.querySelector('.bug_application_filter');
 const bug_priority_filter = document.querySelector('.bug_priority_filter');
 const bug_status_filter = document.querySelector('.bug_status_filter');
-var new_bug_form= document.querySelector('.new_bug form');
+const new_bug_form= document.querySelector('.new_bug form');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const bugs_search_input = document.querySelector('.bugs_search input');
 const modal_add_label = document.querySelector('#modal-add-label');
 const bugs_form_textarea = document.querySelector('.new_bug textarea[name="bug_text"]');
+const bug_comments = document.querySelector('.bug_comments');
+const modal_bug_comments = document.querySelector('.modal_bug_comments');
 
 
 bugs_form_textarea.addEventListener('input', function() {
@@ -32,6 +34,9 @@ bugs_search_input.addEventListener('input', function() {
     SearchBugs(searchQuery);
 });
 
+bug_comments.addEventListener('cancel', function() {
+    removeCommentsFromModal();
+});
 
 new_bug_form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -194,6 +199,13 @@ bug_list.addEventListener('click', function(event) {
         document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).onblur = function() {
             document.querySelector(`.bug[bug-id='${bugId}'] .bug_text`).removeAttribute('contenteditable');
             changeBugText(bugId);
+        }
+    } else if (event.target.classList.contains("bug_comments")) {
+        const bugId = event.target.closest(".bug").getAttribute('bug-id');
+        modal_bug_comments.showModal();
+        if(modal_bug_comments.open) {
+            console.log("modal all bug comments is open");
+            loadBugComments(bugId);
         }
     }
 });
@@ -623,4 +635,23 @@ function changeApplication(appName, bugId){
             var params = "";
             xhttp.send(params);
         });
+    }
+
+
+    function loadBugComments(bugId,context){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(`.modal_bug_comments`).innerHTML = this.responseText;
+            }
+        };    
+        
+        xhttp.open("GET", "bug_comments.php?bug_id="+bugId+"&context="+context, true);//"bugs_recalculate_comments.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send();
+    }
+
+
+    function removeCommentsFromModal(){
+        document.querySelector(`.modal_bug_comments`).replaceChildren();
     }
