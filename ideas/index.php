@@ -99,6 +99,7 @@
                           
                     <div class="idea_status_priority_filters">
                         <div class="idea_priority_filter">
+                          <div class="filter_legend">Priority</div>
                           <?php
                               $get_priority = "SELECT idea_priority from ideas GROUP BY idea_priority";
                               $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
@@ -111,6 +112,7 @@
                         </div><!-- idea priority filter-->
 
                         <div class="idea_status_filter">
+                          <div class="filter_legend">Status</div>
                         <?php
                           $get_priority = "SELECT idea_status from ideas GROUP BY idea_status";
                           $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));

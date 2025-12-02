@@ -97,6 +97,7 @@
          
                     <div class="bug_status_priority_filters">
                       <div class="bug_priority_filter">
+                        <div class="filter_legend">Priority</div>
                           <?php
                             $get_priority = "SELECT bug_priority from bugs GROUP BY bug_priority";
                             $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
@@ -109,6 +110,7 @@
                         </div><!-- bug priority filter-->
                         
                       <div class="bug_status_filter">
+                        <div class="filter_legend">Status</div>
                         <?php
                             $get_priority = "SELECT bug_status from bugs GROUP BY bug_status";
                             $result=mysqli_query($link, $get_priority) or  die(mysqli_error($link));
