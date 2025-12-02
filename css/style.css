@@ -252,10 +252,10 @@ header ul li {
     right:10px;
     height:200px;
     width:300px;
-    background: wheat;
-    border: 1px #d1d1d1 solid;
+    background: #f4edff;
+    border: 1px #5e4d9b solid;
     border-radius: 5px;
-    box-shadow: 0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%);
+    /* box-shadow: 0 0 4px rgb(0 0 0 / 14%), 0 4px 8px rgb(0 0 0 / 28%); */
 }
 
 

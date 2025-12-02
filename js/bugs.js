@@ -425,6 +425,7 @@ function addNewBug(bugTitle, bugDescription, bugApplication, bugPriority, bugSta
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".new_bug form").reset();
             alert("New bug has been created!");
 
             GetLatestBugId()
