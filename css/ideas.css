@@ -215,7 +215,8 @@ dialog ul li:hover {
 }
 
 .idea_comments,
-.idea_application {
+.idea_application,
+.nr_of_comments {
     margin-right: 0px;
     height: 100%;
     align-items: center;
@@ -224,7 +225,8 @@ dialog ul li:hover {
 }
 
 .idea_comments,
-.idea_application {
+.idea_application,
+.nr_of_comments {
     display: flex;
     margin-left: 5px;
     background: #0b9ed0;
