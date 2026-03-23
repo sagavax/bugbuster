@@ -88,14 +88,14 @@
                                     $comm_text = $row_comment['bug_comment'];
                                     $comm_date = $row_comment['comment_date'];
 
-                                    echo "<div class='bug_comment'>";
+                                    echo "<div class='bug_comment' comment-id='$comm_id'>";
                                         echo "<div class='connector-line'></div>";
                                         echo "<div class='bug_top_banner'></div>";
                                         if($comm_title!=""){
                                             echo "<div class='bug_title'>$comm_title</div>";    
                                         }
                                         echo "<div class='bug_text'>$comm_text</div>";
-                                        echo "<div class='bug_comm_action'><button type='button' name='delete_comment' class='button'><i class='fa fa-times'></i></button></form></div>";
+                                        echo "<div class='bug_comm_action'><button type='button' name='delete_comment' class='button'><i class='fa fa-times'></i></button></div>";
                                     echo "</div>";
                                  }   
                               ?>  

@@ -3,11 +3,11 @@
     include("../includes/dbconnect.php");
     include("../includes/functions.php");
 
-    $comment_id = $_POST['comment_id'];
+    $comment_id = $_POST['comm_id'];
     $bug_id = $_POST['bug_id'];
 
     $remove_comment = "DELETE from bugs_comments WHERE comm_id=$comment_id";
-    $result = mysqli_query($link, $remove_comment) or die(mysql_error());
+    $result = mysqli_query($link, $remove_comment) or die(mysqli_error($link));
 
     $total_comments = "UPDATE bugs SET comments = comments - 1 WHERE bug_id = $bug_id";
     $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
@@ -15,7 +15,7 @@
     //add to app logu
     $diary_text="Bug komentar s id: <strong>$comment_id</strong> bol vymazany";
     $sql="INSERT INTO app_log (diary_text, date_added) VALUES ('$diary_text',now())";
-    $result = mysqli_query($link, $sql) or die(mysql_error());
+    $result = mysqli_query($link, $sql) or die(mysqli_error($link));
 
 
     //add to timeline

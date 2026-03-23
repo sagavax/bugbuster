@@ -10,8 +10,11 @@
         
         $save_comment = "INSERT into ideas_comments (idea_id,idea_comm_header, idea_comment, comment_date) VALUES ($idea_id,'$comment_header','$comment',now())";
         //echo $save_comment;
-         $result=mysqli_query($link, $save_comment);
+         $result=mysqli_query($link, $save_comment) or die("MySQLi ERROR: ".mysqli_error($link));
          
+         //get latest comment id
+        $new_comment_id = mysqli_insert_id($link);
+        echo $new_comment_id;
         
         //comments counter
         $total_comments = "UPDATE ideas SET comments = comments + 1 WHERE idea_id = $idea_id";

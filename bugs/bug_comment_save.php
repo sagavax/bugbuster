@@ -11,9 +11,13 @@ $save_comment = "INSERT into bugs_comments (bug_id,bug_comm_header, bug_comment,
 //echo $save_comment;
  $result=mysqli_query($link, $save_comment) or die("MySQLi ERROR: ".mysqli_error($link));
 
+//get the id of the new comment 
+ $new_comment_id = mysqli_insert_id($link);
+ echo $new_comment_id;
 
  $total_comments = "UPDATE bugs SET comments = comments + 1 WHERE bug_id = $bug_id";
  $result = mysqli_query($link, $total_comments) or die("MySQLi ERROR: ".mysqli_error($link));
+
 
  //app log
 $diary_text="Bol pridany novy kommentar k bugu id <b>$bug_id</b>";

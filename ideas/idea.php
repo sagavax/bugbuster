@@ -94,7 +94,7 @@ session_start();
                         if ($is_implemented == 1) {
                             echo "<button type='button' name='delete_comment' class='button small_button' disabled><i class='fa fa-times'></i></button>";
                         } else {
-                            echo "<button type='button' name='delete_comment' class='button small_button'><i class='fa fa-times'></i></button>";
+                            echo "<button type='button' name='delete_comment' class='button'><i class='fa fa-times'></i></button>";
                         }
                         echo "</div>";
                         echo "</div>";

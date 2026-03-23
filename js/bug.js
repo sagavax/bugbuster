@@ -10,8 +10,7 @@ bug_comments_list.addEventListener("click",function(ev){
   if(ev.target.tagName==="BUTTON"){
     buttonName=ev.target.name;
     if(buttonName==="delete_comment"){
-      bug_comm_action_form.preventDefault();
-      deleteComment(ev.target.getAttribute("comment-id"));
+      deleteComment(ev.target.closest(".bug_comment").getAttribute("comment-id"));
     } 
   }
 })
@@ -83,7 +82,26 @@ function saveBugComment(bugId){
           xhttp.onload = function() {
             alert("comment has been saved;");
             textarea.value=""; //clear textarea
-            reloadBugComments(bugId);
+            //clear input
+            input.value="";
+
+            //get new comment id from response and create new comment element
+            const bugCommentId = this.responseText; //assuming response is the new comment id
+
+            const html = "<div class='bug_comment' comment-id="+bugCommentId+">"+
+                            "<div class='connector-line'></div>"+
+                            "<div class='bug_top_banner'></div>"+
+                            "<div class='bug_comment_header'>"+header+"</div>"+
+                            "<div class='bug_text'>"+comment+"</div>"+
+                            "<div class='bug_comm_action'>"+
+                                "<button type='button' class='button' name='delete_comment'><i class='fa fa-times'></i></button>"+
+                            "</div>"+
+                        "</div>";
+            //add new comment to the list without reloading
+            document.querySelector(".bug_comments_list").insertAdjacentHTML("beforeend", html);
+
+
+            
           }
           
         xhttp.open("POST", "bug_comment_save.php",true);        
@@ -109,7 +127,8 @@ function deleteComment(commentId){
     const xhttp = new XMLHttpRequest();
           xhttp.onload = function() {
             alert("comment has been deleted;");
-            reloadBugComments(bugId);
+            document.querySelector(".bug_comment[comment-id='"+commentId+"']").remove(); //remove comment from DOM
+            //reloadBugComments(bugId);
           }
           
         xhttp.open("POST", "bug_comment_remove.php",true);

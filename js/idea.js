@@ -8,7 +8,8 @@ idea_comment_new.addEventListener("click", function(event) {
   if (event.target.tagName === "BUTTON" && event.target.name === "save_idea_comment") {
     // Alert or call the saveIdeaComment function
     // alert("Uložiť komentár");
-    saveIdeaComment();
+    const ideaId = sessionStorage.getItem("idea_id");
+    saveIdeaComment(ideaId);
   }
 });
 
@@ -34,6 +35,8 @@ function deleteIdeaComment(commentId,ideaId) {
     xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
         document.querySelector(`.idea_comment[data-comment-id='${commentId}']`).remove();
+
+        document.querySelector(".idea_detail .nr_of_comments").textContent = parseInt(document.querySelector(".idea_detail .nr_of_comments").textContent) - 1 + " comment(s)";
           alert("Komment bol vymazany!");
         }
       };
@@ -48,18 +51,34 @@ function saveIdeaComment(ideaId) {
      alert("Prosím, vložte komentár.");
      return;
    }
+   
+    var textarea = document.querySelector(".idea_comment_new textarea");
+    var input = document.querySelector(".idea_comment_new input");
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
           alert("Komentár bol uložený!");
           // refresh comments list
-          ideaId = sessionStorage.getItem("idea_id");
-          getIdeaComments(ideaId);
+          const newCommentId = this.responseText.trim();
+
+          const html = `<div class="idea_comment" data-comment-id="${newCommentId}">
+                          <div class='connector-line'></div>
+                          <div class="idea_top_banner"></div>
+                          <div class="idea_comment_header">${document.querySelector(".idea_comment_new input").value}</div>
+                          <div class="idea_comment_body">${document.querySelector(".idea_comment_new textarea").value}</div>
+                          <div class="idea_comm_action">
+                            <button type="button" name="delete_comment" class="button"><i class="fa fa-times"></i></button>
+                          </div>
+                        </div>`;
+          document.querySelector(".idea_comments_list").insertAdjacentHTML("beforeend", html);
+        
+          //nr of comments update
+          document.querySelector(".idea_detail .nr_of_comments").textContent = parseInt(document.querySelector(".idea_detail .nr_of_comments").textContent) + 1 + " comment(s)";
+
         }
       };
-    var ideaId = sessionStorage.getItem("idea_id");  
-    var textarea = document.querySelector(".idea_comment_new textarea");
-    var input = document.querySelector(".idea_comment_new input");
+   
     var data = "comment="+encodeURIComponent(textarea.value)+"&comment_title="+encodeURIComponent(input.value)+"&idea_id="+encodeURIComponent(ideaId);
     xhttp.open("POST", "idea_comment_save.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
