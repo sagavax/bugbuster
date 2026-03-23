@@ -368,9 +368,12 @@ function addComment(bugId, commentText) {
     xhttp.onreadystatechange = function() {
         // Check if the request is complete and was successful
         if (this.readyState == 4 && this.status == 200) {
-            document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText;
-            //console.log("recalculating comments");
-           //recalculateBugComments(bugId);
+
+            recalculateBugComments(bugId);
+
+            document.querySelector(`.bug[bug-id='${bugId}'] .bug_comments`).innerHTML = this.responseText+" comments";
+            //count bug comments and update the number in the bug element
+            
         }
     };
     xhttp.open("POST", "bugs_comment_add.php", true);

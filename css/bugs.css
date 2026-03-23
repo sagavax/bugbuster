@@ -570,3 +570,7 @@ dialog ul li {
 .bug_comments:hover {
     cursor: pointer;
 }
+
+.bug_comment:hover {
+    background-color: #eef3f9;
+}

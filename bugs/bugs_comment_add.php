@@ -11,8 +11,8 @@
     $result = mysqli_query($link, $create_comment) or die("MySQLi ERROR: ".mysqli_error($link));
 
     //update nr of comments
-    $update_nr_comments = "UPDATE bugs SET nr_comments = nr_comments + 1 WHERE bug_id = $bug_id";
-    $result = mysqli_query($link, $update_nr_comments) or die("MySQLi ERROR: ".mysqli_error($link));
+    /* $update_nr_comments = "UPDATE bugs SET nr_comments = nr_comments + 1 WHERE bug_id = $bug_id";
+    $result = mysqli_query($link, $update_nr_comments) or die("MySQLi ERROR: ".mysqli_error($link)); */
     
     //app log
     $diary_text="Bol pridany novy kommentar k bugu id <b>$bug_id</b>"; 
