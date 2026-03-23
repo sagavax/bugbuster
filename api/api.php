@@ -4,7 +4,9 @@ header('Content-Type: application/json');
 $endpoint = $_GET['endpoint'] ?? '';
 $method = $_SERVER['REQUEST_METHOD'];
 
-$allowed_endpoints = ['bugs', 'ideas', 'idea', 'bug','idea_comments', 'bug_comments']; // sem pridávaj nové endpointy
+//echo $method . " " . $endpoint; // debug
+
+$allowed_endpoints = ['bugs', 'ideas', 'idea', 'bug','idea_comments', 'bug_comments','idea_comments_count', 'bug_comments_count']; // sem pridávaj nové endpointy
 
 $method_map = [
     'GET'    => 'get',
@@ -13,6 +15,8 @@ $method_map = [
     'PUT'    => 'update',
     'PATCH'  => 'update',
 ];
+
+//echo $endpoint . " " . $method; // debug
 
 if (empty($endpoint)) {
     http_response_code(400);
