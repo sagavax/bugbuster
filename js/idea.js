@@ -23,6 +23,19 @@ idea_comments_list.addEventListener("click",function(event) {
             deleteIdeaComment(commentId, ideaId);
         }
         
+    } if(event.target.classList.contains("idea_comm_text")){
+      event.target.setAttribute("contenteditable", "true");
+      event.target.focus();
+      const commentId = event.target.closest(".idea_comment").getAttribute("data-comment-id");
+      event.target.addEventListener("blur", function() {
+        event.target.setAttribute("contenteditable", "false");
+        // Here you would typically send an AJAX request to save the updated comment text
+        // For example:
+        const updatedText = event.target.textContent;
+        updateComment(commentId, updatedText);
+        console.log("Updated comment ID:", commentId, "New text:", updatedText);
+        // You can implement the AJAX request to save the updated comment here
+      }, { once: true });
     }
 });
 
@@ -72,7 +85,12 @@ function saveIdeaComment(ideaId) {
                           </div>
                         </div>`;
           document.querySelector(".idea_comments_list").insertAdjacentHTML("beforeend", html);
-        
+
+          //clear input fields
+          textarea.value="";
+          input.value="";
+
+
           //nr of comments update
           document.querySelector(".idea_detail .nr_of_comments").textContent = parseInt(document.querySelector(".idea_detail .nr_of_comments").textContent) + 1 + " comment(s)";
 
@@ -124,4 +142,16 @@ function filterIdeasByApplication(application) {
   // Send the request with the videoId and modpackId
   var params = "application=" + encodeURIComponent(application);
   xhttp.send(params);
+}
+
+function updateComment(commentId, updatedText) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("Comment updated successfully");
+    }
+  };
+  xhttp.open("POST", "idea_comment_update.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("comment_id=" + encodeURIComponent(commentId) + "&updated_text=" + encodeURIComponent(updatedText));
 }

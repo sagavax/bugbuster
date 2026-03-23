@@ -257,6 +257,7 @@ dialog ul li:hover {
 
 .idea_comment {
     margin-bottom: 10px;
+
 }
 
 .idea_comment,
@@ -265,6 +266,11 @@ dialog ul li:hover {
     margin-bottom: 10px;
     margin-left: 20px;
 }
+
+.idea_comment:hover {
+    background-color: #eef3f9;
+}
+
 
 .new_idea,
 .idea_comment_new {

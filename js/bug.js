@@ -12,7 +12,20 @@ bug_comments_list.addEventListener("click",function(ev){
     if(buttonName==="delete_comment"){
       deleteComment(ev.target.closest(".bug_comment").getAttribute("comment-id"));
     } 
-  }
+  }if(ev.target.classList.contains("bug_text")){
+      ev.target.setAttribute("contenteditable", "true");
+      ev.target.focus();
+      const commentId = ev.target.closest(".bug_comment").getAttribute("comment-id");
+      ev.target.addEventListener("blur", function() {
+        ev.target.setAttribute("contenteditable", "false");
+        // Here you would typically send an AJAX request to save the updated comment text
+        // For example:
+        const updatedText = ev.target.textContent;
+        updateComment(commentId, updatedText);
+        console.log("Updated comment ID:", commentId, "New text:", updatedText);
+        // You can implement the AJAX request to save the updated comment here
+      }, { once: true });
+    }
 })
 
 
@@ -135,4 +148,16 @@ function deleteComment(commentId){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         var data = "comm_id="+encodeURIComponent(commentId)+"&bug_id="+encodeURIComponent(bugId);                
         xhttp.send(data);
+}
+
+function updateComment(commentId, updatedText) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("Comment updated successfully");
+    }
+  };
+  xhttp.open("POST", "bug_comment_update.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("comment_id=" + encodeURIComponent(commentId) + "&updated_text=" + encodeURIComponent(updatedText));
 }
