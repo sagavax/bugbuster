@@ -21,15 +21,30 @@ new_note.addEventListener('click', function(event) {
 
 modal_tag_note.addEventListener("click", function(event) {
     if (event.target.tagName==="BUTTON") {
-        if(event.target.name === "add_note_tag"){
-            const note_id = sessionStorage.getItem('note_id');
-            const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]').value;
-            addNoteTag(note_id, tag_name);
-        } else if(event.target.name === "create_tag"){
+        if(event.target.name === "create_tag"){
             //const note_id = sessionStorage.getItem('note_id');
             const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]').value;
             createTag(tag_name);
             //addNoteTag(note_id, tag_name);
+        } else if(event.target.hasAttribute("tag-id")){
+            const note_id = sessionStorage.getItem('note_id');
+            const tag_id = event.target.getAttribute("tag-id");
+            //check if tag is already added to note
+            checkNoteTag(note_id, tag_id, function(exists){
+                if(exists){
+                    alert("Tag is already added to note.");
+                    document.querySelector(".notetification").style.display = "flex";
+                    document.querySelector(".notetification").style.backgroundColor = "#af574c";
+                    document.querySelector(".notetification").innerText = "Tag added successfully.";
+                    setTimeout(function() {
+                        document.querySelector(".notetification").style.display = "none";
+                    }, 3000);
+                } else {
+                    //addNoteTag(note_id, tag_id);
+                    event.target.remove();
+                }
+            });
+            
         }
     }
 
@@ -200,4 +215,38 @@ function getNoteTags(noteId){
     };
     xhttp.open("GET", "note_tags.php?note_id="+noteId, true);
     xhttp.send();
+    }
+
+    function addNoteTag(noteId, tagId){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".notetification").style.display = "flex";
+            document.querySelector(".notetification").style.backgroundColor = "#4CAF50";
+            document.querySelector(".notetification").innerText = "Tag added successfully.";
+            setTimeout(function() {
+                document.querySelector(".notetification").style.display = "none";
+            }, 3000);
+            
+          }
+        };
+        xhttp.open("POST", "notes_tags_add.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "note_id="+noteId+"&tag_id="+tagId;
+        xhttp.send(params);
+    }
+
+
+    function checkNoteTag(noteId, tagId, callback){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const exists = this.responseText === "true";
+            callback(exists);
+          }
+        };
+        xhttp.open("POST", "notes_tags_check.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var params = "note_id="+noteId+"&tag_id="+tagId;
+        xhttp.send(params);
     }

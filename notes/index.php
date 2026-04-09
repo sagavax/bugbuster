@@ -89,6 +89,7 @@
             <div class="tag_note_action">
                 <input type="text" placeholder="Tag name" name="tag_name" autocomplete="off"><button type="button" name="create_tag" class="button small_button"><i class="fa fa-plus"></i></button>
             </div>
+            <div class="notification"></div>
         </div>
 
 </body>

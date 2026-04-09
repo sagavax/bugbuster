@@ -264,3 +264,12 @@ header ul li {
     width: 100%;
 }
 
+.notification {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
