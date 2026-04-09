@@ -32,15 +32,24 @@ modal_tag_note.addEventListener("click", function(event) {
             //check if tag is already added to note
             checkNoteTag(note_id, tag_id, function(exists){
                 if(exists){
-                    alert("Tag is already added to note.");
-                    document.querySelector(".notetification").style.display = "flex";
-                    document.querySelector(".notetification").style.backgroundColor = "#af574c";
-                    document.querySelector(".notetification").innerText = "Tag added successfully.";
+                    //alert("Tag is already added to note.");
+                    document.querySelector(".notification").style.display = "flex";
+                    document.querySelector(".notification").style.backgroundColor = "#af574c";
+                    document.querySelector(".notification").innerText = "Tag is already added to note.";
                     setTimeout(function() {
-                        document.querySelector(".notetification").style.display = "none";
+                        document.querySelector(".notification").style.display = "none";
                     }, 3000);
                 } else {
                     //addNoteTag(note_id, tag_id);
+                    const parentNoteTagWrapper = document.querySelector('.note[note-id="'+note_id+'"] .note_tags');
+                    parentNoteTagWrapper.insertAdjacentHTML('beforeend', '<button class="button small_button" name="note_tag"><i class="fa fa-tag"></i> '+event.target.innerText+'</button>');
+                    //parentNoteTagWrapper.insertAdjacentHTML('beforeend', event.target);
+                     document.querySelector(".notification").style.display = "flex";
+                        document.querySelector(".notification").style.backgroundColor = "#4CAF50";
+                        document.querySelector(".notification").innerText = "Tag "+event.target.innerText+" added successfully.";
+                        setTimeout(function() {
+                            document.querySelector(".notification").style.display = "none";
+                        }, 3000);
                     event.target.remove();
                 }
             });

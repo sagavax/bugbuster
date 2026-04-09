@@ -272,4 +272,15 @@ header ul li {
     text-align: center;
     border-radius: 5px;
     margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.note_tags {
+    width: 80%;
+    height:90%;;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    box-sizing: border-box;
 }

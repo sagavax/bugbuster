@@ -46,7 +46,10 @@
                           echo "<div class='note_title'>$note_title</div>";
                           echo "<div class='note_text'>$note_text</div>";
                           echo "<div class='note_action'>";
-                          echo "<button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button>";
+                          //echo "<div class='note_tags'>" . GetNoteTags($note_id) . "</div>";
+                          echo "<div class='note_tags'><button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button></div>";
+                          //echo "<button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button>";
+                          echo "<div style='width:20%; display:flex; justify-content:space-between; align-items:center; justify-content:flex-end; gap:10px;'>";
                           if($note_application != ""){
                             //echo "<div class='note_application'>$note_application</div>";
                             echo "<button type='button' class='button small_button' name='note_application'>$note_application</button>";
@@ -55,6 +58,7 @@
                             echo "<button type='button' class='button small_button' name='note_application'><i class='fa fa-plus'></i> application</button>";
                           }
                           echo "<button class='button small_button' name='delete_note' title='Delete Note'><i class='fa fa-times'></i></button>";
+                          echo "</div>";
                           echo "</div>"; // note_action
                           
                         echo "</div>";// note
@@ -84,6 +88,7 @@
         <h3>Tag Note</h3>
         <div class="tag_note_content">
             <div class="tag_note_list">
+              Loading tags...
             </div>   
             
             <div class="tag_note_action">
