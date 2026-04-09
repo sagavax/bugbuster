@@ -80,7 +80,11 @@
                     <div class="bug_comments_list">
                               <?php
 
-                                $get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id ORDER BY comment_date ASC";
+                              //get number of comments for the bug
+                              $get_comments = "SELECT * from bugs_comments wHERE bug_id=$bug_id ORDER BY comment_date ASC";
+                              $result_comment=mysqli_query($link, $get_comments);
+                              $nr_of_comments = mysqli_num_rows($result_comment);
+
                                 $result_comment=mysqli_query($link, $get_comments);
                                  while ($row_comment = mysqli_fetch_array($result_comment)) {
                                     $comm_id = $row_comment['comm_id'];

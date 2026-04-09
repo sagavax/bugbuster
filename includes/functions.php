@@ -87,11 +87,8 @@ function createGithubIssue($title, $body, $token) {
     // Spracovanie chýb
     if (curl_errno($ch)) {
         $error = curl_error($ch);
-        curl_close($ch);
         return ["success" => false, "error" => $error];
     }
-
-    curl_close($ch);
 
     // Návrat celej odpovede spolu s HTTP kódom
     return [
@@ -299,4 +296,9 @@ function GetCountCriticalPriorityideas() {
         $count=$row['count'];
     } 
      return $count;
+}
+
+
+function createTag($tag_name) {
+  
 }

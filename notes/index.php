@@ -46,6 +46,7 @@
                           echo "<div class='note_title'>$note_title</div>";
                           echo "<div class='note_text'>$note_text</div>";
                           echo "<div class='note_action'>";
+                          echo "<button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button>";
                           if($note_application != ""){
                             //echo "<div class='note_application'>$note_application</div>";
                             echo "<button type='button' class='button small_button' name='note_application'>$note_application</button>";
@@ -78,5 +79,17 @@
             echo "</ul>";          
             ?>          
     </dialog>
+
+    <dialog class="modal_tag_note">
+        <h3>Tag Note</h3>
+        <div class="tag_note_content">
+            <div class="tag_note_list">
+            </div>   
+            
+            <div class="tag_note_action">
+                <input type="text" placeholder="Tag name" name="tag_name" autocomplete="off"><button type="button" name="create_tag" class="button small_button"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+
 </body>
 </html>

@@ -21,7 +21,7 @@
 }
 
 
-.add_note_action,.note_action{
+.add_note_action,.note_action,.tag_note_action{
     display: flex;
     justify-content: flex-end;
     margin-top:10px;
@@ -67,7 +67,7 @@
 }
 
 
- button[name="note_application"] {
+ button[name="note_application"],button[name="note_tag"]{
     /* border: 1px #8773b2 solid;
     border-radius: 5px;
     background-color: #8773b2;
@@ -79,6 +79,14 @@
     cursor: pointer;
     color: #8773b2;
 }
+
+/* button[name="create_tag"] {
+    border: 1px #8773b2 solid;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    color: #8773b2;
+} */
 
 button[name="note_application"]:hover {
     opacity: 0.8;
@@ -106,4 +114,26 @@ button[name="note_application"]:hover {
     /* background: #eee;
     background-color: #bca8db */
     background-color: #ded4ec;
+}
+
+
+.modal_tag_note {
+    width: 60%;
+    min-height: 100px;
+    background-color: white;
+}
+
+
+.tag_note_action input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px #d1d1d1 solid;
+}
+
+.tag_note_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
 }

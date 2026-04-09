@@ -2,6 +2,8 @@ var new_note = document.querySelector('.new_note');
 var notes = document.querySelector('.notes');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
+const modal_tag_note = document.querySelector('.modal_tag_note');
+
 
 new_note.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
@@ -17,6 +19,23 @@ new_note.addEventListener('click', function(event) {
 });
 
 
+modal_tag_note.addEventListener("click", function(event) {
+    if (event.target.tagName==="BUTTON") {
+        if(event.target.name === "add_note_tag"){
+            const note_id = sessionStorage.getItem('note_id');
+            const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]').value;
+            addNoteTag(note_id, tag_name);
+        } else if(event.target.name === "create_tag"){
+            //const note_id = sessionStorage.getItem('note_id');
+            const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]').value;
+            createTag(tag_name);
+            //addNoteTag(note_id, tag_name);
+        }
+    }
+
+});
+
+
 notes.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
         //get note id
@@ -28,7 +47,13 @@ notes.addEventListener('click', function(event) {
             deleteNote(note_id);    
         } else if (event.target.name === 'note_application') {
             modal_change_app.showModal();
-     }
+        } else if (event.target.name === 'note_tag') {
+            modal_tag_note.showModal();
+            if(modal_tag_note){
+                document.querySelector('.modal_tag_note input[name="tag_name"]').value="";
+            }
+            getTags();            
+        }
    }
 });
 
@@ -133,3 +158,46 @@ function changeApplication(appName, noteId){
     var params = "app_name="+appName+"&note_id="+noteId;
     xhttp.send(params);
  }
+
+
+ function getTags(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        const data = JSON.parse(this.responseText);
+
+        const html = data.map(tag => `<button class="button small_button" tag-id="${tag.tag_id}" type="button">${tag.tag_name}</button>`).join("");
+        //console.log(this.responseText);
+        document.querySelector(".tag_note_list").innerHTML = html;        
+      }
+    };
+    xhttp.open("GET", "notes_tags.php", true);
+    xhttp.send();
+ }
+
+function createTag(tag_name) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.querySelector('.modal_tag_note input[name="tag_name"]').value="";
+        document.querySelector('.modal_tag_note').close();
+        //getNoteTags(noteId);      
+      }
+    };
+    xhttp.open("POST", "notes_create_tag.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var params = "tag_name="+tag_name;
+    xhttp.send(params);
+}
+
+
+function getNoteTags(noteId){
+    var xhttp = new XMLHttpRequest();    
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.querySelector(".tag_note_list").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "note_tags.php?note_id="+noteId, true);
+    xhttp.send();
+    }
