@@ -304,12 +304,14 @@ function createTag($tag_name) {
 }
 
 function GetNoteTags($note_id) {
+    $buttons = "";
     global $link;
-    $sql = "SELECT t.tag_name FROM tags t JOIN note_tags nt ON t.tag_id = nt.tag_id WHERE nt.note_id = $note_id";
+    $sql = "SELECT * FROM notes_tags  WHERE note_id = $note_id";
     $result = mysqli_query($link, $sql) or die(mysqli_error($link));
     while ($row = mysqli_fetch_array($result)) {
         $tag_name = $row['tag_name'];
         $tag_id = $row['tag_id'];
-        echo "<button class='button small_button' type='button' tag-id=$tag_id>$tag_name</button>";
+        $buttons .= '<button class="button small_button" name="note_tag"><i class="fa fa-tag"></i> ' . $tag_name . '</button>';
     }
+    return $buttons;
 }

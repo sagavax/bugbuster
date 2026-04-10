@@ -43,6 +43,7 @@ modal_tag_note.addEventListener("click", function(event) {
                     //addNoteTag(note_id, tag_id);
                     const parentNoteTagWrapper = document.querySelector('.note[note-id="'+note_id+'"] .note_tags');
                     parentNoteTagWrapper.insertAdjacentHTML('beforeend', '<button class="button small_button" name="note_tag"><i class="fa fa-tag"></i> '+event.target.innerText+'</button>');
+                    addNoteTag(note_id, tag_id,event.target.innerText);
                     //parentNoteTagWrapper.insertAdjacentHTML('beforeend', event.target);
                      document.querySelector(".notification").style.display = "flex";
                         document.querySelector(".notification").style.backgroundColor = "#4CAF50";
@@ -226,22 +227,16 @@ function getNoteTags(noteId){
     xhttp.send();
     }
 
-    function addNoteTag(noteId, tagId){
+    function addNoteTag(noteId, tagId,tagName) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            document.querySelector(".notetification").style.display = "flex";
-            document.querySelector(".notetification").style.backgroundColor = "#4CAF50";
-            document.querySelector(".notetification").innerText = "Tag added successfully.";
-            setTimeout(function() {
-                document.querySelector(".notetification").style.display = "none";
-            }, 3000);
-            
-          }
-        };
+        
+           };
+       }
         xhttp.open("POST", "notes_tags_add.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        var params = "note_id="+noteId+"&tag_id="+tagId;
+        var params = "note_id="+noteId+"&tag_id="+tagId+"&tag_name="+tagName;
         xhttp.send(params);
     }
 
