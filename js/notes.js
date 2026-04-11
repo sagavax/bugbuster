@@ -189,6 +189,10 @@ function changeApplication(appName, noteId){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        if(this.responseText.trim() === "[]"){
+            document.querySelector(".tag_note_list").innerHTML = "<p>No tags found. Please create a new tag.</p>";
+            return;
+        }
         const data = JSON.parse(this.responseText);
 
         const html = data.map(tag => `<button class="button small_button" tag-id="${tag.tag_id}" type="button">${tag.tag_name}</button>`).join("");
