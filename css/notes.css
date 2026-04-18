@@ -125,13 +125,13 @@ button[name="note_application"]:hover {
 
 .modal_tag_note {
     min-width: 60%;
-    min-height: 100px;
+    min-height: 100px;    
     background-color: white;
 }
 
 
 .tag_note_list input {
-    width: 150px;
+    width: 250px;
     padding: 5px;
     box-sizing: border-box;
     /* border: 1px #d1d1d1 solid; */

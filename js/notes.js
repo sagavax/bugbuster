@@ -216,12 +216,29 @@ function changeApplication(appName, noteId){
     xhttp.send();
  }
 
+
+function getLatestTagId(callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        callback(this.responseText);
+      }
+    };
+    xhttp.open("GET", "notes_get_latest_tag_id.php", true);
+    xhttp.send();
+  }
+
 function createTag(tag_name) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         document.querySelector('.modal_tag_note input[name="tag_name"]').value="";
-        document.querySelector('.modal_tag_note').close();
+        //add new tag to list of tags in modal
+        getLatestTagId(function(latestTagId){
+            const newTagHtml = `<button class="button small_button" tag-id="${latestTagId}" type="button">${tag_name}</button>`;
+            document.querySelector(".tag_note_list").insertAdjacentHTML('afterbegin', newTagHtml);
+        });
+        //document.querySelector('.modal_tag_note').close();
         //getNoteTags(noteId);      
       }
     };
@@ -236,7 +253,9 @@ function getNoteTags(noteId){
     var xhttp = new XMLHttpRequest();    
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.querySelector(".tag_note_list").innerHTML = this.responseText;
+            data = JSON.parse(this.responseText);
+             const html = data.map(tag => `<button class="button small_button" tag-id="${tag.tag_id}" type="button">${tag.tag_name}</button>`).join("").concat(`<input type="text" name="tag_name" placeholder="New tag name"><button class="button small_button" name="show_create_tag"><i class="fa fa-plus"></i></button>`);
+            document.querySelector(".tag_note_list").innerHTML = html;
         }
     };
     xhttp.open("GET", "note_tags.php?note_id="+noteId, true);
