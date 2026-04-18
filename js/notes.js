@@ -3,7 +3,18 @@ var notes = document.querySelector('.notes');
 const modal_change_app = document.querySelector('.modal_change_app');
 const modal_change_app_list_item = document.querySelector('.modal_change_app ul li'); 
 const modal_tag_note = document.querySelector('.modal_tag_note');
+const tag_note_input = document.querySelector('.modal_tag_note input[name="tag_name"]');
 
+
+if(tag_note_input){
+    tag_note_input.addEventListener("input", function(){
+        if(tag_note_input.value.trim() === ""){
+            alert("Please fill this field.");
+        } else {
+        createTag(tag_note_input.value.trim());
+        }
+    });
+}
 
 new_note.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
