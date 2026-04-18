@@ -1,3 +1,9 @@
+dialog {
+    border: none;
+    border-radius: 5px;
+    border: 1px #5e4d9b solid;
+    padding: 10px;
+}
 .new_note {
     display: flex;
     box-sizing: border-box;
@@ -118,17 +124,20 @@ button[name="note_application"]:hover {
 
 
 .modal_tag_note {
-    width: 60%;
+    min-width: 60%;
     min-height: 100px;
     background-color: white;
 }
 
 
-.tag_note_action input {
-    width: 100%;
+.tag_note_list input {
+    width: 150px;
     padding: 5px;
     box-sizing: border-box;
-    border: 1px #d1d1d1 solid;
+    /* border: 1px #d1d1d1 solid; */
+    border: 2px #5e4d9b solid;
+    border-radius: 5px;
+    display:none;
 }
 
 .tag_note_list {

@@ -21,12 +21,24 @@ new_note.addEventListener('click', function(event) {
 
 modal_tag_note.addEventListener("click", function(event) {
     if (event.target.tagName==="BUTTON") {
-        if(event.target.name === "create_tag"){
+        if(event.target.name === "show_create_tag"){
             //const note_id = sessionStorage.getItem('note_id');
-            const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]').value;
-            createTag(tag_name);
+            const tag_name = document.querySelector('.modal_tag_note input[name="tag_name"]');
+            tag_name.style.display = "flex";
+            event.target.name = "create_tag";
+        } else if (event.target.name === "create_tag") {
+            const tag_name_input = document.querySelector('.modal_tag_note input[name="tag_name"]');
+            const tag_name = tag_name_input.value.trim();
+            if (tag_name=="") {
+                alert("Please fill this field.");
+            } else{
+                createTag(tag_name);
+                tag_name_input.value = "";
+        }       
+            
             //addNoteTag(note_id, tag_name);
-        } else if(event.target.hasAttribute("tag-id")){
+
+        }  else if(event.target.hasAttribute("tag-id")){
             const note_id = sessionStorage.getItem('note_id');
             const tag_id = event.target.getAttribute("tag-id");
             //check if tag is already added to note
@@ -74,9 +86,9 @@ notes.addEventListener('click', function(event) {
             modal_change_app.showModal();
         } else if (event.target.name === 'note_tag') {
             modal_tag_note.showModal();
-            if(modal_tag_note){
+          /*   if(modal_tag_note){
                 document.querySelector('.modal_tag_note input[name="tag_name"]').value="";
-            }
+            } */
             getTags();            
         }
    }
@@ -195,7 +207,7 @@ function changeApplication(appName, noteId){
         }
         const data = JSON.parse(this.responseText);
 
-        const html = data.map(tag => `<button class="button small_button" tag-id="${tag.tag_id}" type="button">${tag.tag_name}</button>`).join("");
+        const html = data.map(tag => `<button class="button small_button" tag-id="${tag.tag_id}" type="button">${tag.tag_name}</button>`).join("").concat(`<input type="text" name="tag_name" placeholder="New tag name"><button class="button small_button" name="show_create_tag"><i class="fa fa-plus"></i></button>`);
         //console.log(this.responseText);
         document.querySelector(".tag_note_list").innerHTML = html;        
       }
