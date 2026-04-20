@@ -20,7 +20,7 @@
 <body>
            <div class="main">
            <?php include ("../includes/header.php") ?>
-           <div class="content">
+           <div class="content_notes">
               <div class="list">
               <h3>Notes</h3>
                <div class="new_note">
@@ -47,7 +47,7 @@
                           echo "<div class='note_text'>$note_text</div>";
                           echo "<div class='note_action'>";
                           //echo "<div class='note_tags'>" . GetNoteTags($note_id) . "</div>";
-                          echo "<div class='note_tags'><button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button>" . GetNoteTags($note_id) ."</div>";
+                          echo "<div class='note_tags'>" . GetNoteTags($note_id) ."</div>";
                           //echo "<button type='button' class='button small_button' name='note_tag'><i class='fa fa-plus'></i></button>";
                           echo "<div style='width:20%; display:flex; justify-content:space-between; align-items:center; justify-content:flex-end; gap:10px;'>";
                           if($note_application != ""){
@@ -85,7 +85,7 @@
     </dialog>
 
     <dialog class="modal_tag_note">
-        <h3>Tag Note</h3>
+        <h3>Tags for notes</h3>
         <div class="tag_note_content">
             <div class="tag_note_list">
               Loading tags...

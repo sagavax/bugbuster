@@ -1,30 +1,39 @@
-dialog {
-    border: none;
-    border-radius: 5px;
-    border: 1px #5e4d9b solid;
-    padding: 10px;
-}
-.new_note {
-    display: flex;
+.content_notes {
+    padding: 20px;
     box-sizing: border-box;
-    padding:10px;
-    margin-bottom: 10px;
-    flex-direction: column;
-    border:1px #d1d1d1 solid;
-    background-color: white;
+    background-color: #121212;
+    min-height: 100vh;
+    /* color: #8773b2; */
+    color: #E5E5E5;
 }
 
-.new_note input, .new_note textarea {
-    height: 45px;
+
+.new_note input, .new_note textarea, .modal_tag_note input {
+    width: 100%;
+    box-sizing: border-box;
+    background: #1a1b26;
+    color: #e8eaf2;
+    border: 1px solid #2e3245;
+    border-radius: 12px;
+    padding: 16px 18px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+   /*  height: 45px;
     width:100%;
     margin-bottom:10px;
-    background: #eff3f4;
+    background: #eff3f4; */
 }
 
+.new_note input {
+    margin-bottom: 10px;
+}
 
 .new_note textarea {
-    min-height: 100px;
-}
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.5;
+    margin-bottom: 18px;
+} 
 
 
 .add_note_action,.note_action,.tag_note_action{
@@ -36,31 +45,33 @@ dialog {
     gap: 10px;
 }
 
-.new_note input {
-    font-weight: bold;
-}
 
 .new_note input::placeholder {
     font-weight: normal;
 }
 
-.note {
-    display: flex;
+.note, .new_note,.modal_tag_note, dialog {
     box-sizing: border-box;
     padding:10px;
     margin-bottom: 10px;
     flex-direction: column;
     margin-top:30px;
-    border:1px #d1d1d1 solid;
-    background-color: white;
+    /* border:1px #8773b2 solid; */
+    border: 1px solid #3a3a42;
+    border-radius: 5px;
+    /* background-color: white; */
+    background: linear-gradient(180deg, #1b1b1f 0%, #18181b 100%);
 }
 
-.note_title {
-    font-weight: bold;
+.note, .new_note{
+    display: flex;
+}
+
+.note_title, .modal_tag_note h3,.tag_note_list {
+   color: #f3f4f6;
     font-size: 18px;
-    color: #2f2d3b;
-    margin-top:10px;
-    margin-bottom: 10px;
+    font-weight: 700;
+    margin: 0 0 16px;
 }
 
 .note_application {
@@ -73,33 +84,25 @@ dialog {
 }
 
 
- button[name="note_application"],button[name="note_tag"]{
-    /* border: 1px #8773b2 solid;
+ button[name="note_application"],button[name="note_tag"], button[name="create_tag"], button[name="delete_note"], button[name="add_note"] {
+    display: inline-flex;
+    gap: 8px;
+    border: 1px #6d56c9 solid;
     border-radius: 5px;
-    background-color: #8773b2;
+    background: #6d56c9;
+    align-items: center;
+    color: #f7f7fb;
     cursor: pointer;
-    color: white; */
-    border: 1px #8773b2 solid;
-    border-radius: 5px;
-    background-color: white;
-    cursor: pointer;
-    color: #8773b2;
 }
 
-/* button[name="create_tag"] {
-    border: 1px #8773b2 solid;
-    border-radius: 5px;
-    background-color: white;
-    cursor: pointer;
-    color: #8773b2;
-} */
 
 button[name="note_application"]:hover {
     opacity: 0.8;
 }
 
 .note_action button:hover {
-    opacity: 0.8;
+    background: #7b63da;
+    transform: translateY(-1px);
 }
 
 .modal_change_app ul {
@@ -124,25 +127,31 @@ button[name="note_application"]:hover {
 
 
 .modal_tag_note {
+    top: 30%;
+    left: 10%;
     min-width: 60%;
-    min-height: 100px;    
-    background-color: white;
+    min-height: 250px;    
 }
-
 
 .tag_note_list input {
     width: 250px;
-    padding: 5px;
-    box-sizing: border-box;
-    /* border: 1px #d1d1d1 solid; */
-    border: 2px #5e4d9b solid;
-    border-radius: 5px;
     display:none;
 }
+
+.tag_note_content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
+    
+}
+
 
 .tag_note_list {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 10px;
+    width: 100%;
 }
