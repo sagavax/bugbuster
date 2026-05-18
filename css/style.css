@@ -21,18 +21,14 @@ a {
 }
 
 .button {
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    border-radius: 2px;
-    background: #5e4d9b;
-    border: 0;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    border: 1px #6d56c9 solid;
     border-radius: 5px;
+    background: #6d56c9;
+    align-items: center;
+    color: #f7f7fb;
+    cursor: pointer;
   }
 
   .button:hover, .button:focus {
@@ -67,22 +63,27 @@ select {
 }
 
 .content {
+    box-sizing: border-box;
+    background-color: #121212;
+    /* color: #8773b2; */
+    color: #E5E5E5;
     width: 100%;
     height: auto;
     margin-left: 0;
     margin-top: 0;
 }
 
-input, textarea {
-    height: 45px;
-    width: 100%;
+input, textarea, select { 
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    width: 100%;
     box-sizing: border-box;
-    border: 1px #d1d1d1 solid;
-    padding: 10px;
+    background: #1a1b26;
+    color: #e8eaf2;
+    border: 1px solid #2e3245;
+    border-radius: 12px;
+    padding: 16px 18px;
     outline: none;
-    background: #eff3f4;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 textarea {
@@ -144,6 +145,10 @@ header ul li {
     display: flex;
     flex-direction: column;
     
+}
+
+.list_notes {
+    background-color: #121212;
 }
 
 .pagination, .tag_pagination {

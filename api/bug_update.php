@@ -7,7 +7,7 @@
 
     // Dynamické nastavenie URL pro API podle prostředí (localhost vs produkce)
     $bug_id = $data['bug_id'];
-    $bug_description = mysqli_real_escape_string($link,$data['bug_description']);
+    //$bug_description = mysqli_real_escape_string($link,$data['bug_description']);
 
     if(isset($data['bug_title'])){ // Aktualizace názvu bugu
         $bug_title = $data['bug_title'];
