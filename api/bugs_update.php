@@ -6,6 +6,7 @@ include "../includes/functions.php";
 $data = json_decode(file_get_contents('php://input'), true);
 
 $bug_id = (int)($data['bug_id'] ?? 0);
+$bug_application = $data['bug_application'];
 
 if ($bug_id === 0) {
     http_response_code(400);
@@ -15,10 +16,10 @@ if ($bug_id === 0) {
 
 if (isset($data['bug_priority'])) {
     $bug_priority = mysqli_real_escape_string($link, $data['bug_priority']);
-    $update_bug = "UPDATE bugs SET bug_priority='$bug_priority' WHERE bug_id=$bug_id AND bug_application='minecraft'";
+    $update_bug = "UPDATE bugs SET bug_priority='$bug_priority' WHERE bug_id=$bug_id AND bug_application='$bug_application'";
 } elseif (isset($data['bug_status'])) {
     $bug_status = mysqli_real_escape_string($link, $data['bug_status']);
-    $update_bug = "UPDATE bugs SET bug_status='$bug_status' WHERE bug_id=$bug_id AND bug_application='minecraft'";
+    $update_bug = "UPDATE bugs SET bug_status='$bug_status' WHERE bug_id=$bug_id AND bug_application='$bug_application'";
 } else {
     http_response_code(400);
     echo json_encode(['error' => 'No valid field to update']);

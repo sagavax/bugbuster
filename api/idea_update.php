@@ -24,8 +24,6 @@ if(isset($data['idea_priority'])) {
     $idea_priority = $data['idea_priority'];
 }
 
-
-
  if(isset($data['idea_title'])){ // Aktualizace názvu bugu
         $idea_title = $data['idea_title'];
         $update_query = "UPDATE ideas SET idea_title='$idea_title' WHERE idea_id=$idea_id";
