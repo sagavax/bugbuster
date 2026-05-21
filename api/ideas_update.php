@@ -6,7 +6,8 @@ include "../includes/functions.php";
 $data = json_decode(file_get_contents('php://input'), true);
 
 $idea_id = (int)($data['idea_id'] ?? 0);
-
+$application = $data['idea_application'];
+    
 if ($idea_id === 0) {
     http_response_code(400);
     echo json_encode(['error' => 'idea_id is required']);
@@ -15,11 +16,11 @@ if ($idea_id === 0) {
 
 if (isset($data['idea_priority'])) {
     $idea_priority = mysqli_real_escape_string($link, $data['idea_priority']);
-    $update_bug = "UPDATE ideas SET idea_priority='$idea_priority' WHERE idea_id=$idea_id AND idea_application='minecraft'";
+    $update_bug = "UPDATE ideas SET idea_priority='$idea_priority' WHERE idea_id=$idea_id AND idea_application='$application'";
     echo json_encode(['debug' => 'Updating idea priority']);
 } elseif (isset($data['idea_status'])) {
     $idea_status = mysqli_real_escape_string($link, $data['idea_status']);
-    $update_bug = "UPDATE ideas SET idea_status='$idea_status' WHERE idea_id=$idea_id AND idea_application='minecraft'";
+    $update_bug = "UPDATE ideas SET idea_status='$idea_status' WHERE idea_id=$idea_id AND idea_application='$application'";
     echo json_encode(['debug' => 'Updating idea status']);
 } else {
     http_response_code(400);
