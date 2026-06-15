@@ -16,7 +16,7 @@
         exit;
     }
 
-    $app_name = mysqli_real_escape_string($link,$_GET['app_name'])??'';
+    $app_name = mysqli_real_escape_string($link, $_GET['app_name'] ?? '');
 
     //$get_ideas = "SELECT * FROM ideas WHERE idea_application='$app_name' ORDER BY added_date DESC";
     $get_ideas = "SELECT a.*, (SELECT COUNT(*) FROM ideas_comments  WHERE idea_id = a.idea_id) AS count_comments FROM ideas a WHERE idea_application = '$app_name' ORDER BY added_date DESC";
