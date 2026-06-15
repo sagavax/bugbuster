@@ -4,6 +4,7 @@
     include('../includes/functions.php');
 
     $action = $_GET['action'] ?? '';
+     $app_name = mysqli_real_escape_string($link, $_GET['app_name'] ?? '');
 
     if ($action === 'latest') {
         $get_bugs = "SELECT a.*, (SELECT COUNT(*) FROM bugs_comments WHERE bug_id = a.bug_id) AS count_comments FROM bugs a ORDER BY added_date DESC LIMIT 1";
@@ -16,7 +17,7 @@
         exit;
     }
 
-    $app_name = mysqli_real_escape_string($link,$_GET['app_name'])??'';
+   
 
     //$get_bugs = "SELECT * FROM bugs WHERE bug_application='$app_name' ORDER BY added_date DESC";
     $get_bugs = "SELECT a.*, (SELECT COUNT(*) FROM bugs_comments  WHERE bug_id = a.bug_id) AS count_comments FROM bugs a WHERE bug_application = '$app_name' ORDER BY added_date DESC";
